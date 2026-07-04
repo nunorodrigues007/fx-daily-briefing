@@ -7,295 +7,135 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #080b0f;
-  --surface: #0d1117;
-  --card: #111820;
-  --border: #1c2430;
-  --border2: #243040;
-  --gold: #c9a84c;
-  --gold-dim: rgba(201,168,76,0.12);
-  --gold-border: rgba(201,168,76,0.3);
-  --green: #3de888;
-  --green-dim: rgba(61,232,136,0.1);
-  --green-glow: rgba(61,232,136,0.25);
-  --amber: #f5a623;
-  --amber-dim: rgba(245,166,35,0.1);
-  --amber-glow: rgba(245,166,35,0.25);
-  --red: #e84545;
-  --red-dim: rgba(232,69,69,0.1);
-  --red-glow: rgba(232,69,69,0.3);
-  --text: #e2e8f0;
-  --text2: #7a8898;
-  --text3: #3d4a58;
+--bg:#080b0f;--surface:#0d1117;--card:#111820;--border:#1c2430;--border2:#243040;
+--gold:#c9a84c;--gold-dim:rgba(201,168,76,0.12);--gold-border:rgba(201,168,76,0.3);
+--green:#3de888;--green-dim:rgba(61,232,136,0.1);--green-glow:rgba(61,232,136,0.25);
+--amber:#f5a623;--amber-dim:rgba(245,166,35,0.1);--amber-glow:rgba(245,166,35,0.25);
+--red:#e84545;--red-dim:rgba(232,69,69,0.1);--red-glow:rgba(232,69,69,0.3);
+--xau:#FFD700;--xau-dim:rgba(255,215,0,0.08);--xau-border:rgba(255,215,0,0.25);
+--oil:#E07B30;--oil-dim:rgba(224,123,48,0.08);--oil-border:rgba(224,123,48,0.25);
+--text:#e2e8f0;--text2:#7a8898;--text3:#3d4a58;
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'IBM Plex Mono', monospace;
-  min-height: 100vh;
-  padding: 0;
-}
-
-/* HEADER */
-.hdr {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 20px 24px 16px;
-  border-bottom: 0.5px solid var(--border);
-  flex-wrap: wrap; gap: 12px;
-  position: sticky; top: 0; z-index: 10;
-  background: var(--bg);
-}
-.logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.5rem; letter-spacing: 0.12em; color: var(--text);
-  line-height: 1;
-}
-.logo span { color: var(--gold); }
-.logo-sub {
-  font-size: 9px; color: var(--text3); letter-spacing: 0.15em;
-  margin-top: 2px; text-transform: uppercase;
-}
-.hdr-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-.week-pill {
-  font-family: 'Bebas Neue', sans-serif; font-size: 0.9rem;
-  letter-spacing: 0.1em; color: var(--gold);
-  background: var(--gold-dim); border: 0.5px solid var(--gold-border);
-  padding: 3px 10px; border-radius: 3px;
-}
-.status-badge {
-  font-size: 10px; letter-spacing: 0.06em; padding: 4px 10px;
-  border-radius: 3px; border: 0.5px solid;
-}
-.badge-loading { border-color: var(--gold-border); color: var(--gold); background: var(--gold-dim); }
-.badge-live { border-color: rgba(61,232,136,0.4); color: var(--green); background: var(--green-dim); }
-.badge-error { border-color: rgba(232,69,69,0.4); color: var(--red); background: var(--red-dim); }
-.refresh-btn {
-  font-size: 11px; padding: 6px 14px; cursor: pointer;
-  background: transparent; border: 0.5px solid var(--border2);
-  border-radius: 4px; color: var(--text2);
-  font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.05em;
-  transition: all 0.15s;
-}
-.refresh-btn:hover:not(:disabled) { border-color: var(--gold); color: var(--gold); }
-.refresh-btn:disabled { opacity: 0.35; cursor: default; }
-
-/* TIMESTAMP BAR */
-.ts-bar {
-  padding: 8px 24px;
-  background: var(--surface);
-  border-bottom: 0.5px solid var(--border);
-  font-size: 10px; color: var(--text3);
-  display: flex; justify-content: space-between; align-items: center;
-  flex-wrap: wrap; gap: 6px;
-}
-.ts-bar span { letter-spacing: 0.06em; }
-.ts-bar strong { color: var(--text2); }
-
-/* MAIN */
-.main { padding: 20px 24px; max-width: 860px; }
-
-/* LOADING */
-.loading-wrap {
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  padding: 60px 20px; gap: 14px;
-}
-.spinner {
-  width: 24px; height: 24px;
-  border: 2px solid var(--border2);
-  border-top-color: var(--gold);
-  border-radius: 50%;
-  animation: spin 0.7s linear infinite;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-.loading-label {
-  font-size: 11px; color: var(--text2); letter-spacing: 0.06em;
-}
-.steps-list { display: flex; flex-direction: column; gap: 5px; width: min(320px, 90vw); margin-top: 4px; }
-.step { font-size: 11px; color: var(--text3); padding: 3px 0; display: flex; gap: 8px; }
-.step.done { color: var(--green); }
-.step.active { color: var(--gold); }
-
-/* PAIR CARD */
-.pair-card {
-  background: var(--card);
-  border: 0.5px solid var(--border);
-  border-radius: 8px;
-  padding: 18px 20px;
-  margin-bottom: 10px;
-  display: flex; align-items: flex-start; gap: 18px;
-  transition: border-color 0.2s;
-  position: relative; overflow: hidden;
-}
-.pair-card:hover { border-color: var(--border2); }
-.pair-card.card-green { border-left: 3px solid var(--green); }
-.pair-card.card-amber { border-left: 3px solid var(--amber); }
-.pair-card.card-red { border-left: 3px solid var(--red); }
-
-/* SEMAPHORE */
-.semaphore-wrap { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; }
-.semaphore {
-  width: 52px; height: 52px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  position: relative;
-}
-.semaphore-inner {
-  width: 38px; height: 38px; border-radius: 50%;
-}
-.sem-green .semaphore-inner { background: var(--green); box-shadow: 0 0 16px var(--green-glow); }
-.sem-amber .semaphore-inner { background: var(--amber); box-shadow: 0 0 16px var(--amber-glow); }
-.sem-red .semaphore-inner { background: var(--red); box-shadow: 0 0 20px var(--red-glow); }
-.sem-red { animation: pulse-red 2s ease-in-out infinite; }
-@keyframes pulse-red {
-  0%,100% { box-shadow: 0 0 0 0 var(--red-glow); }
-  50% { box-shadow: 0 0 0 10px transparent; }
-}
-.sem-label {
-  font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; text-align: center;
-}
-.sem-green .sem-label { color: var(--green); }
-.sem-amber .sem-label { color: var(--amber); }
-.sem-red .sem-label { color: var(--red); }
-
-/* PAIR INFO */
-.pair-info { flex: 1; min-width: 0; }
-.pair-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }
-.pair-name {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.8rem; letter-spacing: 0.06em; color: var(--text); line-height: 1;
-}
-.pair-direction { font-size: 10px; color: var(--green); letter-spacing: 0.08em; }
-.pair-conviction { font-size: 10px; color: var(--gold); letter-spacing: 0.03em; }
-
-.verdict-box {
-  padding: 8px 12px;
-  border-radius: 4px;
-  margin-bottom: 10px;
-  font-size: 12px; font-weight: 600; letter-spacing: 0.03em;
-  line-height: 1.4;
-}
-.verdict-green { background: var(--green-dim); color: var(--green); border: 0.5px solid rgba(61,232,136,0.25); }
-.verdict-amber { background: var(--amber-dim); color: var(--amber); border: 0.5px solid rgba(245,166,35,0.25); }
-.verdict-red { background: var(--red-dim); color: var(--red); border: 0.5px solid rgba(232,69,69,0.25); }
-
-.factors { display: flex; flex-direction: column; gap: 4px; }
-.factor {
-  font-size: 11px; color: var(--text2); line-height: 1.5;
-  display: flex; gap: 8px; align-items: flex-start;
-}
-.factor-icon { flex-shrink: 0; font-size: 10px; margin-top: 1px; opacity: 0.7; }
-.factor.positive { color: #7de8b0; }
-.factor.negative { color: #e8a0a0; }
-.factor.warning { color: #e8cc80; }
-.factor.info { color: var(--text2); }
-
-/* TODAY EVENTS */
-.today-events {
-  margin-top: 10px; padding-top: 10px;
-  border-top: 0.5px solid var(--border);
-}
-.today-label {
-  font-size: 9px; color: var(--text3); letter-spacing: 0.12em;
-  text-transform: uppercase; margin-bottom: 5px;
-}
-.event-row {
-  display: flex; align-items: center; gap: 8px;
-  font-size: 10px; color: var(--text2); padding: 2px 0;
-}
-.event-time { color: var(--gold); min-width: 55px; }
-.event-tier { font-size: 9px; padding: 1px 5px; border-radius: 2px; border: 0.5px solid; }
-.tier-1 { border-color: rgba(245,166,35,0.4); color: var(--amber); background: var(--amber-dim); }
-.tier-2 { border-color: var(--border2); color: var(--text3); }
-
-/* NEXT EVENT BANNER */
-.next-event-banner {
-  background: var(--surface);
-  border: 0.5px solid var(--border);
-  border-radius: 6px;
-  padding: 12px 16px;
-  margin-bottom: 16px;
-  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
-}
-.neb-label { font-size: 9px; color: var(--text3); letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; }
-.neb-event { font-size: 12px; color: var(--text); flex: 1; }
-.neb-time { font-size: 11px; color: var(--amber); white-space: nowrap; }
-
-/* SECTION HEADER */
-.section-hdr {
-  font-size: 9px; color: var(--text3); letter-spacing: 0.15em;
-  text-transform: uppercase; margin-bottom: 12px; margin-top: 20px;
-  padding-bottom: 6px; border-bottom: 0.5px solid var(--border);
-}
-
-/* ERROR */
-.error-wrap { padding: 32px 24px; text-align: center; }
-.error-msg { font-size: 12px; color: var(--red); margin-bottom: 8px; }
-.error-sub { font-size: 11px; color: var(--text2); margin-bottom: 20px; }
-.retry-btn {
-  font-size: 11px; padding: 7px 18px; cursor: pointer;
-  background: var(--red-dim); border: 0.5px solid rgba(232,69,69,0.35);
-  border-radius: 4px; color: var(--red);
-  font-family: 'IBM Plex Mono', monospace;
-  transition: all 0.15s;
-}
-
-/* API KEY MODAL */
-.modal-overlay {
-  display: none; position: fixed; inset: 0; z-index: 100;
-  background: rgba(0,0,0,0.88);
-  align-items: center; justify-content: center;
-}
-.modal-overlay.show { display: flex; }
-.modal {
-  background: var(--card); border: 0.5px solid var(--border2);
-  border-radius: 8px; padding: 28px 32px; width: min(420px, 90vw);
-}
-.modal-title {
-  font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem;
-  letter-spacing: 0.1em; color: var(--text); margin-bottom: 6px;
-}
-.modal-title span { color: var(--gold); }
-.modal-sub { font-size: 11px; color: var(--text2); line-height: 1.6; margin-bottom: 20px; }
-.modal-sub a { color: var(--gold); text-decoration: none; }
-.modal input[type=password] {
-  width: 100%; background: var(--surface);
-  border: 0.5px solid var(--border2); border-radius: 4px;
-  color: var(--text); padding: 10px 14px;
-  font-family: 'IBM Plex Mono', monospace; font-size: 13px;
-  outline: none; margin-bottom: 12px;
-}
-.modal input[type=password]:focus { border-color: var(--gold); }
-.modal-btns { display: flex; gap: 8px; }
-.btn-primary {
-  flex: 1; padding: 9px; background: var(--gold);
-  color: #1a1000; border: none; border-radius: 4px;
-  font-family: 'IBM Plex Mono', monospace; font-size: 12px;
-  font-weight: 600; cursor: pointer; letter-spacing: 0.04em;
-}
-.btn-primary:hover { background: #d4b05e; }
-.btn-secondary {
-  padding: 9px 16px; background: transparent;
-  color: var(--text2); border: 0.5px solid var(--border2);
-  border-radius: 4px; font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px; cursor: pointer;
-}
-.modal-note { margin-top: 14px; font-size: 10px; color: var(--text3); line-height: 1.5; }
-
-/* FOOTER */
-.footer {
-  margin-top: 24px; padding: 14px 0;
-  border-top: 0.5px solid var(--border);
-  font-size: 10px; color: var(--text3); line-height: 1.8;
-}
-
-@media (max-width: 480px) {
-  .main { padding: 14px 16px; }
-  .hdr { padding: 14px 16px; }
-  .ts-bar { padding: 7px 16px; }
-  .pair-name { font-size: 1.4rem; }
-  .semaphore { width: 44px; height: 44px; }
-  .semaphore-inner { width: 32px; height: 32px; }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospace;min-height:100vh;}
+.hdr{display:flex;justify-content:space-between;align-items:center;padding:20px 24px 16px;border-bottom:.5px solid var(--border);flex-wrap:wrap;gap:12px;position:sticky;top:0;z-index:10;background:var(--bg);}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.12em;color:var(--text);line-height:1;}
+.logo span{color:var(--gold);}
+.logo-sub{font-size:9px;color:var(--text3);letter-spacing:.15em;margin-top:2px;text-transform:uppercase;}
+.hdr-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.week-pill{font-family:'Bebas Neue',sans-serif;font-size:.9rem;letter-spacing:.1em;color:var(--gold);background:var(--gold-dim);border:.5px solid var(--gold-border);padding:3px 10px;border-radius:3px;}
+.status-badge{font-size:10px;letter-spacing:.06em;padding:4px 10px;border-radius:3px;border:.5px solid;}
+.badge-loading{border-color:var(--gold-border);color:var(--gold);background:var(--gold-dim);}
+.badge-live{border-color:rgba(61,232,136,.4);color:var(--green);background:var(--green-dim);}
+.badge-error{border-color:rgba(232,69,69,.4);color:var(--red);background:var(--red-dim);}
+.refresh-btn{font-size:11px;padding:6px 14px;cursor:pointer;background:transparent;border:.5px solid var(--border2);border-radius:4px;color:var(--text2);font-family:'IBM Plex Mono',monospace;letter-spacing:.05em;transition:all .15s;}
+.refresh-btn:hover:not(:disabled){border-color:var(--gold);color:var(--gold);}
+.refresh-btn:disabled{opacity:.35;cursor:default;}
+.ts-bar{padding:8px 24px;background:var(--surface);border-bottom:.5px solid var(--border);font-size:10px;color:var(--text3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;}
+.ts-bar span{letter-spacing:.06em;}
+.ts-bar strong{color:var(--text2);}
+.main{padding:20px 24px;max-width:860px;}
+.loading-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 20px;gap:14px;}
+.spinner{width:24px;height:24px;border:2px solid var(--border2);border-top-color:var(--gold);border-radius:50%;animation:spin .7s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.loading-label{font-size:11px;color:var(--text2);letter-spacing:.06em;}
+.steps-list{display:flex;flex-direction:column;gap:5px;width:min(320px,90vw);margin-top:4px;}
+.step{font-size:11px;color:var(--text3);padding:3px 0;display:flex;gap:8px;}
+.step.done{color:var(--green);}
+.step.active{color:var(--gold);}
+/* ── FOREX PAIR CARDS ── */
+.pair-card{background:var(--card);border:.5px solid var(--border);border-radius:8px;padding:18px 20px;margin-bottom:10px;display:flex;align-items:flex-start;gap:18px;transition:border-color .2s;position:relative;overflow:hidden;}
+.pair-card:hover{border-color:var(--border2);}
+.pair-card.card-green{border-left:3px solid var(--green);}
+.pair-card.card-amber{border-left:3px solid var(--amber);}
+.pair-card.card-red{border-left:3px solid var(--red);}
+/* ── COMMODITY CARDS ── */
+.commod-card{background:var(--card);border:.5px solid var(--border);border-radius:8px;padding:18px 20px;margin-bottom:10px;display:flex;align-items:flex-start;gap:18px;transition:border-color .2s;}
+.commod-card:hover{border-color:var(--border2);}
+.commod-card.card-green{border-left:3px solid var(--green);}
+.commod-card.card-amber{border-left:3px solid var(--amber);}
+.commod-card.card-red{border-left:3px solid var(--red);}
+.commod-score-badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;padding:2px 8px;border-radius:3px;border:.5px solid;margin-left:8px;}
+.score-green{border-color:rgba(61,232,136,.35);color:var(--green);background:var(--green-dim);}
+.score-amber{border-color:rgba(245,166,.35);color:var(--amber);background:var(--amber-dim);}
+.score-red{border-color:rgba(232,69,69,.35);color:var(--red);background:var(--red-dim);}
+/* ── SEMAPHORES ── */
+.semaphore-wrap{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:6px;}
+.semaphore{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.semaphore-inner{width:38px;height:38px;border-radius:50%;}
+.sem-green .semaphore-inner{background:var(--green);box-shadow:0 0 16px var(--green-glow);}
+.sem-amber .semaphore-inner{background:var(--amber);box-shadow:0 0 16px var(--amber-glow);}
+.sem-red .semaphore-inner{background:var(--red);box-shadow:0 0 20px var(--red-glow);}
+.sem-red{animation:pulse-red 2s ease-in-out infinite;}
+@keyframes pulse-red{0%,100%{box-shadow:0 0 0 0 var(--red-glow);}50%{box-shadow:0 0 0 10px transparent;}}
+.sem-label{font-size:9px;letter-spacing:.1em;text-transform:uppercase;text-align:center;}
+.sem-green .sem-label{color:var(--green);}
+.sem-amber .sem-label{color:var(--amber);}
+.sem-red .sem-label{color:var(--red);}
+/* ── CARDS INNER ── */
+.pair-info{flex:1;min-width:0;}
+.pair-header{display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap;}
+.pair-name{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.06em;color:var(--text);line-height:1;}
+.commod-name{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.06em;line-height:1;}
+.commod-name.xau{color:var(--xau);}
+.commod-name.oil{color:var(--oil);}
+.pair-direction{font-size:10px;color:var(--green);letter-spacing:.08em;}
+.pair-conviction{font-size:10px;color:var(--gold);letter-spacing:.03em;}
+.verdict-box{padding:8px 12px;border-radius:4px;margin-bottom:10px;font-size:12px;font-weight:600;letter-spacing:.03em;line-height:1.4;}
+.verdict-green{background:var(--green-dim);color:var(--green);border:.5px solid rgba(61,232,136,.25);}
+.verdict-amber{background:var(--amber-dim);color:var(--amber);border:.5px solid rgba(245,166,35,.25);}
+.verdict-red{background:var(--red-dim);color:var(--red);border:.5px solid rgba(232,69,69,.25);}
+.factors{display:flex;flex-direction:column;gap:4px;}
+.factor{font-size:11px;color:var(--text2);line-height:1.5;display:flex;gap:8px;align-items:flex-start;}
+.factor-icon{flex-shrink:0;font-size:10px;margin-top:1px;opacity:.7;}
+.factor.positive{color:#7de8b0;}
+.factor.negative{color:#e8a0a0;}
+.factor.warning{color:#e8cc80;}
+.factor.info{color:var(--text2);}
+.today-events{margin-top:10px;padding-top:10px;border-top:.5px solid var(--border);}
+.today-label{font-size:9px;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px;}
+.event-row{display:flex;align-items:center;gap:8px;font-size:10px;color:var(--text2);padding:2px 0;}
+.event-time{color:var(--gold);min-width:55px;}
+.event-tier{font-size:9px;padding:1px 5px;border-radius:2px;border:.5px solid;}
+.tier-1{border-color:rgba(245,166,35,.4);color:var(--amber);background:var(--amber-dim);}
+.tier-2{border-color:var(--border2);color:var(--text3);}
+/* ── SECTION HEADERS ── */
+.section-hdr{font-size:9px;color:var(--text3);letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px;margin-top:20px;padding-bottom:6px;border-top:.5px solid var(--border);padding-top:20px;display:flex;align-items:center;gap:10px;}
+.section-hdr-icon{font-size:14px;}
+.section-hdr-text{flex:1;}
+.section-hdr-badge{font-size:9px;padding:2px 8px;border-radius:3px;border:.5px solid;letter-spacing:.06em;}
+.shb-forex{border-color:var(--gold-border);color:var(--gold);background:var(--gold-dim);}
+.shb-commod{border-color:var(--oil-border);color:var(--oil);background:var(--oil-dim);}
+/* ── NEXT EVENT BANNER ── */
+.next-event-banner{background:var(--surface);border:.5px solid var(--border);border-radius:6px;padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.neb-label{font-size:9px;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;}
+.neb-event{font-size:12px;color:var(--text);flex:1;}
+.neb-time{font-size:11px;color:var(--amber);white-space:nowrap;}
+/* ── DIVIDER ── */
+.section-divider{height:.5px;background:linear-gradient(90deg,transparent,var(--border2),transparent);margin:28px 0 0;}
+/* ── MODALS & MISC ── */
+.error-wrap{padding:32px 24px;text-align:center;}
+.error-msg{font-size:12px;color:var(--red);margin-bottom:8px;}
+.error-sub{font-size:11px;color:var(--text2);margin-bottom:20px;}
+.retry-btn{font-size:11px;padding:7px 18px;cursor:pointer;background:var(--red-dim);border:.5px solid rgba(232,69,69,.35);border-radius:4px;color:var(--red);font-family:'IBM Plex Mono',monospace;transition:all .15s;}
+.modal-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.88);align-items:center;justify-content:center;}
+.modal-overlay.show{display:flex;}
+.modal{background:var(--card);border:.5px solid var(--border2);border-radius:8px;padding:28px 32px;width:min(420px,90vw);}
+.modal-title{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.1em;color:var(--text);margin-bottom:6px;}
+.modal-title span{color:var(--gold);}
+.modal-sub{font-size:11px;color:var(--text2);line-height:1.6;margin-bottom:20px;}
+.modal-sub a{color:var(--gold);text-decoration:none;}
+.modal input[type=password]{width:100%;background:var(--surface);border:.5px solid var(--border2);border-radius:4px;color:var(--text);padding:10px 14px;font-family:'IBM Plex Mono',monospace;font-size:13px;outline:none;margin-bottom:12px;}
+.modal input[type=password]:focus{border-color:var(--gold);}
+.modal-btns{display:flex;gap:8px;}
+.btn-primary{flex:1;padding:9px;background:var(--gold);color:#1a1000;border:none;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;cursor:pointer;letter-spacing:.04em;}
+.btn-primary:hover{background:#d4b05e;}
+.btn-secondary{padding:9px 16px;background:transparent;color:var(--text2);border:.5px solid var(--border2);border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:12px;cursor:pointer;}
+.modal-note{margin-top:14px;font-size:10px;color:var(--text3);line-height:1.5;}
+.footer{margin-top:24px;padding:14px 0;border-top:.5px solid var(--border);font-size:10px;color:var(--text3);line-height:1.8;}
+@media(max-width:480px){
+.main{padding:14px 16px;}.hdr{padding:14px 16px;}.ts-bar{padding:7px 16px;}
+.pair-name,.commod-name{font-size:1.4rem;}.semaphore{width:44px;height:44px;}.semaphore-inner{width:32px;height:32px;}
 }
 </style>
 </head>
@@ -304,10 +144,7 @@ body {
 <div class="modal-overlay" id="modal">
   <div class="modal">
     <div class="modal-title">FX <span>DAILY</span> BRIEFING</div>
-    <div class="modal-sub">
-      Introduz a tua Anthropic API key para activar o briefing automático.<br>
-      Obtém em <a href="https://console.anthropic.com/settings/keys" target="_blank">console.anthropic.com</a> → API Keys.
-    </div>
+    <div class="modal-sub">Introduz a tua Anthropic API key para activar o briefing automático.<br>Obtém em <a href="https://console.anthropic.com/settings/keys" target="_blank">console.anthropic.com</a> → API Keys.</div>
     <input type="password" id="key-input" placeholder="sk-ant-..." autocomplete="off">
     <div class="modal-btns">
       <button class="btn-primary" onclick="saveKey()">Guardar & Iniciar</button>
@@ -320,12 +157,12 @@ body {
 <div class="hdr">
   <div>
     <div class="logo">FX <span>DAILY</span> BRIEFING</div>
-    <div class="logo-sub">Forex Macro Matrix · Trade Signal</div>
+    <div class="logo-sub">Forex Macro Matrix · Commodity Sunday · Trade Signal</div>
   </div>
   <div class="hdr-right">
-    <span class="week-pill" id="week-pill">WEEK 27</span>
+    <span class="week-pill" id="week-pill">WEEK 28</span>
     <span class="status-badge badge-loading" id="status-badge">A carregar...</span>
-    <button class="hdr-btn refresh-btn" id="refresh-btn" onclick="runBriefing()" disabled>Refresh ↻</button>
+    <button class="refresh-btn" id="refresh-btn" onclick="runBriefing()" disabled>Refresh ↻</button>
     <button class="refresh-btn" onclick="openModal()" style="font-size:10px;padding:4px 10px;">⚙ API Key</button>
   </div>
 </div>
@@ -343,42 +180,92 @@ body {
 </div>
 
 <script>
-// ─── WEEK CONFIG — actualizar cada domingo ─────────────────────────────────
+// ─── FOREX WEEK CONFIG ─────────────────────────────────────────────────────
 const WEEK_CONFIG = {
-  week: 27,
-  period: "29 Jun – 3 Jul 2026",
+  week: 28,
+  period: "4 Jul – 10 Jul 2026",
   pairs: [
     { pair:"AUD/CHF", direction:"LONG", conviction:"★★★★★", score_diff:"8.0 pts", carry:"+435bp",
-      thesis:"RBA 4.35% pausa tactica (trimmed mean CPI 3.6% máximos Set 2024, hike Q3 esperado). SNB 0.00% dovish hold até H2 2027.",
+      thesis:"RBA 4.35% ciclo activo (trimmed mean CPI 3.6%, hike Q3 esperado). SNB 0.00% dovish. Iran MoU reduz inflação energética mas RBA independente do petróleo.",
       base_ccy:"AUD", quote_ccy:"CHF" },
     { pair:"USD/CHF", direction:"LONG", conviction:"★★★★★", score_diff:"7.8 pts", carry:"+363bp",
-      thesis:"Fed dot plot hawkish (9/18 membros veem hike 2026, PCE core 3.4%). SNB 0.00% sem catalisador.",
+      thesis:"Fed hawkish (Warsh dot plot 3.8%). NFP Jun 57K miss suaviza timing mas não inverte ciclo — PCE core 3.4% mantém viés hawkish. CPI Jun (10 Jul) é o próximo trigger. SNB 0.00%.",
       base_ccy:"USD", quote_ccy:"CHF" },
     { pair:"GBP/CHF", direction:"LONG", conviction:"★★★★☆", score_diff:"6.9 pts", carry:"+375bp",
-      thesis:"BOE 3.75% hawkish hold voto 7-2 (mais dividido do ciclo). CHF sem suporte estrutural.",
+      thesis:"BOE 3.75% hawkish hold (voto 7-2). UK CPI serviços 5.7% sustenta viés hawkish. SNB 0.00% sem catalisador de alta.",
       base_ccy:"GBP", quote_ccy:"CHF" },
     { pair:"AUD/CAD", direction:"LONG", conviction:"★★★★☆", score_diff:"7.7 pts", carry:"+210bp",
-      thesis:"RBA ciclo activo vs BOC em hold (economia weak). Brent $79-80 remove vento favorável ao CAD.",
+      thesis:"RBA ciclo activo (AUD 9.5) vs BOC hold neutro (CAD 1.8). Brent $72 / WTI $68 remove suporte estrutural ao CAD. Iran MoU bearish estrutural para petróleo.",
       base_ccy:"AUD", quote_ccy:"CAD" },
     { pair:"USD/CAD", direction:"LONG", conviction:"★★★★☆", score_diff:"7.5 pts", carry:"+138bp",
-      thesis:"Fed hawkish (USD 9.3) vs BOC neutral (CAD 1.8). CAD sem suporte petro após Brent -20%.",
+      thesis:"Fed hawkish vs BOC neutral. CAD sem suporte petro (WTI $68, -47% vs peak de Abr). BOC 15 Jul — hold esperado. Iran MoU bearish estrutural para CAD.",
       base_ccy:"USD", quote_ccy:"CAD" }
   ],
   t1_events: [
-    { date:"2026-06-30", time:"11:00 CET", release:"EZ CPI Flash Junho", ccy:"EUR", pairs:["GBP/CHF"] },
-    { date:"2026-07-02", time:"08:30 EDT", release:"US NFP Junho + Desemprego", ccy:"USD", pairs:["USD/CHF","USD/CAD"] },
-    { date:"2026-07-08", time:"TBC NZST", release:"RBNZ Decision (hike 80%)", ccy:"NZD", pairs:["AUD/CAD"] }
+    { date:"2026-07-08", time:"14:00 NZST", release:"RBNZ Decision (hike 2.25%→2.50%, 80% prob)", ccy:"NZD", pairs:["AUD/CHF","AUD/CAD"] },
+    { date:"2026-07-10", time:"08:30 EDT", release:"US CPI Junho (trigger para USD)", ccy:"USD", pairs:["USD/CHF","USD/CAD"] },
+    { date:"2026-07-15", time:"09:45 EDT", release:"BOC Rate Decision (hold esperado)", ccy:"CAD", pairs:["AUD/CAD","USD/CAD"] }
   ],
   t2_events: [
-    { date:"2026-07-01", time:"09:30 EDT", release:"Warsh ECB Forum Sintra", ccy:"USD", pairs:["USD/CHF","USD/CAD"] },
-    { date:"2026-07-01", time:"10:00 EDT", release:"US ISM Manufacturing Jun", ccy:"USD", pairs:["USD/CHF","USD/CAD"] },
-    { date:"2026-07-02", time:"08:30 EDT", release:"US ISM Services Jun", ccy:"USD", pairs:["USD/CHF","USD/CAD"] }
+    { date:"2026-07-07", time:"12:00 EDT", release:"EIA STEO Julho — supply Iran/Hormuz reset", ccy:"CAD", pairs:["AUD/CAD","USD/CAD"] },
+    { date:"2026-07-08", time:"10:30 EDT", release:"EIA Inventários (semana 4 Jul)", ccy:"CAD", pairs:["AUD/CAD","USD/CAD"] },
+    { date:"2026-07-10", time:"TBC",       release:"UK GDP + Produção Industrial Maio", ccy:"GBP", pairs:["GBP/CHF"] }
   ],
-  holidays: [
-    { date:"2026-07-03", country:"USA", label:"Independence Day (observado) — mercados EUA fechados", pairs:["USD/CHF","USD/CAD"] },
-    { date:"2026-07-01", country:"CAN", label:"Canada Day — mercados CAD fechados", pairs:["AUD/CAD","USD/CAD"] }
+  holidays: []
+};
+
+// ─── COMMODITY WEEK CONFIG ─────────────────────────────────────────────────
+const COMMODITY_CONFIG = {
+  week: 23,
+  assets: [
+    {
+      asset: "GOLD",
+      score: -3,
+      verdict_label: "BEARISH",
+      icon: "🥇",
+      color_class: "xau",
+      pillars: [
+        { name:"Real Int. Rate", n:"2.25%", n1:"2.19%", score:-1 },
+        { name:"ETF Flows (GLD)", n:"n/d", n1:"~1,017.6t", score:0 },
+        { name:"COT Gold", n:"n/d (atraso feriado)", n1:"181.3K", score:0 },
+        { name:"GDX Short Int.", n:"44.03M", n1:"38.03M", score:-1 },
+        { name:"Seasonality", n:"Julho", n1:"Negativo", score:-1 }
+      ],
+      thesis: "Triplo headwind: sazonalidade de Julho historicamente negativa, GDX short interest aumentou 15.8% (44.03M vs 38.03M), e real yields a subir (2.25%). Iran MoU comprime prémio geopolítico. COT e ETF flows n/d esta semana (feriado Independence Day).",
+      key_event: "FRED DFII10 Jul 6 (real yields pós-NFP 57K miss) — potencial reversão do pilar se yields caíram"
+    },
+    {
+      asset: "CRUDE OIL",
+      score: -3,
+      verdict_label: "BEARISH",
+      icon: "🛢️",
+      color_class: "oil",
+      pillars: [
+        { name:"ISM PMI",       n:"53.3%", n1:"54.0%", score:-1 },
+        { name:"EIA Stocks",    n:"-3.775M bbl", n1:"-6.088M bbl", score:-1 },
+        { name:"US/SA Prod.",   n:"STEO pendente", n1:"11.3M shut-ins", score:0 },
+        { name:"COT Crude",     n:"n/d (atraso feriado)", n1:"124.5K", score:0 },
+        { name:"DXY",           n:"100.55", n1:"100.23", score:-1 }
+      ],
+      thesis: "1ª semana com score negativo em toda a série W15–W23. Iran MoU + Hormuz reaberto: Brent $72, WTI $68 (-47% vs peak de Abril). EIA draw menor (-3.775M vs -6.088M), Cushing 1º build em 9 semanas. ISM desacelerou (53.3% vs 54.0%). STEO Julho 7 vai resetar análise de supply.",
+      key_event: "EIA STEO Jul 7 (CRÍTICO — 1º relatório a incorporar Iran MoU) + EIA Inventários Jul 8"
+    }
   ]
 };
+
+// ─── HELPERS ──────────────────────────────────────────────────────────────
+function scoreToSignal(score) {
+  if (score >= 3) return "GREEN";
+  if (score >= 1) return "AMBER";
+  if (score === 0) return "AMBER";
+  if (score >= -2) return "AMBER";
+  return "RED";
+}
+function scoreClass(score) {
+  if (score > 0) return "score-green";
+  if (score < 0) return "score-red";
+  return "score-amber";
+}
 
 // ─── API KEY ───────────────────────────────────────────────────────────────
 function getKey(){ return localStorage.getItem('fxm_apikey')||''; }
@@ -386,8 +273,7 @@ function saveKey(){
   const v = document.getElementById('key-input').value.trim();
   if(!v){ alert('Introduz uma API key válida.'); return; }
   localStorage.setItem('fxm_apikey', v);
-  closeModal();
-  runBriefing();
+  closeModal(); runBriefing();
 }
 function openModal(){
   const ex = getKey();
@@ -396,289 +282,320 @@ function openModal(){
   setTimeout(()=>document.getElementById('key-input').focus(),100);
 }
 function closeModal(){ document.getElementById('modal').classList.remove('show'); }
-document.getElementById('key-input').addEventListener('keydown', e=>{ if(e.key==='Enter') saveKey(); });
+document.getElementById('key-input').addEventListener('keydown',e=>{ if(e.key==='Enter') saveKey(); });
 
-// ─── STATUS ────────────────────────────────────────────────────────────────
-function setStatus(type, text){
+function setStatus(type,text){
   const el = document.getElementById('status-badge');
   el.className = 'status-badge badge-'+type;
   el.textContent = text;
 }
 
-// ─── TIMESTAMP ────────────────────────────────────────────────────────────
 function updateTimestamp(){
   const now = new Date();
-  const opts = { weekday:'long', day:'2-digit', month:'short', year:'numeric' };
+  const opts = {weekday:'long',day:'2-digit',month:'short',year:'numeric'};
   const time = now.toLocaleTimeString('pt-PT',{hour:'2-digit',minute:'2-digit'});
-  document.getElementById('ts-left').textContent =
-    now.toLocaleDateString('pt-PT', opts) + ' · ' + time;
+  document.getElementById('ts-left').textContent = now.toLocaleDateString('pt-PT',opts)+' · '+time;
 }
-updateTimestamp();
-setInterval(updateTimestamp, 30000);
+updateTimestamp(); setInterval(updateTimestamp,30000);
 
-// ─── NEXT T1 ───────────────────────────────────────────────────────────────
 function computeNextT1(){
   const now = new Date();
   const upcoming = WEEK_CONFIG.t1_events
-    .filter(e => new Date(e.date+'T23:59:00') >= now)
-    .sort((a,b) => new Date(a.date) - new Date(b.date));
-  if(!upcoming.length){ document.getElementById('next-t1').textContent = 'Nenhum esta semana'; return; }
+    .filter(e=>new Date(e.date+'T23:59:00')>=now)
+    .sort((a,b)=>new Date(a.date)-new Date(b.date));
+  if(!upcoming.length){ document.getElementById('next-t1').textContent='Nenhum esta semana'; return; }
   const ev = upcoming[0];
-  document.getElementById('next-t1').textContent = `${ev.release} · ${ev.date} ${ev.time}`;
+  document.getElementById('next-t1').textContent=`${ev.release} · ${ev.date} ${ev.time}`;
 }
 computeNextT1();
 
-// ─── LOADING STEPS ─────────────────────────────────────────────────────────
 const STEPS = [
   'Verificar feriados e liquidez do dia...',
-  'Pesquisar dados económicos recentes...',
+  'Pesquisar dados forex recentes...',
   'Avaliar impacto em cada par...',
+  'Analisar contexto commodities...',
   'Gerar semáforos e veredictos...',
 ];
 function renderLoading(idx=0){
-  document.getElementById('main-content').innerHTML = `
+  document.getElementById('main-content').innerHTML=`
     <div class="loading-wrap">
       <div class="spinner"></div>
       <div class="loading-label">A analisar o mercado...</div>
       <div class="steps-list">
         ${STEPS.map((s,i)=>{
-          const cls = i<idx?'step done':i===idx?'step active':'step';
-          const ic = i<idx?'✓':i===idx?'→':'·';
-          return `<div class="${cls}"><span>${ic}</span><span>${s}</span></div>`;
+          const cls=i<idx?'step done':i===idx?'step active':'step';
+          const ic=i<idx?'✓':i===idx?'→':'·';
+          return`<div class="${cls}"><span>${ic}</span><span>${s}</span></div>`;
         }).join('')}
       </div>
     </div>`;
 }
 
-// ─── MAIN ANALYSIS ─────────────────────────────────────────────────────────
+// ─── MAIN BRIEFING ────────────────────────────────────────────────────────
 async function runBriefing(){
   const key = getKey();
   if(!key){ openModal(); return; }
-
   document.getElementById('refresh-btn').disabled = true;
-  setStatus('loading','A analisar...');
-  renderLoading(0);
+  setStatus('loading','A analisar...'); renderLoading(0);
 
   const today = new Date();
   const todayStr = today.toISOString().split('T')[0];
   const dayName = today.toLocaleDateString('en-GB',{weekday:'long'});
 
-  // Build context string from config
-  const pairsContext = WEEK_CONFIG.pairs.map(p=>
+  const pairsCtx = WEEK_CONFIG.pairs.map(p=>
     `${p.pair} ${p.direction} (${p.conviction}, diff ${p.score_diff}, carry ${p.carry}): ${p.thesis}`
   ).join('\n');
 
-  const t1Context = WEEK_CONFIG.t1_events.map(e=>
+  const t1Ctx = WEEK_CONFIG.t1_events.map(e=>
     `${e.date} ${e.time} — ${e.release} (${e.ccy}) → afecta: ${e.pairs.join(', ')}`
   ).join('\n');
 
-  const holidayContext = WEEK_CONFIG.holidays.map(h=>
-    `${h.date} — ${h.label} → afecta: ${h.pairs.join(', ')}`
-  ).join('\n');
+  const commodCtx = COMMODITY_CONFIG.assets.map(a=>
+    `${a.asset} | Score W${COMMODITY_CONFIG.week}: ${a.score} (${a.verdict_label}) | ${a.thesis} | Evento crítico: ${a.key_event}`
+  ).join('\n\n');
 
-  const SYSTEM = `És o motor de análise diária do Forex Macro Matrix. O teu trabalho é gerar um briefing de semáforo para cada par de trading activo.
+  const SYSTEM = `És o motor de análise diária do FX Daily Briefing — combina o Forex Macro Matrix com o Commodity Sunday Brief.
 
-CONTEXTO DA SEMANA ${WEEK_CONFIG.week} (${WEEK_CONFIG.period}):
+━━ FOREX WEEK ${WEEK_CONFIG.week} (${WEEK_CONFIG.period}) ━━
 PARES ACTIVOS:
-${pairsContext}
+${pairsCtx}
 
-EVENTOS T1 DA SEMANA:
-${t1Context}
+EVENTOS T1:
+${t1Ctx}
 
-FERIADOS/LIQUIDEZ REDUZIDA:
-${holidayContext}
+━━ COMMODITY WEEK ${COMMODITY_CONFIG.week} ━━
+${commodCtx}
 
-REGRAS DO SEMÁFORO:
-🟢 VERDE = Entra full size. Nada saiu que afecte a tese, ou o que saiu confirmou. Sem eventos T1 hoje que possam contradizer.
-🟡 AMARELO = Reduz size ou aguarda. Feriado relevante hoje, evento T1 importante hoje ainda por sair, ou dado recente que comprime levemente a convicção.
-🔴 VERMELHO = Não entras. Dado T1 saiu recentemente que contradiz directamente a tese do par.
+━━ REGRAS DO SEMÁFORO ━━
+FOREX:
+🟢 VERDE = Entra full size. Tese intacta, sem eventos T1 bloqueadores hoje.
+🟡 AMARELO = Reduz size. Evento T1 hoje ainda por sair, ou dado recente que comprime convicção.
+🔴 VERMELHO = Não entras. Dado T1 contradiz directamente a tese do par.
 
-HOJE É: ${dayName}, ${todayStr}
+COMMODITIES (baseado no score semanal + contexto diário):
+🟢 VERDE = Score positivo e nenhum evento hoje reverte a tese.
+🟡 AMARELO = Score neutro, ou score misto com evento importante hoje.
+🔴 VERMELHO = Score negativo confirmado. Evitar longs, atenção a shorts.
 
-USA web_search para:
-1. Verificar se há feriados bancários hoje em qualquer país dos pares activos
-2. Verificar se saiu algum dado T1/T2 importante nos últimos 2-3 dias que afecte estes pares
-3. Verificar se há eventos geopolíticos ou de mercado que afectem a liquidez hoje
+HOJE: ${dayName}, ${todayStr}
+
+USA web_search para: feriados bancários hoje, dados T1/T2 recentes que afectem estes pares e commodities.
 
 Devolve APENAS JSON válido (sem markdown):
 {
   "generated": "DD Mon YYYY HH:MM",
-  "market_note": "<nota geral de mercado hoje, 1 frase>",
+  "market_note": "<nota geral de mercado, 1 frase>",
   "pairs": [
     {
       "pair": "AUD/CHF",
       "signal": "GREEN|AMBER|RED",
-      "verdict": "<instrução clara: Entra full size / Reduz size — razão / Não entras — razão>",
-      "factors": [
-        { "type": "positive|negative|warning|info", "text": "<factor que afecta a tese hoje>" }
-      ],
-      "today_events": [
-        { "time": "HH:MM TZ", "release": "<nome>", "tier": "T1|T2" }
-      ]
+      "verdict": "<instrução clara>",
+      "factors": [{ "type": "positive|negative|warning|info", "text": "<factor>" }],
+      "today_events": [{ "time": "HH:MM TZ", "release": "<nome>", "tier": "T1|T2" }]
+    }
+  ],
+  "commodities": [
+    {
+      "asset": "GOLD",
+      "signal": "GREEN|AMBER|RED",
+      "verdict": "<instrução clara>",
+      "factors": [{ "type": "positive|negative|warning|info", "text": "<factor>" }],
+      "today_events": [{ "time": "HH:MM TZ", "release": "<nome>", "tier": "T1|T2" }]
     }
   ]
 }`;
 
-  const USER = `Hoje é ${dayName}, ${todayStr}. Gera o briefing diário para os 5 pares activos da semana. Pesquisa feriados de hoje, dados recentes e eventos que afectem AUD, USD, GBP, CAD, CHF. Devolve o JSON.`;
+  const USER = `Hoje é ${dayName}, ${todayStr}. Gera o briefing diário para os 5 pares forex e as 2 commodities. Pesquisa feriados de hoje, dados recentes e eventos relevantes. Devolve o JSON.`;
 
   try {
     renderLoading(1);
-    const resp = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": key,
-        "anthropic-version": "2023-06-01",
-        "anthropic-dangerous-direct-browser-access": "true"
+    const resp = await fetch("https://api.anthropic.com/v1/messages",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "x-api-key":key,
+        "anthropic-version":"2023-06-01",
+        "anthropic-dangerous-direct-browser-access":"true"
       },
-      body: JSON.stringify({
-        model: "claude-sonnet-4-6",
-        max_tokens: 4000,
-        tools: [{ type: "web_search_20250305", name: "web_search" }],
-        system: SYSTEM,
-        messages: [{ role: "user", content: USER }]
+      body:JSON.stringify({
+        model:"claude-sonnet-4-6",
+        max_tokens:5000,
+        tools:[{type:"web_search_20250305",name:"web_search"}],
+        system:SYSTEM,
+        messages:[{role:"user",content:USER}]
       })
     });
 
-    renderLoading(2);
-
+    renderLoading(3);
     if(!resp.ok){
       const err = await resp.json().catch(()=>({}));
       if(resp.status===401) throw new Error('API key inválida.');
       if(resp.status===429) throw new Error('Rate limit. Tenta em 30s.');
-      throw new Error(err.error?.message || `Erro ${resp.status}`);
+      throw new Error(err.error?.message||`Erro ${resp.status}`);
     }
 
     const raw = await resp.json();
-    renderLoading(3);
-
-    // Collect all text blocks — web_search responses may have multiple
-    let text = '';
+    renderLoading(4);
+    let text='';
     for(const block of (raw.content||[])){
-      if(block.type==='text' && block.text) text += block.text;
+      if(block.type==='text'&&block.text) text+=block.text;
     }
+    text=text.replace(/```json\s*/gi,'').replace(/```\s*/g,'').trim();
 
-    // Strip markdown fences and find outermost JSON object
-    text = text.replace(/```json\s*/gi,'').replace(/```\s*/g,'').trim();
-
-    // Find the outermost balanced { } pair
-    let s = -1, e = -1, depth = 0;
-    for(let i=0; i<text.length; i++){
-      if(text[i]==='{'){
-        if(depth===0) s=i;
-        depth++;
-      } else if(text[i]==='}'){
-        depth--;
-        if(depth===0){ e=i; break; }
-      }
+    let s=-1,e=-1,depth=0;
+    for(let i=0;i<text.length;i++){
+      if(text[i]==='{'){if(depth===0)s=i;depth++;}
+      else if(text[i]==='}'){depth--;if(depth===0){e=i;break;}}
     }
     if(s===-1||e===-1) throw new Error('Resposta inválida da API.');
     const data = JSON.parse(text.slice(s,e+1));
     if(!data.pairs||!Array.isArray(data.pairs)) throw new Error('Dados incompletos.');
 
     renderApp(data);
-
   } catch(err){
     setStatus('error','Erro');
-    document.getElementById('main-content').innerHTML = `
+    document.getElementById('main-content').innerHTML=`
       <div class="error-wrap">
         <div class="error-msg">${err.message}</div>
         <div class="error-sub">Verifica a API key ou a ligação.</div>
         <button class="retry-btn" onclick="runBriefing()">↺ Tentar novamente</button>
       </div>`;
-    document.getElementById('refresh-btn').disabled = false;
+    document.getElementById('refresh-btn').disabled=false;
   }
 }
 
-// ─── RENDER ────────────────────────────────────────────────────────────────
+// ─── RENDER ───────────────────────────────────────────────────────────────
 function renderApp(data){
   const now = new Date();
   const ts = now.toLocaleTimeString('pt-PT',{hour:'2-digit',minute:'2-digit'});
-  setStatus('live', 'Live · '+ts);
-  document.getElementById('refresh-btn').disabled = false;
-  document.getElementById('week-pill').textContent = `WEEK ${WEEK_CONFIG.week}`;
+  setStatus('live','Live · '+ts);
+  document.getElementById('refresh-btn').disabled=false;
+  document.getElementById('week-pill').textContent=`WEEK ${WEEK_CONFIG.week}`;
 
-  const sigMap = { GREEN:'green', AMBER:'amber', RED:'red' };
-  const labelMap = { GREEN:'VERDE', AMBER:'AMARELO', RED:'VERMELHO' };
+  const sigMap={GREEN:'green',AMBER:'amber',RED:'red'};
+  const lblMap={GREEN:'VERDE',AMBER:'AMARELO',RED:'VERMELHO'};
 
-  // Find next T1
-  const todayD = new Date();
-  const upcoming = WEEK_CONFIG.t1_events
-    .filter(e => new Date(e.date+'T23:59:00') >= todayD)
+  const todayD=new Date();
+  const upcoming=WEEK_CONFIG.t1_events
+    .filter(e=>new Date(e.date+'T23:59:00')>=todayD)
     .sort((a,b)=>new Date(a.date)-new Date(b.date));
-  const nextT1 = upcoming[0];
-  if(nextT1) document.getElementById('next-t1').textContent = `${nextT1.release} · ${nextT1.date} ${nextT1.time}`;
+  if(upcoming[0]) document.getElementById('next-t1').textContent=`${upcoming[0].release} · ${upcoming[0].date} ${upcoming[0].time}`;
 
-  let html = '';
-
+  let html='';
   if(data.market_note){
-    html += `<div class="next-event-banner">
+    html+=`<div class="next-event-banner">
       <span class="neb-label">Nota de Mercado</span>
       <span class="neb-event">${data.market_note}</span>
     </div>`;
   }
 
-  html += `<div class="section-hdr">Sinais de Entrada — ${WEEK_CONFIG.period}</div>`;
+  // ── FOREX SECTION ──
+  html+=`<div class="section-hdr" style="margin-top:0;padding-top:0;border-top:none;">
+    <span class="section-hdr-icon">💱</span>
+    <span class="section-hdr-text">FOREX MACRO MATRIX — W${WEEK_CONFIG.week} · ${WEEK_CONFIG.period}</span>
+    <span class="section-hdr-badge shb-forex">5 PARES</span>
+  </div>`;
 
-  (data.pairs||[]).forEach(p => {
-    const sig = (p.signal||'AMBER').toUpperCase();
-    const col = sigMap[sig]||'amber';
-    const lbl = labelMap[sig]||'AMARELO';
-
-    const factors = (p.factors||[]).map(f=>
+  (data.pairs||[]).forEach(p=>{
+    const sig=(p.signal||'AMBER').toUpperCase();
+    const col=sigMap[sig]||'amber';
+    const lbl=lblMap[sig]||'AMARELO';
+    const cfg=WEEK_CONFIG.pairs.find(c=>c.pair===p.pair)||{};
+    const factors=(p.factors||[]).map(f=>
       `<div class="factor ${f.type||'info'}">
         <span class="factor-icon">${f.type==='positive'?'▲':f.type==='negative'?'▼':f.type==='warning'?'⚠':'›'}</span>
         <span>${f.text||''}</span>
-      </div>`
+       </div>`
     ).join('');
-
-    const events = (p.today_events||[]).map(ev=>
+    const events=(p.today_events||[]).map(ev=>
       `<div class="event-row">
         <span class="event-time">${ev.time||'—'}</span>
         <span class="event-tier ${ev.tier==='T1'?'tier-1':'tier-2'}">${ev.tier||'T2'}</span>
         <span>${ev.release||''}</span>
-      </div>`
+       </div>`
     ).join('');
-
-    // Match to config for conviction
-    const cfg = WEEK_CONFIG.pairs.find(c=>c.pair===p.pair)||{};
-
-    html += `
-      <div class="pair-card card-${col}">
-        <div class="semaphore-wrap">
-          <div class="semaphore sem-${col}">
-            <div class="semaphore-inner"></div>
-          </div>
-          <span class="sem-label sem-${col}">${lbl}</span>
+    html+=`<div class="pair-card card-${col}">
+      <div class="semaphore-wrap">
+        <div class="semaphore sem-${col}"><div class="semaphore-inner"></div></div>
+        <span class="sem-label sem-${col}">${lbl}</span>
+      </div>
+      <div class="pair-info">
+        <div class="pair-header">
+          <div class="pair-name">${p.pair}</div>
+          <span class="pair-direction">${cfg.direction||'LONG'}</span>
+          <span class="pair-conviction">${cfg.conviction||''}</span>
         </div>
-        <div class="pair-info">
-          <div class="pair-header">
-            <div class="pair-name">${p.pair}</div>
-            <span class="pair-direction">${cfg.direction||'LONG'}</span>
-            <span class="pair-conviction">${cfg.conviction||''}</span>
-          </div>
-          <div class="verdict-box verdict-${col}">${p.verdict||'—'}</div>
-          ${factors ? `<div class="factors">${factors}</div>` : ''}
-          ${events ? `<div class="today-events"><div class="today-label">Eventos hoje</div>${events}</div>` : ''}
-        </div>
-      </div>`;
+        <div class="verdict-box verdict-${col}">${p.verdict||'—'}</div>
+        ${factors?`<div class="factors">${factors}</div>`:''}
+        ${events?`<div class="today-events"><div class="today-label">Eventos hoje</div>${events}</div>`:''}
+      </div>
+    </div>`;
   });
 
-  html += `<div class="footer">
-    Framework: Forex Macro Matrix W${WEEK_CONFIG.week} · Gerado: ${data.generated||'—'} · Powered by Claude + web search<br>
-    Apenas para fins informativos. Não constitui aconselhamento financeiro.
+  // ── COMMODITY SECTION ──
+  html+=`<div class="section-divider"></div>
+  <div class="section-hdr">
+    <span class="section-hdr-icon">📦</span>
+    <span class="section-hdr-text">COMMODITY SUNDAY BRIEF — W${COMMODITY_CONFIG.week} · LVD Academy</span>
+    <span class="section-hdr-badge shb-commod">GOLD + CRUDE</span>
   </div>`;
 
-  document.getElementById('main-content').innerHTML = html;
+  const aiCommodities = data.commodities||[];
+
+  COMMODITY_CONFIG.assets.forEach(asset=>{
+    const aiData = aiCommodities.find(c=>(c.asset||'').toUpperCase()===asset.asset.toUpperCase())||{};
+    const rawSig = aiData.signal||(scoreToSignal(asset.score));
+    const sig = rawSig.toUpperCase();
+    const col = sigMap[sig]||'red';
+    const lbl = lblMap[sig]||'VERMELHO';
+
+    const scoreCls = scoreClass(asset.score);
+    const scoreSign = asset.score > 0 ? '+' : '';
+
+    const factors = (aiData.factors||[]).map(f=>
+      `<div class="factor ${f.type||'info'}">
+        <span class="factor-icon">${f.type==='positive'?'▲':f.type==='negative'?'▼':f.type==='warning'?'⚠':'›'}</span>
+        <span>${f.text||''}</span>
+       </div>`
+    ).join('');
+
+    const events = (aiData.today_events||[]).map(ev=>
+      `<div class="event-row">
+        <span class="event-time">${ev.time||'—'}</span>
+        <span class="event-tier ${ev.tier==='T1'?'tier-1':'tier-2'}">${ev.tier||'T2'}</span>
+        <span>${ev.release||''}</span>
+       </div>`
+    ).join('');
+
+    html+=`<div class="commod-card card-${col}">
+      <div class="semaphore-wrap">
+        <div class="semaphore sem-${col}"><div class="semaphore-inner"></div></div>
+        <span class="sem-label sem-${col}">${lbl}</span>
+      </div>
+      <div class="pair-info">
+        <div class="pair-header">
+          <div class="commod-name ${asset.color_class}">${asset.icon} ${asset.asset}</div>
+          <span class="commod-score-badge ${scoreCls}">Score W${COMMODITY_CONFIG.week}: ${scoreSign}${asset.score} · ${asset.verdict_label}</span>
+        </div>
+        <div class="verdict-box verdict-${col}">${aiData.verdict||asset.thesis.substring(0,100)+'...'}</div>
+        ${factors?`<div class="factors">${factors}</div>`:''}
+        ${asset.key_event?`<div class="today-events"><div class="today-label">Evento crítico</div><div class="factor warning"><span class="factor-icon">⚠</span><span>${asset.key_event}</span></div></div>`:''}
+        ${events?`<div class="today-events"><div class="today-label">Eventos hoje</div>${events}</div>`:''}
+      </div>
+    </div>`;
+  });
+
+  html+=`<div class="footer">
+    Forex Macro Matrix W${WEEK_CONFIG.week} · Commodity Sunday W${COMMODITY_CONFIG.week} · LVD Academy Framework · Gerado: ${data.generated||'—'}<br>
+    Powered by Claude + web search · Apenas para fins informativos. Não constitui aconselhamento financeiro.
+  </div>`;
+
+  document.getElementById('main-content').innerHTML=html;
 }
 
-// ─── INIT ──────────────────────────────────────────────────────────────────
-window.addEventListener('DOMContentLoaded', ()=>{
-  if(getKey()){
-    runBriefing();
-  } else {
-    openModal();
-  }
+// ─── INIT ─────────────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded',()=>{
+  if(getKey()){ runBriefing(); } else { openModal(); }
 });
 </script>
 </body>
