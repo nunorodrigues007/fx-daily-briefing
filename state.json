@@ -1,0 +1,46 @@
+{
+  "_comment": "Ficheiro de estado semanal — valores N desta semana tornam-se N-1 na semana seguinte. Actualizar sempre com o index.html.",
+  "week": 24,
+  "report_date": "2026-07-11",
+
+  "forex": {
+    "scores": {
+      "AUD": 9.5,
+      "GBP": 8.4,
+      "USD": 9.0,
+      "NZD": 6.2,
+      "EUR": 4.8,
+      "JPY": 4.2,
+      "CAD": 1.8,
+      "CHF": 1.5
+    },
+    "note_usd": "USD 9.0 pendente CPI Jun 14 Jul — pode subir para 9.3"
+  },
+
+  "gold_pillars": {
+    "real_yield_pct":         2.28,
+    "gld_tonnes":             null,
+    "cot_gold_mm":            116161,
+    "gdx_short_interest_m":   44.03,
+    "seasonality":            "Julho"
+  },
+
+  "crude_pillars": {
+    "ism_pmi_pct":            53.3,
+    "eia_stocks_change_m":   -0.399,
+    "steo_shutins_mbd":       8.3,
+    "cot_crude_k":            null,
+    "dxy":                    100.85
+  },
+
+  "scores": {
+    "gold":  -1,
+    "crude": -3
+  },
+
+  "data_gaps": [
+    "GLD ETF tonnage — MacroMicro lag (último confirmado: 1,017.64t em 23 Jun)",
+    "COT Crude Jul 7 — n/d no momento da análise (publicado 15 Jul com dados 10 Jul)",
+    "DXY Jul 10 — valor estimado ~100.85 (confirmar com Yahoo Finance)"
+  ]
+}
