@@ -43,13 +43,11 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospac
 .step{font-size:11px;color:var(--text3);padding:3px 0;display:flex;gap:8px;}
 .step.done{color:var(--green);}
 .step.active{color:var(--gold);}
-/* ── FOREX PAIR CARDS ── */
-.pair-card{background:var(--card);border:.5px solid var(--border);border-radius:8px;padding:18px 20px;margin-bottom:10px;display:flex;align-items:flex-start;gap:18px;transition:border-color .2s;position:relative;overflow:hidden;}
+.pair-card{background:var(--card);border:.5px solid var(--border);border-radius:8px;padding:18px 20px;margin-bottom:10px;display:flex;align-items:flex-start;gap:18px;transition:border-color .2s;}
 .pair-card:hover{border-color:var(--border2);}
 .pair-card.card-green{border-left:3px solid var(--green);}
 .pair-card.card-amber{border-left:3px solid var(--amber);}
 .pair-card.card-red{border-left:3px solid var(--red);}
-/* ── COMMODITY CARDS ── */
 .commod-card{background:var(--card);border:.5px solid var(--border);border-radius:8px;padding:18px 20px;margin-bottom:10px;display:flex;align-items:flex-start;gap:18px;transition:border-color .2s;}
 .commod-card:hover{border-color:var(--border2);}
 .commod-card.card-green{border-left:3px solid var(--green);}
@@ -57,9 +55,8 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospac
 .commod-card.card-red{border-left:3px solid var(--red);}
 .commod-score-badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;padding:2px 8px;border-radius:3px;border:.5px solid;margin-left:8px;}
 .score-green{border-color:rgba(61,232,136,.35);color:var(--green);background:var(--green-dim);}
-.score-amber{border-color:rgba(245,166,.35);color:var(--amber);background:var(--amber-dim);}
+.score-amber{border-color:rgba(245,166,35,.35);color:var(--amber);background:var(--amber-dim);}
 .score-red{border-color:rgba(232,69,69,.35);color:var(--red);background:var(--red-dim);}
-/* ── SEMAPHORES ── */
 .semaphore-wrap{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:6px;}
 .semaphore{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
 .semaphore-inner{width:38px;height:38px;border-radius:50%;}
@@ -72,7 +69,6 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospac
 .sem-green .sem-label{color:var(--green);}
 .sem-amber .sem-label{color:var(--amber);}
 .sem-red .sem-label{color:var(--red);}
-/* ── CARDS INNER ── */
 .pair-info{flex:1;min-width:0;}
 .pair-header{display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap;}
 .pair-name{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.06em;color:var(--text);line-height:1;}
@@ -99,25 +95,20 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospac
 .event-tier{font-size:9px;padding:1px 5px;border-radius:2px;border:.5px solid;}
 .tier-1{border-color:rgba(245,166,35,.4);color:var(--amber);background:var(--amber-dim);}
 .tier-2{border-color:var(--border2);color:var(--text3);}
-/* ── SECTION HEADERS ── */
-.section-hdr{font-size:9px;color:var(--text3);letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px;margin-top:20px;padding-bottom:6px;border-top:.5px solid var(--border);padding-top:20px;display:flex;align-items:center;gap:10px;}
+.section-hdr{font-size:9px;color:var(--text3);letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px;padding-bottom:6px;display:flex;align-items:center;gap:10px;}
 .section-hdr-icon{font-size:14px;}
 .section-hdr-text{flex:1;}
 .section-hdr-badge{font-size:9px;padding:2px 8px;border-radius:3px;border:.5px solid;letter-spacing:.06em;}
 .shb-forex{border-color:var(--gold-border);color:var(--gold);background:var(--gold-dim);}
 .shb-commod{border-color:var(--oil-border);color:var(--oil);background:var(--oil-dim);}
-/* ── NEXT EVENT BANNER ── */
 .next-event-banner{background:var(--surface);border:.5px solid var(--border);border-radius:6px;padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
 .neb-label{font-size:9px;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;}
 .neb-event{font-size:12px;color:var(--text);flex:1;}
-.neb-time{font-size:11px;color:var(--amber);white-space:nowrap;}
-/* ── DIVIDER ── */
 .section-divider{height:.5px;background:linear-gradient(90deg,transparent,var(--border2),transparent);margin:28px 0 0;}
-/* ── MODALS & MISC ── */
 .error-wrap{padding:32px 24px;text-align:center;}
 .error-msg{font-size:12px;color:var(--red);margin-bottom:8px;}
 .error-sub{font-size:11px;color:var(--text2);margin-bottom:20px;}
-.retry-btn{font-size:11px;padding:7px 18px;cursor:pointer;background:var(--red-dim);border:.5px solid rgba(232,69,69,.35);border-radius:4px;color:var(--red);font-family:'IBM Plex Mono',monospace;transition:all .15s;}
+.retry-btn{font-size:11px;padding:7px 18px;cursor:pointer;background:var(--red-dim);border:.5px solid rgba(232,69,69,.35);border-radius:4px;color:var(--red);font-family:'IBM Plex Mono',monospace;}
 .modal-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.88);align-items:center;justify-content:center;}
 .modal-overlay.show{display:flex;}
 .modal{background:var(--card);border:.5px solid var(--border2);border-radius:8px;padding:28px 32px;width:min(420px,90vw);}
@@ -128,7 +119,7 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospac
 .modal input[type=password]{width:100%;background:var(--surface);border:.5px solid var(--border2);border-radius:4px;color:var(--text);padding:10px 14px;font-family:'IBM Plex Mono',monospace;font-size:13px;outline:none;margin-bottom:12px;}
 .modal input[type=password]:focus{border-color:var(--gold);}
 .modal-btns{display:flex;gap:8px;}
-.btn-primary{flex:1;padding:9px;background:var(--gold);color:#1a1000;border:none;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;cursor:pointer;letter-spacing:.04em;}
+.btn-primary{flex:1;padding:9px;background:var(--gold);color:#1a1000;border:none;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;cursor:pointer;}
 .btn-primary:hover{background:#d4b05e;}
 .btn-secondary{padding:9px 16px;background:transparent;color:var(--text2);border:.5px solid var(--border2);border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:12px;cursor:pointer;}
 .modal-note{margin-top:14px;font-size:10px;color:var(--text3);line-height:1.5;}
@@ -160,7 +151,7 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospac
     <div class="logo-sub">Forex Macro Matrix · Commodity Sunday · Trade Signal</div>
   </div>
   <div class="hdr-right">
-    <span class="week-pill" id="week-pill">WEEK 28</span>
+    <span class="week-pill" id="week-pill">WEEK 29</span>
     <span class="status-badge badge-loading" id="status-badge">A carregar...</span>
     <button class="refresh-btn" id="refresh-btn" onclick="runBriefing()" disabled>Refresh ↻</button>
     <button class="refresh-btn" onclick="openModal()" style="font-size:10px;padding:4px 10px;">⚙ API Key</button>
@@ -180,59 +171,59 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospac
 </div>
 
 <script>
-// ─── FOREX WEEK CONFIG ─────────────────────────────────────────────────────
+// ─── FOREX WEEK CONFIG — W29 ───────────────────────────────────────────────
 const WEEK_CONFIG = {
-  week: 28,
-  period: "4 Jul – 10 Jul 2026",
+  week: 29,
+  period: "11 Jul – 17 Jul 2026",
   pairs: [
     { pair:"AUD/CHF", direction:"LONG", conviction:"★★★★★", score_diff:"8.0 pts", carry:"+435bp",
-      thesis:"RBA 4.35% ciclo activo (trimmed mean CPI 3.6%, hike Q3 esperado). SNB 0.00% dovish. Iran MoU reduz inflação energética mas RBA independente do petróleo.",
+      thesis:"RBA 4.35% ciclo activo (AUD 9.5). Trimmed mean CPI 3.6%, hike Q3 esperado. SNB 0.00% dovish. Iran re-escalação esta semana aumenta volatilidade mas não altera tese estrutural.",
       base_ccy:"AUD", quote_ccy:"CHF" },
-    { pair:"USD/CHF", direction:"LONG", conviction:"★★★★★", score_diff:"7.8 pts", carry:"+363bp",
-      thesis:"Fed hawkish (Warsh dot plot 3.8%). NFP Jun 57K miss suaviza timing mas não inverte ciclo — PCE core 3.4% mantém viés hawkish. CPI Jun (10 Jul) é o próximo trigger. SNB 0.00%.",
+    { pair:"USD/CHF", direction:"LONG", conviction:"★★★★☆", score_diff:"7.5 pts", carry:"+363bp",
+      thesis:"Fed hawkish (Warsh dot plot 3.8%, USD 9.0*). CPI Jun (14 Jul T1 CRÍTICO) pode ajustar score USD para 9.3 se acima esperado. PCE core 3.4%. NFP 57K miss suaviza timing mas mkt precia hike Set ~63%. SNB 0.00%.",
       base_ccy:"USD", quote_ccy:"CHF" },
     { pair:"GBP/CHF", direction:"LONG", conviction:"★★★★☆", score_diff:"6.9 pts", carry:"+375bp",
-      thesis:"BOE 3.75% hawkish hold (voto 7-2). UK CPI serviços 5.7% sustenta viés hawkish. SNB 0.00% sem catalisador de alta.",
+      thesis:"BOE 3.75% hawkish hold (voto 7-2). UK CPI serviços 5.7% sustenta viés hawkish. SNB 0.00% sem catalisador.",
       base_ccy:"GBP", quote_ccy:"CHF" },
     { pair:"AUD/CAD", direction:"LONG", conviction:"★★★★☆", score_diff:"7.7 pts", carry:"+210bp",
-      thesis:"RBA ciclo activo (AUD 9.5) vs BOC hold neutro (CAD 1.8). Brent $72 / WTI $68 remove suporte estrutural ao CAD. Iran MoU bearish estrutural para petróleo.",
+      thesis:"RBA ciclo activo (AUD 9.5) vs BOC hold neutro (CAD 1.8). WTI $71-72 (+5% rebound esta semana) mas ainda -44% vs peak Abril. BOC 15 Jul (hold esperado). Iran re-escalação = risco de volatilidade intra-semana.",
       base_ccy:"AUD", quote_ccy:"CAD" },
-    { pair:"USD/CAD", direction:"LONG", conviction:"★★★★☆", score_diff:"7.5 pts", carry:"+138bp",
-      thesis:"Fed hawkish vs BOC neutral. CAD sem suporte petro (WTI $68, -47% vs peak de Abr). BOC 15 Jul — hold esperado. Iran MoU bearish estrutural para CAD.",
+    { pair:"USD/CAD", direction:"LONG", conviction:"★★★☆☆", score_diff:"7.2 pts", carry:"+138bp",
+      thesis:"Fed hawkish vs BOC neutral. BOC 15 Jul (hold >95%). CAD recuperou parcialmente com crude +5% mas tese estrutural mantém-se. CPI Jun 14 Jul é o trigger directional para USD/CAD.",
       base_ccy:"USD", quote_ccy:"CAD" }
   ],
   t1_events: [
-    { date:"2026-07-08", time:"14:00 NZST", release:"RBNZ Decision (hike 2.25%→2.50%, 80% prob)", ccy:"NZD", pairs:["AUD/CHF","AUD/CAD"] },
-    { date:"2026-07-10", time:"08:30 EDT", release:"US CPI Junho (trigger para USD)", ccy:"USD", pairs:["USD/CHF","USD/CAD"] },
-    { date:"2026-07-15", time:"09:45 EDT", release:"BOC Rate Decision (hold esperado)", ccy:"CAD", pairs:["AUD/CAD","USD/CAD"] }
+    { date:"2026-07-14", time:"08:30 EDT", release:"US CPI Junho 2026 (trigger USD — CRÍTICO)", ccy:"USD", pairs:["USD/CHF","USD/CAD"] },
+    { date:"2026-07-15", time:"09:45 EDT", release:"BOC Rate Decision (hold >95%)", ccy:"CAD", pairs:["AUD/CAD","USD/CAD"] },
+    { date:"2026-07-18", time:"TBC JST",   release:"Tokyo CPI Junho (core-core 1.9% esperado)", ccy:"JPY", pairs:["AUD/CHF"] }
   ],
   t2_events: [
-    { date:"2026-07-07", time:"12:00 EDT", release:"EIA STEO Julho — supply Iran/Hormuz reset", ccy:"CAD", pairs:["AUD/CAD","USD/CAD"] },
-    { date:"2026-07-08", time:"10:30 EDT", release:"EIA Inventários (semana 4 Jul)", ccy:"CAD", pairs:["AUD/CAD","USD/CAD"] },
-    { date:"2026-07-10", time:"TBC",       release:"UK GDP + Produção Industrial Maio", ccy:"GBP", pairs:["GBP/CHF"] }
+    { date:"2026-07-15", time:"08:30 EDT", release:"US PPI Junho", ccy:"USD", pairs:["USD/CHF","USD/CAD"] },
+    { date:"2026-07-15", time:"10:30 EDT", release:"EIA Inventários (semana 11 Jul)", ccy:"CAD", pairs:["AUD/CAD","USD/CAD"] },
+    { date:"2026-07-15", time:"15:30 EDT", release:"COT Report (dados 10 Jul) — confirmação COT Crude Jul 7", ccy:"USD", pairs:["AUD/CHF","USD/CHF"] }
   ],
   holidays: []
 };
 
-// ─── COMMODITY WEEK CONFIG ─────────────────────────────────────────────────
+// ─── COMMODITY CONFIG — W24 ────────────────────────────────────────────────
 const COMMODITY_CONFIG = {
-  week: 23,
+  week: 24,
   assets: [
     {
       asset: "GOLD",
-      score: -3,
-      verdict_label: "BEARISH",
+      score: -1,
+      verdict_label: "MILD BEARISH",
       icon: "🥇",
       color_class: "xau",
       pillars: [
-        { name:"Real Int. Rate", n:"2.25%", n1:"2.19%", score:-1 },
-        { name:"ETF Flows (GLD)", n:"n/d", n1:"~1,017.6t", score:0 },
-        { name:"COT Gold", n:"n/d (atraso feriado)", n1:"181.3K", score:0 },
-        { name:"GDX Short Int.", n:"44.03M", n1:"38.03M", score:-1 },
-        { name:"Seasonality", n:"Julho", n1:"Negativo", score:-1 }
+        { name:"Real Int. Rate", n:"2.28%",         n1:"2.25%",      score:-1 },
+        { name:"ETF Flows (GLD)",n:"n/d",            n1:"~1,017.6t",  score: 0 },
+        { name:"COT Gold (MM)",  n:"116,161",        n1:"120,091",    score:+1 },
+        { name:"GDX Short Int.", n:"44.03M",         n1:"44.03M",     score: 0 },
+        { name:"Seasonality",   n:"Julho",           n1:"Negativo",   score:-1 }
       ],
-      thesis: "Triplo headwind: sazonalidade de Julho historicamente negativa, GDX short interest aumentou 15.8% (44.03M vs 38.03M), e real yields a subir (2.25%). Iran MoU comprime prémio geopolítico. COT e ETF flows n/d esta semana (feriado Independence Day).",
-      key_event: "FRED DFII10 Jul 6 (real yields pós-NFP 57K miss) — potencial reversão do pilar se yields caíram"
+      thesis: "Score melhora de -3 (W23) para -1. COT finalmente em descompressão (120,091→116,161 MM) após semanas de crowding. Real yields a subir para 2.28%. Gold resistiu à volatilidade Iran e fechou flat a $4,111. CPI Jun 14 Jul é o próximo trigger — abaixo das expectativas pode inverter pilar de yields.",
+      key_event: "US CPI Jun 14 Jul (T1): abaixo do esperado → yields caem → gold bullish · Tokyo CPI 18 Jul"
     },
     {
       asset: "CRUDE OIL",
@@ -241,14 +232,14 @@ const COMMODITY_CONFIG = {
       icon: "🛢️",
       color_class: "oil",
       pillars: [
-        { name:"ISM PMI",       n:"53.3%", n1:"54.0%", score:-1 },
-        { name:"EIA Stocks",    n:"-3.775M bbl", n1:"-6.088M bbl", score:-1 },
-        { name:"US/SA Prod.",   n:"STEO pendente", n1:"11.3M shut-ins", score:0 },
-        { name:"COT Crude",     n:"n/d (atraso feriado)", n1:"124.5K", score:0 },
-        { name:"DXY",           n:"100.55", n1:"100.23", score:-1 }
+        { name:"ISM PMI",      n:"53.3%",            n1:"53.3%",       score: 0 },
+        { name:"EIA Stocks",   n:"-0.399M bbl",      n1:"-3.775M bbl", score:-1 },
+        { name:"US/SA Prod.",  n:"8.3M b/d shut-in", n1:"11.3M b/d",   score:-1 },
+        { name:"COT Crude",    n:"n/d",               n1:"110.5K",      score: 0 },
+        { name:"DXY",          n:"~100.85",           n1:"100.55",      score:-1 }
       ],
-      thesis: "1ª semana com score negativo em toda a série W15–W23. Iran MoU + Hormuz reaberto: Brent $72, WTI $68 (-47% vs peak de Abril). EIA draw menor (-3.775M vs -6.088M), Cushing 1º build em 9 semanas. ISM desacelerou (53.3% vs 54.0%). STEO Julho 7 vai resetar análise de supply.",
-      key_event: "EIA STEO Jul 7 (CRÍTICO — 1º relatório a incorporar Iran MoU) + EIA Inventários Jul 8"
+      thesis: "2ª semana bearish. Divergência total: score fundamental -3 mas crude +5% esta semana porque ceasefire colapsou (Trump: 'effectively over'). STEO Jul 7 confirmou shut-ins 11.3M→8.3M b/d (produção a aumentar = bearish estrutural). EIA draw mínimo (-399K). Framework captura fundamental; mercado precia risk premium geopolítico.",
+      key_event: "COT Crude Jul 10 data (publicado 15 Jul) — confirmação do n/d da W24 · EIA Inventários 15 Jul"
     }
   ]
 };
@@ -285,31 +276,29 @@ function closeModal(){ document.getElementById('modal').classList.remove('show')
 document.getElementById('key-input').addEventListener('keydown',e=>{ if(e.key==='Enter') saveKey(); });
 
 function setStatus(type,text){
-  const el = document.getElementById('status-badge');
-  el.className = 'status-badge badge-'+type;
-  el.textContent = text;
+  const el=document.getElementById('status-badge');
+  el.className='status-badge badge-'+type; el.textContent=text;
 }
-
 function updateTimestamp(){
-  const now = new Date();
-  const opts = {weekday:'long',day:'2-digit',month:'short',year:'numeric'};
-  const time = now.toLocaleTimeString('pt-PT',{hour:'2-digit',minute:'2-digit'});
-  document.getElementById('ts-left').textContent = now.toLocaleDateString('pt-PT',opts)+' · '+time;
+  const now=new Date();
+  const opts={weekday:'long',day:'2-digit',month:'short',year:'numeric'};
+  const time=now.toLocaleTimeString('pt-PT',{hour:'2-digit',minute:'2-digit'});
+  document.getElementById('ts-left').textContent=now.toLocaleDateString('pt-PT',opts)+' · '+time;
 }
 updateTimestamp(); setInterval(updateTimestamp,30000);
 
 function computeNextT1(){
-  const now = new Date();
-  const upcoming = WEEK_CONFIG.t1_events
+  const now=new Date();
+  const upcoming=WEEK_CONFIG.t1_events
     .filter(e=>new Date(e.date+'T23:59:00')>=now)
     .sort((a,b)=>new Date(a.date)-new Date(b.date));
   if(!upcoming.length){ document.getElementById('next-t1').textContent='Nenhum esta semana'; return; }
-  const ev = upcoming[0];
+  const ev=upcoming[0];
   document.getElementById('next-t1').textContent=`${ev.release} · ${ev.date} ${ev.time}`;
 }
 computeNextT1();
 
-const STEPS = [
+const STEPS=[
   'Verificar feriados e liquidez do dia...',
   'Pesquisar dados forex recentes...',
   'Avaliar impacto em cada par...',
@@ -333,28 +322,26 @@ function renderLoading(idx=0){
 
 // ─── MAIN BRIEFING ────────────────────────────────────────────────────────
 async function runBriefing(){
-  const key = getKey();
+  const key=getKey();
   if(!key){ openModal(); return; }
-  document.getElementById('refresh-btn').disabled = true;
+  document.getElementById('refresh-btn').disabled=true;
   setStatus('loading','A analisar...'); renderLoading(0);
 
-  const today = new Date();
-  const todayStr = today.toISOString().split('T')[0];
-  const dayName = today.toLocaleDateString('en-GB',{weekday:'long'});
+  const today=new Date();
+  const todayStr=today.toISOString().split('T')[0];
+  const dayName=today.toLocaleDateString('en-GB',{weekday:'long'});
 
-  const pairsCtx = WEEK_CONFIG.pairs.map(p=>
+  const pairsCtx=WEEK_CONFIG.pairs.map(p=>
     `${p.pair} ${p.direction} (${p.conviction}, diff ${p.score_diff}, carry ${p.carry}): ${p.thesis}`
   ).join('\n');
-
-  const t1Ctx = WEEK_CONFIG.t1_events.map(e=>
+  const t1Ctx=WEEK_CONFIG.t1_events.map(e=>
     `${e.date} ${e.time} — ${e.release} (${e.ccy}) → afecta: ${e.pairs.join(', ')}`
   ).join('\n');
-
-  const commodCtx = COMMODITY_CONFIG.assets.map(a=>
+  const commodCtx=COMMODITY_CONFIG.assets.map(a=>
     `${a.asset} | Score W${COMMODITY_CONFIG.week}: ${a.score} (${a.verdict_label}) | ${a.thesis} | Evento crítico: ${a.key_event}`
   ).join('\n\n');
 
-  const SYSTEM = `És o motor de análise diária do FX Daily Briefing — combina o Forex Macro Matrix com o Commodity Sunday Brief.
+  const SYSTEM=`És o motor de análise diária do FX Daily Briefing — combina o Forex Macro Matrix com o Commodity Sunday Brief.
 
 ━━ FOREX WEEK ${WEEK_CONFIG.week} (${WEEK_CONFIG.period}) ━━
 PARES ACTIVOS:
@@ -366,108 +353,68 @@ ${t1Ctx}
 ━━ COMMODITY WEEK ${COMMODITY_CONFIG.week} ━━
 ${commodCtx}
 
-━━ REGRAS DO SEMÁFORO ━━
-FOREX:
-🟢 VERDE = Entra full size. Tese intacta, sem eventos T1 bloqueadores hoje.
-🟡 AMARELO = Reduz size. Evento T1 hoje ainda por sair, ou dado recente que comprime convicção.
-🔴 VERMELHO = Não entras. Dado T1 contradiz directamente a tese do par.
+━━ CONTEXTO MACRO CRÍTICO DESTA SEMANA ━━
+US-Iran: ceasefire colapsou (Trump: 'effectively over'). EUA lançou novos ataques ao Iran (Qui/Sex). Iran retaliated. WTI $71-72 (+5% semana). Crude risk premium elevado.
+US CPI Junho sai 14 Jul (Ter) às 08:30 EDT — T1 crítico para USD pairs e gold.
+BOC Rate Decision 15 Jul (hold >95%).
 
-COMMODITIES (baseado no score semanal + contexto diário):
-🟢 VERDE = Score positivo e nenhum evento hoje reverte a tese.
-🟡 AMARELO = Score neutro, ou score misto com evento importante hoje.
-🔴 VERMELHO = Score negativo confirmado. Evitar longs, atenção a shorts.
+━━ REGRAS DO SEMÁFORO ━━
+FOREX: 🟢=Entra full size (tese intacta, sem T1 bloqueador hoje) · 🟡=Reduz size (T1 hoje ainda por sair ou dado que comprime convicção) · 🔴=Não entras (T1 contradiz tese)
+COMMODITIES: 🟢=Score positivo, tese intacta · 🟡=Score misto ou evento hoje · 🔴=Score negativo confirmado
 
 HOJE: ${dayName}, ${todayStr}
 
-USA web_search para: feriados bancários hoje, dados T1/T2 recentes que afectem estes pares e commodities.
+USA web_search para: feriados hoje, dados T1/T2 recentes, Iran/oil developments.
 
 Devolve APENAS JSON válido (sem markdown):
 {
-  "generated": "DD Mon YYYY HH:MM",
-  "market_note": "<nota geral de mercado, 1 frase>",
-  "pairs": [
-    {
-      "pair": "AUD/CHF",
-      "signal": "GREEN|AMBER|RED",
-      "verdict": "<instrução clara>",
-      "factors": [{ "type": "positive|negative|warning|info", "text": "<factor>" }],
-      "today_events": [{ "time": "HH:MM TZ", "release": "<nome>", "tier": "T1|T2" }]
-    }
-  ],
-  "commodities": [
-    {
-      "asset": "GOLD",
-      "signal": "GREEN|AMBER|RED",
-      "verdict": "<instrução clara>",
-      "factors": [{ "type": "positive|negative|warning|info", "text": "<factor>" }],
-      "today_events": [{ "time": "HH:MM TZ", "release": "<nome>", "tier": "T1|T2" }]
-    }
-  ]
+  "generated":"DD Mon YYYY HH:MM",
+  "market_note":"<nota geral, 1 frase>",
+  "pairs":[{"pair":"AUD/CHF","signal":"GREEN|AMBER|RED","verdict":"<instrução>","factors":[{"type":"positive|negative|warning|info","text":"<factor>"}],"today_events":[{"time":"HH:MM TZ","release":"<nome>","tier":"T1|T2"}]}],
+  "commodities":[{"asset":"GOLD","signal":"GREEN|AMBER|RED","verdict":"<instrução>","factors":[{"type":"positive|negative|warning|info","text":"<factor>"}],"today_events":[{"time":"HH:MM TZ","release":"<nome>","tier":"T1|T2"}]}]
 }`;
 
-  const USER = `Hoje é ${dayName}, ${todayStr}. Gera o briefing diário para os 5 pares forex e as 2 commodities. Pesquisa feriados de hoje, dados recentes e eventos relevantes. Devolve o JSON.`;
+  const USER=`Hoje é ${dayName}, ${todayStr}. Gera o briefing diário para os 5 pares forex e as 2 commodities. Pesquisa feriados de hoje e dados relevantes. Devolve o JSON.`;
 
   try {
     renderLoading(1);
-    const resp = await fetch("https://api.anthropic.com/v1/messages",{
+    const resp=await fetch("https://api.anthropic.com/v1/messages",{
       method:"POST",
-      headers:{
-        "Content-Type":"application/json",
-        "x-api-key":key,
-        "anthropic-version":"2023-06-01",
-        "anthropic-dangerous-direct-browser-access":"true"
-      },
-      body:JSON.stringify({
-        model:"claude-sonnet-4-6",
-        max_tokens:5000,
-        tools:[{type:"web_search_20250305",name:"web_search"}],
-        system:SYSTEM,
-        messages:[{role:"user",content:USER}]
-      })
+      headers:{"Content-Type":"application/json","x-api-key":key,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},
+      body:JSON.stringify({model:"claude-sonnet-4-6",max_tokens:5000,tools:[{type:"web_search_20250305",name:"web_search"}],system:SYSTEM,messages:[{role:"user",content:USER}]})
     });
-
     renderLoading(3);
     if(!resp.ok){
-      const err = await resp.json().catch(()=>({}));
+      const err=await resp.json().catch(()=>({}));
       if(resp.status===401) throw new Error('API key inválida.');
       if(resp.status===429) throw new Error('Rate limit. Tenta em 30s.');
       throw new Error(err.error?.message||`Erro ${resp.status}`);
     }
-
-    const raw = await resp.json();
+    const raw=await resp.json();
     renderLoading(4);
     let text='';
-    for(const block of (raw.content||[])){
-      if(block.type==='text'&&block.text) text+=block.text;
-    }
+    for(const block of (raw.content||[])) if(block.type==='text'&&block.text) text+=block.text;
     text=text.replace(/```json\s*/gi,'').replace(/```\s*/g,'').trim();
-
     let s=-1,e=-1,depth=0;
     for(let i=0;i<text.length;i++){
       if(text[i]==='{'){if(depth===0)s=i;depth++;}
       else if(text[i]==='}'){depth--;if(depth===0){e=i;break;}}
     }
     if(s===-1||e===-1) throw new Error('Resposta inválida da API.');
-    const data = JSON.parse(text.slice(s,e+1));
+    const data=JSON.parse(text.slice(s,e+1));
     if(!data.pairs||!Array.isArray(data.pairs)) throw new Error('Dados incompletos.');
-
     renderApp(data);
   } catch(err){
     setStatus('error','Erro');
-    document.getElementById('main-content').innerHTML=`
-      <div class="error-wrap">
-        <div class="error-msg">${err.message}</div>
-        <div class="error-sub">Verifica a API key ou a ligação.</div>
-        <button class="retry-btn" onclick="runBriefing()">↺ Tentar novamente</button>
-      </div>`;
+    document.getElementById('main-content').innerHTML=`<div class="error-wrap"><div class="error-msg">${err.message}</div><div class="error-sub">Verifica a API key ou a ligação.</div><button class="retry-btn" onclick="runBriefing()">↺ Tentar novamente</button></div>`;
     document.getElementById('refresh-btn').disabled=false;
   }
 }
 
 // ─── RENDER ───────────────────────────────────────────────────────────────
 function renderApp(data){
-  const now = new Date();
-  const ts = now.toLocaleTimeString('pt-PT',{hour:'2-digit',minute:'2-digit'});
+  const now=new Date();
+  const ts=now.toLocaleTimeString('pt-PT',{hour:'2-digit',minute:'2-digit'});
   setStatus('live','Live · '+ts);
   document.getElementById('refresh-btn').disabled=false;
   document.getElementById('week-pill').textContent=`WEEK ${WEEK_CONFIG.week}`;
@@ -476,21 +423,14 @@ function renderApp(data){
   const lblMap={GREEN:'VERDE',AMBER:'AMARELO',RED:'VERMELHO'};
 
   const todayD=new Date();
-  const upcoming=WEEK_CONFIG.t1_events
-    .filter(e=>new Date(e.date+'T23:59:00')>=todayD)
-    .sort((a,b)=>new Date(a.date)-new Date(b.date));
+  const upcoming=WEEK_CONFIG.t1_events.filter(e=>new Date(e.date+'T23:59:00')>=todayD).sort((a,b)=>new Date(a.date)-new Date(b.date));
   if(upcoming[0]) document.getElementById('next-t1').textContent=`${upcoming[0].release} · ${upcoming[0].date} ${upcoming[0].time}`;
 
   let html='';
-  if(data.market_note){
-    html+=`<div class="next-event-banner">
-      <span class="neb-label">Nota de Mercado</span>
-      <span class="neb-event">${data.market_note}</span>
-    </div>`;
-  }
+  if(data.market_note) html+=`<div class="next-event-banner"><span class="neb-label">Nota de Mercado</span><span class="neb-event">${data.market_note}</span></div>`;
 
-  // ── FOREX SECTION ──
-  html+=`<div class="section-hdr" style="margin-top:0;padding-top:0;border-top:none;">
+  // ── FOREX ──
+  html+=`<div class="section-hdr" style="border-top:none;padding-top:0;margin-top:0;">
     <span class="section-hdr-icon">💱</span>
     <span class="section-hdr-text">FOREX MACRO MATRIX — W${WEEK_CONFIG.week} · ${WEEK_CONFIG.period}</span>
     <span class="section-hdr-badge shb-forex">5 PARES</span>
@@ -498,33 +438,14 @@ function renderApp(data){
 
   (data.pairs||[]).forEach(p=>{
     const sig=(p.signal||'AMBER').toUpperCase();
-    const col=sigMap[sig]||'amber';
-    const lbl=lblMap[sig]||'AMARELO';
+    const col=sigMap[sig]||'amber'; const lbl=lblMap[sig]||'AMARELO';
     const cfg=WEEK_CONFIG.pairs.find(c=>c.pair===p.pair)||{};
-    const factors=(p.factors||[]).map(f=>
-      `<div class="factor ${f.type||'info'}">
-        <span class="factor-icon">${f.type==='positive'?'▲':f.type==='negative'?'▼':f.type==='warning'?'⚠':'›'}</span>
-        <span>${f.text||''}</span>
-       </div>`
-    ).join('');
-    const events=(p.today_events||[]).map(ev=>
-      `<div class="event-row">
-        <span class="event-time">${ev.time||'—'}</span>
-        <span class="event-tier ${ev.tier==='T1'?'tier-1':'tier-2'}">${ev.tier||'T2'}</span>
-        <span>${ev.release||''}</span>
-       </div>`
-    ).join('');
+    const factors=(p.factors||[]).map(f=>`<div class="factor ${f.type||'info'}"><span class="factor-icon">${f.type==='positive'?'▲':f.type==='negative'?'▼':f.type==='warning'?'⚠':'›'}</span><span>${f.text||''}</span></div>`).join('');
+    const events=(p.today_events||[]).map(ev=>`<div class="event-row"><span class="event-time">${ev.time||'—'}</span><span class="event-tier ${ev.tier==='T1'?'tier-1':'tier-2'}">${ev.tier||'T2'}</span><span>${ev.release||''}</span></div>`).join('');
     html+=`<div class="pair-card card-${col}">
-      <div class="semaphore-wrap">
-        <div class="semaphore sem-${col}"><div class="semaphore-inner"></div></div>
-        <span class="sem-label sem-${col}">${lbl}</span>
-      </div>
+      <div class="semaphore-wrap"><div class="semaphore sem-${col}"><div class="semaphore-inner"></div></div><span class="sem-label sem-${col}">${lbl}</span></div>
       <div class="pair-info">
-        <div class="pair-header">
-          <div class="pair-name">${p.pair}</div>
-          <span class="pair-direction">${cfg.direction||'LONG'}</span>
-          <span class="pair-conviction">${cfg.conviction||''}</span>
-        </div>
+        <div class="pair-header"><div class="pair-name">${p.pair}</div><span class="pair-direction">${cfg.direction||'LONG'}</span><span class="pair-conviction">${cfg.conviction||''}</span></div>
         <div class="verdict-box verdict-${col}">${p.verdict||'—'}</div>
         ${factors?`<div class="factors">${factors}</div>`:''}
         ${events?`<div class="today-events"><div class="today-label">Eventos hoje</div>${events}</div>`:''}
@@ -532,7 +453,7 @@ function renderApp(data){
     </div>`;
   });
 
-  // ── COMMODITY SECTION ──
+  // ── COMMODITIES ──
   html+=`<div class="section-divider"></div>
   <div class="section-hdr">
     <span class="section-hdr-icon">📦</span>
@@ -540,44 +461,19 @@ function renderApp(data){
     <span class="section-hdr-badge shb-commod">GOLD + CRUDE</span>
   </div>`;
 
-  const aiCommodities = data.commodities||[];
-
+  const aiCommodities=data.commodities||[];
   COMMODITY_CONFIG.assets.forEach(asset=>{
-    const aiData = aiCommodities.find(c=>(c.asset||'').toUpperCase()===asset.asset.toUpperCase())||{};
-    const rawSig = aiData.signal||(scoreToSignal(asset.score));
-    const sig = rawSig.toUpperCase();
-    const col = sigMap[sig]||'red';
-    const lbl = lblMap[sig]||'VERMELHO';
-
-    const scoreCls = scoreClass(asset.score);
-    const scoreSign = asset.score > 0 ? '+' : '';
-
-    const factors = (aiData.factors||[]).map(f=>
-      `<div class="factor ${f.type||'info'}">
-        <span class="factor-icon">${f.type==='positive'?'▲':f.type==='negative'?'▼':f.type==='warning'?'⚠':'›'}</span>
-        <span>${f.text||''}</span>
-       </div>`
-    ).join('');
-
-    const events = (aiData.today_events||[]).map(ev=>
-      `<div class="event-row">
-        <span class="event-time">${ev.time||'—'}</span>
-        <span class="event-tier ${ev.tier==='T1'?'tier-1':'tier-2'}">${ev.tier||'T2'}</span>
-        <span>${ev.release||''}</span>
-       </div>`
-    ).join('');
-
+    const aiData=aiCommodities.find(c=>(c.asset||'').toUpperCase()===asset.asset.toUpperCase())||{};
+    const rawSig=aiData.signal||(scoreToSignal(asset.score));
+    const sig=rawSig.toUpperCase(); const col=sigMap[sig]||'red'; const lbl=lblMap[sig]||'VERMELHO';
+    const scoreCls=scoreClass(asset.score); const scoreSign=asset.score>0?'+':'';
+    const factors=(aiData.factors||[]).map(f=>`<div class="factor ${f.type||'info'}"><span class="factor-icon">${f.type==='positive'?'▲':f.type==='negative'?'▼':f.type==='warning'?'⚠':'›'}</span><span>${f.text||''}</span></div>`).join('');
+    const events=(aiData.today_events||[]).map(ev=>`<div class="event-row"><span class="event-time">${ev.time||'—'}</span><span class="event-tier ${ev.tier==='T1'?'tier-1':'tier-2'}">${ev.tier||'T2'}</span><span>${ev.release||''}</span></div>`).join('');
     html+=`<div class="commod-card card-${col}">
-      <div class="semaphore-wrap">
-        <div class="semaphore sem-${col}"><div class="semaphore-inner"></div></div>
-        <span class="sem-label sem-${col}">${lbl}</span>
-      </div>
+      <div class="semaphore-wrap"><div class="semaphore sem-${col}"><div class="semaphore-inner"></div></div><span class="sem-label sem-${col}">${lbl}</span></div>
       <div class="pair-info">
-        <div class="pair-header">
-          <div class="commod-name ${asset.color_class}">${asset.icon} ${asset.asset}</div>
-          <span class="commod-score-badge ${scoreCls}">Score W${COMMODITY_CONFIG.week}: ${scoreSign}${asset.score} · ${asset.verdict_label}</span>
-        </div>
-        <div class="verdict-box verdict-${col}">${aiData.verdict||asset.thesis.substring(0,100)+'...'}</div>
+        <div class="pair-header"><div class="commod-name ${asset.color_class}">${asset.icon} ${asset.asset}</div><span class="commod-score-badge ${scoreCls}">Score W${COMMODITY_CONFIG.week}: ${scoreSign}${asset.score} · ${asset.verdict_label}</span></div>
+        <div class="verdict-box verdict-${col}">${aiData.verdict||asset.thesis.substring(0,120)+'...'}</div>
         ${factors?`<div class="factors">${factors}</div>`:''}
         ${asset.key_event?`<div class="today-events"><div class="today-label">Evento crítico</div><div class="factor warning"><span class="factor-icon">⚠</span><span>${asset.key_event}</span></div></div>`:''}
         ${events?`<div class="today-events"><div class="today-label">Eventos hoje</div>${events}</div>`:''}
@@ -585,18 +481,11 @@ function renderApp(data){
     </div>`;
   });
 
-  html+=`<div class="footer">
-    Forex Macro Matrix W${WEEK_CONFIG.week} · Commodity Sunday W${COMMODITY_CONFIG.week} · LVD Academy Framework · Gerado: ${data.generated||'—'}<br>
-    Powered by Claude + web search · Apenas para fins informativos. Não constitui aconselhamento financeiro.
-  </div>`;
-
+  html+=`<div class="footer">Forex Macro Matrix W${WEEK_CONFIG.week} · Commodity Sunday W${COMMODITY_CONFIG.week} · LVD Academy Framework · Gerado: ${data.generated||'—'}<br>Powered by Claude + web search · Apenas para fins informativos. Não constitui aconselhamento financeiro.</div>`;
   document.getElementById('main-content').innerHTML=html;
 }
 
-// ─── INIT ─────────────────────────────────────────────────────────────────
-window.addEventListener('DOMContentLoaded',()=>{
-  if(getKey()){ runBriefing(); } else { openModal(); }
-});
+window.addEventListener('DOMContentLoaded',()=>{ if(getKey()){ runBriefing(); } else { openModal(); } });
 </script>
 </body>
 </html>
