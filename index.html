@@ -12,7 +12,8 @@
 --green:#3de888;--green-dim:rgba(61,232,136,0.1);--green-glow:rgba(61,232,136,0.25);
 --amber:#f5a623;--amber-dim:rgba(245,166,35,0.1);--amber-glow:rgba(245,166,35,0.25);
 --red:#e84545;--red-dim:rgba(232,69,69,0.1);--red-glow:rgba(232,69,69,0.3);
---xau:#FFD700;--oil:#E07B30;--oil-border:rgba(224,123,48,0.25);--oil-dim:rgba(224,123,48,0.08);
+--xau:#FFD700;--xau-dim:rgba(255,215,0,0.08);--xau-border:rgba(255,215,0,0.25);
+--oil:#E07B30;--oil-dim:rgba(224,123,48,0.08);--oil-border:rgba(224,123,48,0.25);
 --text:#e2e8f0;--text2:#7a8898;--text3:#3d4a58;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -31,6 +32,7 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospac
 .refresh-btn:hover:not(:disabled){border-color:var(--gold);color:var(--gold);}
 .refresh-btn:disabled{opacity:.35;cursor:default;}
 .ts-bar{padding:8px 24px;background:var(--surface);border-bottom:.5px solid var(--border);font-size:10px;color:var(--text3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;}
+.ts-bar span{letter-spacing:.06em;}
 .ts-bar strong{color:var(--text2);}
 .main{padding:20px 24px;max-width:860px;}
 .loading-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 20px;gap:14px;}
@@ -39,12 +41,22 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospac
 .loading-label{font-size:11px;color:var(--text2);letter-spacing:.06em;}
 .steps-list{display:flex;flex-direction:column;gap:5px;width:min(320px,90vw);margin-top:4px;}
 .step{font-size:11px;color:var(--text3);padding:3px 0;display:flex;gap:8px;}
-.step.done{color:var(--green);}.step.active{color:var(--gold);}
-.pair-card,.commod-card{background:var(--card);border:.5px solid var(--border);border-radius:8px;padding:18px 20px;margin-bottom:10px;display:flex;align-items:flex-start;gap:18px;transition:border-color .2s;}
-.pair-card:hover,.commod-card:hover{border-color:var(--border2);}
-.pair-card.card-green,.commod-card.card-green{border-left:3px solid var(--green);}
-.pair-card.card-amber,.commod-card.card-amber{border-left:3px solid var(--amber);}
-.pair-card.card-red,.commod-card.card-red{border-left:3px solid var(--red);}
+.step.done{color:var(--green);}
+.step.active{color:var(--gold);}
+.pair-card{background:var(--card);border:.5px solid var(--border);border-radius:8px;padding:18px 20px;margin-bottom:10px;display:flex;align-items:flex-start;gap:18px;transition:border-color .2s;position:relative;overflow:hidden;}
+.pair-card:hover{border-color:var(--border2);}
+.pair-card.card-green{border-left:3px solid var(--green);}
+.pair-card.card-amber{border-left:3px solid var(--amber);}
+.pair-card.card-red{border-left:3px solid var(--red);}
+.commod-card{background:var(--card);border:.5px solid var(--border);border-radius:8px;padding:18px 20px;margin-bottom:10px;display:flex;align-items:flex-start;gap:18px;transition:border-color .2s;}
+.commod-card:hover{border-color:var(--border2);}
+.commod-card.card-green{border-left:3px solid var(--green);}
+.commod-card.card-amber{border-left:3px solid var(--amber);}
+.commod-card.card-red{border-left:3px solid var(--red);}
+.commod-score-badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;padding:2px 8px;border-radius:3px;border:.5px solid;margin-left:8px;}
+.score-green{border-color:rgba(61,232,136,.35);color:var(--green);background:var(--green-dim);}
+.score-amber{border-color:rgba(245,166,35,.35);color:var(--amber);background:var(--amber-dim);}
+.score-red{border-color:rgba(232,69,69,.35);color:var(--red);background:var(--red-dim);}
 .semaphore-wrap{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:6px;}
 .semaphore{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
 .semaphore-inner{width:38px;height:38px;border-radius:50%;}
@@ -54,26 +66,28 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospac
 .sem-red{animation:pulse-red 2s ease-in-out infinite;}
 @keyframes pulse-red{0%,100%{box-shadow:0 0 0 0 var(--red-glow);}50%{box-shadow:0 0 0 10px transparent;}}
 .sem-label{font-size:9px;letter-spacing:.1em;text-transform:uppercase;text-align:center;}
-.sem-green .sem-label{color:var(--green);}.sem-amber .sem-label{color:var(--amber);}.sem-red .sem-label{color:var(--red);}
+.sem-green .sem-label{color:var(--green);}
+.sem-amber .sem-label{color:var(--amber);}
+.sem-red .sem-label{color:var(--red);}
 .pair-info{flex:1;min-width:0;}
 .pair-header{display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap;}
 .pair-name{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.06em;color:var(--text);line-height:1;}
 .commod-name{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.06em;line-height:1;}
-.commod-name.xau{color:var(--xau);}.commod-name.oil{color:var(--oil);}
+.commod-name.xau{color:var(--xau);}
+.commod-name.oil{color:var(--oil);}
 .pair-direction{font-size:10px;color:var(--green);letter-spacing:.08em;}
-.pair-conviction{font-size:10px;color:var(--gold);}
-.commod-score-badge{font-size:10px;padding:2px 8px;border-radius:3px;border:.5px solid;margin-left:8px;}
-.score-green{border-color:rgba(61,232,136,.35);color:var(--green);background:var(--green-dim);}
-.score-amber{border-color:rgba(245,166,35,.35);color:var(--amber);background:var(--amber-dim);}
-.score-red{border-color:rgba(232,69,69,.35);color:var(--red);background:var(--red-dim);}
-.verdict-box{padding:8px 12px;border-radius:4px;margin-bottom:10px;font-size:12px;font-weight:600;line-height:1.4;}
+.pair-conviction{font-size:10px;color:var(--gold);letter-spacing:.03em;}
+.verdict-box{padding:8px 12px;border-radius:4px;margin-bottom:10px;font-size:12px;font-weight:600;letter-spacing:.03em;line-height:1.4;}
 .verdict-green{background:var(--green-dim);color:var(--green);border:.5px solid rgba(61,232,136,.25);}
 .verdict-amber{background:var(--amber-dim);color:var(--amber);border:.5px solid rgba(245,166,35,.25);}
 .verdict-red{background:var(--red-dim);color:var(--red);border:.5px solid rgba(232,69,69,.25);}
 .factors{display:flex;flex-direction:column;gap:4px;}
 .factor{font-size:11px;color:var(--text2);line-height:1.5;display:flex;gap:8px;align-items:flex-start;}
 .factor-icon{flex-shrink:0;font-size:10px;margin-top:1px;opacity:.7;}
-.factor.positive{color:#7de8b0;}.factor.negative{color:#e8a0a0;}.factor.warning{color:#e8cc80;}.factor.info{color:var(--text2);}
+.factor.positive{color:#7de8b0;}
+.factor.negative{color:#e8a0a0;}
+.factor.warning{color:#e8cc80;}
+.factor.info{color:var(--text2);}
 .today-events{margin-top:10px;padding-top:10px;border-top:.5px solid var(--border);}
 .today-label{font-size:9px;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px;}
 .event-row{display:flex;align-items:center;gap:8px;font-size:10px;color:var(--text2);padding:2px 0;}
@@ -81,13 +95,10 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospac
 .event-tier{font-size:9px;padding:1px 5px;border-radius:2px;border:.5px solid;}
 .tier-1{border-color:rgba(245,166,35,.4);color:var(--amber);background:var(--amber-dim);}
 .tier-2{border-color:var(--border2);color:var(--text3);}
-.gap-banner{background:rgba(245,166,35,0.06);border:.5px solid rgba(245,166,35,0.25);border-radius:6px;padding:8px 12px;margin-bottom:10px;display:flex;align-items:flex-start;gap:8px;}
-.gap-icon{font-size:11px;color:var(--amber);flex-shrink:0;margin-top:1px;}
-.gap-content{flex:1;}
-.gap-title{font-size:10px;color:var(--amber);letter-spacing:.06em;margin-bottom:3px;}
-.gap-item{font-size:10px;color:var(--text2);line-height:1.6;}
-.section-hdr{font-size:9px;color:var(--text3);letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:10px;}
-.section-hdr-badge{font-size:9px;padding:2px 8px;border-radius:3px;border:.5px solid;}
+.section-hdr{font-size:9px;color:var(--text3);letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px;margin-top:20px;padding-bottom:6px;border-top:.5px solid var(--border);padding-top:20px;display:flex;align-items:center;gap:10px;}
+.section-hdr-icon{font-size:14px;}
+.section-hdr-text{flex:1;}
+.section-hdr-badge{font-size:9px;padding:2px 8px;border-radius:3px;border:.5px solid;letter-spacing:.06em;}
 .shb-forex{border-color:var(--gold-border);color:var(--gold);background:var(--gold-dim);}
 .shb-commod{border-color:var(--oil-border);color:var(--oil);background:var(--oil-dim);}
 .next-event-banner{background:var(--surface);border:.5px solid var(--border);border-radius:6px;padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
@@ -97,7 +108,7 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospac
 .error-wrap{padding:32px 24px;text-align:center;}
 .error-msg{font-size:12px;color:var(--red);margin-bottom:8px;}
 .error-sub{font-size:11px;color:var(--text2);margin-bottom:20px;}
-.retry-btn{font-size:11px;padding:7px 18px;cursor:pointer;background:var(--red-dim);border:.5px solid rgba(232,69,69,.35);border-radius:4px;color:var(--red);font-family:'IBM Plex Mono',monospace;}
+.retry-btn{font-size:11px;padding:7px 18px;cursor:pointer;background:var(--red-dim);border:.5px solid rgba(232,69,69,.35);border-radius:4px;color:var(--red);font-family:'IBM Plex Mono',monospace;transition:all .15s;}
 .modal-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.88);align-items:center;justify-content:center;}
 .modal-overlay.show{display:flex;}
 .modal{background:var(--card);border:.5px solid var(--border2);border-radius:8px;padding:28px 32px;width:min(420px,90vw);}
@@ -108,7 +119,7 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospac
 .modal input[type=password]{width:100%;background:var(--surface);border:.5px solid var(--border2);border-radius:4px;color:var(--text);padding:10px 14px;font-family:'IBM Plex Mono',monospace;font-size:13px;outline:none;margin-bottom:12px;}
 .modal input[type=password]:focus{border-color:var(--gold);}
 .modal-btns{display:flex;gap:8px;}
-.btn-primary{flex:1;padding:9px;background:var(--gold);color:#1a1000;border:none;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;cursor:pointer;}
+.btn-primary{flex:1;padding:9px;background:var(--gold);color:#1a1000;border:none;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;cursor:pointer;letter-spacing:.04em;}
 .btn-primary:hover{background:#d4b05e;}
 .btn-secondary{padding:9px 16px;background:transparent;color:var(--text2);border:.5px solid var(--border2);border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:12px;cursor:pointer;}
 .modal-note{margin-top:14px;font-size:10px;color:var(--text3);line-height:1.5;}
@@ -140,7 +151,7 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospac
     <div class="logo-sub">Forex Macro Matrix · Commodity Sunday · Trade Signal</div>
   </div>
   <div class="hdr-right">
-    <span class="week-pill" id="week-pill">WEEK 30</span>
+    <span class="week-pill" id="week-pill">WEEK 31</span>
     <span class="status-badge badge-loading" id="status-badge">A carregar...</span>
     <button class="refresh-btn" id="refresh-btn" onclick="runBriefing()" disabled>Refresh ↻</button>
     <button class="refresh-btn" onclick="openModal()" style="font-size:10px;padding:4px 10px;">⚙ API Key</button>
@@ -153,209 +164,433 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospac
 </div>
 
 <div class="main" id="main-content">
-  <div class="loading-wrap"><div class="spinner"></div><div class="loading-label">A inicializar...</div></div>
+  <div class="loading-wrap">
+    <div class="spinner"></div>
+    <div class="loading-label">A inicializar...</div>
+  </div>
 </div>
 
 <script>
-// ─── FOREX WEEK CONFIG — W30 ───────────────────────────────────────────────
+// ─── FOREX WEEK CONFIG — actualizar cada domingo ───────────────────────────
 const WEEK_CONFIG = {
-  week: 30,
-  period: "18 Jul – 24 Jul 2026",
+  week: 31,
+  period: "27 – 31 Jul 2026",
   pairs: [
     { pair:"AUD/CHF", direction:"LONG", conviction:"★★★★★", score_diff:"8.0 pts", carry:"+435bp",
-      thesis:"RBA 4.35% ciclo activo (AUD 9.5). Trimmed mean CPI 3.6%, hike Q3 esperado. SNB 0.00% dovish. Naval blockade Iran reinstated — volatilidade energética mas não altera tese estrutural AUD.",
+      thesis:"RBA 4.35% ciclo activo (trimmed mean CPI 3.6%, hike Q3 esperado). SNB 0.00% dovish. Cessar-fogo colapsado — CHF safe-haven bid activo a curto prazo. AUS CPI Jun sai 29 Jul.",
       base_ccy:"AUD", quote_ccy:"CHF" },
     { pair:"USD/CHF", direction:"LONG", conviction:"★★★★☆", score_diff:"7.2 pts", carry:"+363bp",
-      thesis:"Fed hawkish (Warsh, USD 8.7*). USD em tendência descendente (9.3→9.0→8.7 em 3 semanas). CPI Jun 3.5% suavizou timing de hike mas dados de consumo (Retail Sales +0.2%, jobless 208K) mostram economia resiliente. SNB 0.00%.",
+      thesis:"Fed hawkish estrutural (dot plot 3.8%) mas CPI Jun 3.5% miss comprimiu USD para 8.7. CHF com safe-haven bid activo (Iran reescalada). Fed 28-29 Jul HOLD >90%.",
       base_ccy:"USD", quote_ccy:"CHF" },
     { pair:"GBP/CHF", direction:"LONG", conviction:"★★★★☆", score_diff:"6.9 pts", carry:"+375bp",
-      thesis:"BOE 3.75% hawkish hold (GBP 8.4). UK CPI Jun sai 22 Jul — T1 CRÍTICO para BOE 30 Jul. SNB 0.00% sem catalisador.",
+      thesis:"BOE 3.75% hawkish hold (voto 7-2). UK CPI Jun sai 22 Jul (T1 CRITICO — ultimo dado antes BOE 30 Jul). CHF safe-haven activo.",
       base_ccy:"GBP", quote_ccy:"CHF" },
     { pair:"AUD/CAD", direction:"LONG", conviction:"★★★★☆", score_diff:"7.7 pts", carry:"+210bp",
-      thesis:"RBA ciclo activo (AUD 9.5) vs BOC hold (CAD 1.8). WTI $82.47 (+14% semana passada) reforça suporte ao CAD, mas tese AUD/CAD mantém-se estrutural. Fed 28-29 Jul.",
+      thesis:"RBA ciclo activo (AUD 9.5) vs BOC neutral (CAD 1.8). ATENCAO: cessar-fogo colapsado — WTI +5% na semana ($68->$72), CAD recupera suporte petro.",
       base_ccy:"AUD", quote_ccy:"CAD" },
     { pair:"USD/CAD", direction:"LONG", conviction:"★★★☆☆", score_diff:"6.9 pts", carry:"+138bp",
-      thesis:"Fed hawkish vs BOC neutral (CAD 1.8). USD 8.7 em declínio (3 semanas). WTI recovery reduz pressão no CAD. Score gap estreitou vs NZD/CHF (5.78 vs 5.02). Fed 28-29 Jul é o próximo catalisador directional.",
+      thesis:"USD 8.7 vs CAD 1.8 (BOC hold). Oil $100 fortalece CAD. Fed 28-29 Jul decide USD. NZD/CHF (score 5.16, NZD=6.4) vs USD/CAD (5.78) — gap 0.62 pts, monitorar.",
       base_ccy:"USD", quote_ccy:"CAD" }
   ],
   t1_events: [
-    { date:"2026-07-22", time:"07:00 BST", release:"UK CPI Junho (T1 — crítico BOE 30 Jul)", ccy:"GBP", pairs:["GBP/CHF"] },
-    { date:"2026-07-23", time:"13:15 CET", release:"ECB Rate Decision (HOLD 93%)", ccy:"EUR", pairs:["GBP/CHF","AUD/CHF"] },
-    { date:"2026-07-28", time:"19:00 EDT", release:"Fed Rate Decision (HOLD >90%)", ccy:"USD", pairs:["USD/CHF","USD/CAD"] }
+    { date:"2026-07-29", time:"01:30 UTC",  release:"AUS CPI Jun 2026 (ABS, 11:30 AEST) — critico para RBA Ago", ccy:"AUD", pairs:["AUD/CHF","AUD/CAD"] },
+    { date:"2026-07-29", time:"14:00 ET",   release:"Fed Rate Decision (HOLD 64% vs HIKE 36%) + Warsh PC", ccy:"USD", pairs:["USD/CHF","USD/CAD"] },
+    { date:"2026-07-30", time:"12:00 BST",  release:"BOE Rate Decision + Monetary Policy Report (Super Thu)", ccy:"GBP", pairs:["GBP/CHF"] },
+    { date:"2026-07-31", time:"TBC JST",    release:"BOJ Rate Decision + Quarterly Outlook Report", ccy:"JPY", pairs:["JPY crosses"] }
   ],
   t2_events: [
-    { date:"2026-07-22", time:"14:30 EDT", release:"EIA Inventários (semana 18 Jul)", ccy:"CAD", pairs:["AUD/CAD","USD/CAD"] },
-    { date:"2026-07-24", time:"15:30 EDT", release:"COT Report (dados 22 Jul)", ccy:"USD", pairs:["USD/CHF","AUD/CHF"] },
-    { date:"2026-07-24", time:"TBC JST",   release:"Japan CPI Junho (core-core 1.9%)", ccy:"JPY", pairs:["AUD/CHF"] }
+    { date:"2026-07-30", time:"12:30 ET",   release:"US GDP Q2 2026 Advance estimate", ccy:"USD", pairs:["USD/CHF","USD/CAD"] }
   ],
   holidays: []
 };
 
-// ─── COMMODITY CONFIG — W25 ────────────────────────────────────────────────
+// ─── COMMODITY WEEK CONFIG — actualizar cada domingo com PDF ───────────────
 const COMMODITY_CONFIG = {
-  week: 25,
+  week: 24,
   assets: [
     {
       asset: "GOLD",
-      score: -2,
-      verdict_label: "BEARISH",
+      score: -1,
+      verdict_label: "MILD BEARISH",
       icon: "🥇",
       color_class: "xau",
-      thesis: "Maior perda semanal em 6 semanas (-$73, $4,111→$4,038). CPI Jun -0.4% MoM/+3.5% YoY rallied gold terça-feira ($4,089), mas Retail Sales +0.2% e jobless 208K (mínimos 10 semanas) reverteram. Real yields 2.29%. Score -2 subestima fraqueza real — COT e ETF tonnage ambos n/d (score seria -3 se COT Jul 14 confirmar crowding).",
-      key_event: "UK CPI Jun 22 Jul · ECB 23 Jul · Fed 28-29 Jul (HOLD >90%) · BOE 30 Jul · BOJ 31 Jul",
-      data_gaps: [
-        "GLD ETF tonnage — MacroMicro lag (último: 1,017.64t em 23 Jun)",
-        "COT Gold Jul 14 — n/d (score seria -3 se confirmar crowding do dia CPI)"
-      ]
+      pillars: [
+        { name:"Excess Liquidity",   n:"n/a",        n1:"n/a",        score:0  },
+        { name:"Real Int. Rate",     n:"2.28%",      n1:"2.25%",      score:-1 },
+        { name:"ETF Flows (GLD)",    n:"n/d",        n1:"~1,017.6t",  score:0  },
+        { name:"COT Gold (MM)",      n:"116,161",    n1:"120,091",    score:+1 },
+        { name:"GDX Short Int.",     n:"44.03M",     n1:"44.03M",     score:0  },
+        { name:"Sazonalidade",       n:"Julho",      n1:"Negativo",   score:-1 }
+      ],
+      thesis: "Score melhora W23=-3 para W24=-1: COT Gold em descompressao (120,091->116,161 MM). Real yields sobem (2.25%->2.28%). Cessar-fogo colapsado 13-18 Jul — geopolitical risk premium regressa. Gold flat na semana ($4,111). Sazonalidade Julho negativa.",
+      key_event: "Iran-Hormuz: cessar-fogo colapsado — CHF/gold safe-haven bid activo. Real yields (FRED DFII10) a monitorar pos-CPI miss 3.5%."
     },
     {
       asset: "CRUDE OIL",
-      score: +2,
-      verdict_label: "BULLISH",
+      score: -3,
+      verdict_label: "BEARISH",
       icon: "🛢️",
       color_class: "oil",
-      thesis: "Maior swing semanal da série: -3 (W24) → +2 (W25), delta +5 (máximo possível). Trump reinstated naval blockade of Iran (Jul 13-14). WTI +14% ($71→$82.47). EIA draw -1.7M (melhorou vs -0.399M). DXY caiu na semana (CPI miss). Score +2 potencialmente subestimado: COT n/d (likely +crowding = -1) mas US/SA blockade = +1, daria score potencial +3.",
-      key_event: "EIA Inventários 22 Jul (1ª semana completa post-blockade) · COT 24 Jul (confirma crude crowding) · STEO 11 Ago",
-      data_gaps: [
-        "COT Crude Jul 14 — n/d (crude +14%; crowding provável, -1 se confirmado)",
-        "DXY Jul 17 — estimado ~100.60 (confirmar com fonte primária)",
-        "US/SA Prod — blockade reinstated; STEO não actualizado (próx: 11 Ago)"
-      ]
+      pillars: [
+        { name:"Business Conf.(ISM)", n:"53.3%",         n1:"53.3%",        score:0  },
+        { name:"EIA Stocks",          n:"-0.399M bbl",   n1:"-3.775M bbl",  score:-1 },
+        { name:"US/SA Prod.(STEO)",   n:"8.3M b/d shut", n1:"11.3M b/d s/i",score:-1 },
+        { name:"COT Crude",           n:"n/d",           n1:"110.5K",       score:0  },
+        { name:"DXY",                 n:"~100.85 est",   n1:"100.55",       score:-1 }
+      ],
+      thesis: "Score -3 BEARISH segunda semana consecutiva. DIVERGENCIA CRITICA: score fundamental -3 mas preco +5% (WTI $68->$72) por cessar-fogo colapsado (Iran reescalada). STEO Jul 7: US shut-ins caíram 8.3M de 11.3M — producao a AUMENTAR. EIA draw mais fraco. DXY alto bearish crude.",
+      key_event: "Iran-Hormuz colapsado: EUA novos ataques; Iran retaliou Kuwait+Bahrein. WTI +5%. Divergencia score fundamental vs preco mercado — maxima do ciclo. EIA Inventarios 22 Jul (Qua)."
     }
   ]
 };
 
 // ─── HELPERS ──────────────────────────────────────────────────────────────
-function scoreToSignal(s){ return s>=3?'GREEN':s>=-2?'AMBER':'RED'; }
-function scoreClass(s){ return s>0?'score-green':s<0?'score-red':'score-amber'; }
+function scoreToSignal(score) {
+  if (score >= 3) return "GREEN";
+  if (score >= 1) return "AMBER";
+  if (score === 0) return "AMBER";
+  if (score >= -2) return "AMBER";
+  return "RED";
+}
+function scoreClass(score) {
+  if (score > 0) return "score-green";
+  if (score < 0) return "score-red";
+  return "score-amber";
+}
+
+// ─── API KEY ───────────────────────────────────────────────────────────────
 function getKey(){ return localStorage.getItem('fxm_apikey')||''; }
 function saveKey(){
-  const v=document.getElementById('key-input').value.trim();
-  if(!v){alert('Introduz uma API key válida.');return;}
-  localStorage.setItem('fxm_apikey',v); closeModal(); runBriefing();
+  const v = document.getElementById('key-input').value.trim();
+  if(!v){ alert('Introduz uma API key válida.'); return; }
+  localStorage.setItem('fxm_apikey', v);
+  closeModal(); runBriefing();
 }
 function openModal(){
-  const ex=getKey(); if(ex) document.getElementById('key-input').value=ex;
+  const ex = getKey();
+  if(ex) document.getElementById('key-input').value = ex;
   document.getElementById('modal').classList.add('show');
   setTimeout(()=>document.getElementById('key-input').focus(),100);
 }
 function closeModal(){ document.getElementById('modal').classList.remove('show'); }
 document.getElementById('key-input').addEventListener('keydown',e=>{ if(e.key==='Enter') saveKey(); });
-function setStatus(t,x){ const el=document.getElementById('status-badge'); el.className='status-badge badge-'+t; el.textContent=x; }
+
+function setStatus(type,text){
+  const el = document.getElementById('status-badge');
+  el.className = 'status-badge badge-'+type;
+  el.textContent = text;
+}
+
 function updateTimestamp(){
-  const now=new Date();
-  document.getElementById('ts-left').textContent=now.toLocaleDateString('pt-PT',{weekday:'long',day:'2-digit',month:'short',year:'numeric'})+' · '+now.toLocaleTimeString('pt-PT',{hour:'2-digit',minute:'2-digit'});
+  const now = new Date();
+  const opts = {weekday:'long',day:'2-digit',month:'short',year:'numeric'};
+  const time = now.toLocaleTimeString('pt-PT',{hour:'2-digit',minute:'2-digit'});
+  document.getElementById('ts-left').textContent = now.toLocaleDateString('pt-PT',opts)+' · '+time;
 }
 updateTimestamp(); setInterval(updateTimestamp,30000);
+
 function computeNextT1(){
-  const now=new Date();
-  const ev=[...WEEK_CONFIG.t1_events].filter(e=>new Date(e.date+'T23:59:00')>=now).sort((a,b)=>new Date(a.date)-new Date(b.date))[0];
-  document.getElementById('next-t1').textContent=ev?`${ev.release} · ${ev.date} ${ev.time}`:'Nenhum esta semana';
+  const now = new Date();
+  const upcoming = WEEK_CONFIG.t1_events
+    .filter(e=>new Date(e.date+'T23:59:00')>=now)
+    .sort((a,b)=>new Date(a.date)-new Date(b.date));
+  if(!upcoming.length){ document.getElementById('next-t1').textContent='Nenhum esta semana'; return; }
+  const ev = upcoming[0];
+  document.getElementById('next-t1').textContent=`${ev.release} · ${ev.date} ${ev.time}`;
 }
 computeNextT1();
 
-const STEPS=['Verificar feriados e liquidez...','Pesquisar dados forex recentes...','Avaliar impacto em cada par...','Analisar contexto commodities...','Gerar semáforos e veredictos...'];
-function renderLoading(i){
-  document.getElementById('main-content').innerHTML=`<div class="loading-wrap"><div class="spinner"></div><div class="loading-label">A analisar o mercado...</div><div class="steps-list">${STEPS.map((s,j)=>`<div class="step ${j<i?'done':j===i?'active':''}"><span>${j<i?'✓':j===i?'→':'·'}</span><span>${s}</span></div>`).join('')}</div></div>`;
+const STEPS = [
+  'Verificar feriados e liquidez do dia...',
+  'Pesquisar dados forex recentes...',
+  'Avaliar impacto em cada par...',
+  'Analisar contexto commodities + geopolitica...',
+  'Gerar semáforos e veredictos...',
+];
+function renderLoading(idx=0){
+  document.getElementById('main-content').innerHTML=`
+    <div class="loading-wrap">
+      <div class="spinner"></div>
+      <div class="loading-label">A analisar o mercado...</div>
+      <div class="steps-list">
+        ${STEPS.map((s,i)=>{
+          const cls=i<idx?'step done':i===idx?'step active':'step';
+          const ic=i<idx?'✓':i===idx?'→':'·';
+          return`<div class="${cls}"><span>${ic}</span><span>${s}</span></div>`;
+        }).join('')}
+      </div>
+    </div>`;
 }
 
+// ─── MAIN BRIEFING ────────────────────────────────────────────────────────
 async function runBriefing(){
-  const key=getKey(); if(!key){openModal();return;}
-  document.getElementById('refresh-btn').disabled=true;
+  const key = getKey();
+  if(!key){ openModal(); return; }
+  document.getElementById('refresh-btn').disabled = true;
   setStatus('loading','A analisar...'); renderLoading(0);
-  const today=new Date();
-  const todayStr=today.toISOString().split('T')[0];
-  const dayName=today.toLocaleDateString('en-GB',{weekday:'long'});
-  const allGaps=[...new Set(COMMODITY_CONFIG.assets.flatMap(a=>a.data_gaps||[]))];
 
-  const SYSTEM=`És o motor de análise diária do FX Daily Briefing (Forex + Commodity).
+  const today = new Date();
+  const todayStr = today.toISOString().split('T')[0];
+  const dayName = today.toLocaleDateString('en-GB',{weekday:'long'});
 
-━━ FOREX W${WEEK_CONFIG.week} (${WEEK_CONFIG.period}) ━━
-${WEEK_CONFIG.pairs.map(p=>`${p.pair} ${p.direction} (${p.conviction}, diff ${p.score_diff}, carry ${p.carry}): ${p.thesis}`).join('\n')}
-T1: ${WEEK_CONFIG.t1_events.map(e=>`${e.date} ${e.time} — ${e.release} (${e.ccy})`).join(' · ')}
+  const pairsCtx = WEEK_CONFIG.pairs.map(p=>
+    `${p.pair} ${p.direction} (${p.conviction}, diff ${p.score_diff}, carry ${p.carry}): ${p.thesis}`
+  ).join('\n');
 
-━━ COMMODITY W${COMMODITY_CONFIG.week} ━━
-${COMMODITY_CONFIG.assets.map(a=>`${a.asset}: score ${a.score} (${a.verdict_label}). ${a.thesis} Evento: ${a.key_event}`).join('\n')}
-${allGaps.length?`DADOS EM FALTA:\n${allGaps.map(g=>`• ${g}`).join('\n')}`:''}
+  const t1Ctx = WEEK_CONFIG.t1_events.map(e=>
+    `${e.date} ${e.time} — ${e.release} (${e.ccy}) → afecta: ${e.pairs.join(', ')}`
+  ).join('\n');
 
-━━ CONTEXTO MACRO ━━
-US-Iran: blockade reinstated. WTI $82.47 (+14% na semana passada). CPI Jun 3.5%/Core 2.6% (abaixo consenso). Fed: HOLD >90% em 28-29 Jul. BOE 30 Jul. BOJ 31 Jul. UK CPI Jun 22 Jul crítico.
+  const commodCtx = COMMODITY_CONFIG.assets.map(a=>
+    `${a.asset} | Score W${COMMODITY_CONFIG.week}: ${a.score} (${a.verdict_label}) | ${a.thesis} | Evento crítico: ${a.key_event}`
+  ).join('\n\n');
 
-━━ REGRAS ━━
-FOREX 🟢=full size · 🟡=reduz/aguarda · 🔴=não entras
-COMMODITY 🟢=score positivo · 🟡=misto/evento hoje · 🔴=score negativo
+  const SYSTEM = `És o motor de análise diária do FX Daily Briefing — combina o Forex Macro Matrix com o Commodity Sunday Brief.
 
-HOJE: ${dayName}, ${todayStr}. Pesquisa feriados, dados recentes, Iran/oil news.
+━━ FOREX WEEK ${WEEK_CONFIG.week} (${WEEK_CONFIG.period}) ━━
+PARES ACTIVOS:
+${pairsCtx}
 
-JSON apenas (sem markdown):
-{"generated":"DD Mon YYYY HH:MM","market_note":"<1 frase>","pairs":[{"pair":"AUD/CHF","signal":"GREEN|AMBER|RED","verdict":"<instrução>","factors":[{"type":"positive|negative|warning|info","text":"<factor>"}],"today_events":[{"time":"HH:MM TZ","release":"<nome>","tier":"T1|T2"}]}],"commodities":[{"asset":"GOLD","signal":"GREEN|AMBER|RED","verdict":"<instrução>","factors":[{"type":"positive|negative|warning|info","text":"<factor>"}],"today_events":[{"time":"HH:MM TZ","release":"<nome>","tier":"T1|T2"}]}]}`;
+EVENTOS T1:
+${t1Ctx}
 
-  try{
+━━ COMMODITY WEEK ${COMMODITY_CONFIG.week} ━━
+${commodCtx}
+
+━━ CONTEXTO GEOPOLITICO CRITICO ━━
+Cessar-fogo EUA-Irao colapsado 13-18 Jul. Trump: 'ceasefire effectively over.' EUA lancou novos ataques aereos. Iran retalhou Kuwait+Bahrein. Hormuz perturbado. WTI +5% na semana.
+IMPACTO: CHF safe-haven bid activo; CAD petro suporte volta; AUD/NZD risk-off pressure.
+
+━━ REGRAS DO SEMÁFORO ━━
+FOREX:
+🟢 VERDE = Entra full size. Tese intacta, sem eventos T1 bloqueadores hoje.
+🟡 AMARELO = Reduz size. Evento T1 hoje ainda por sair, geopolitica activa que comprime convicção, ou dado recente divergente.
+🔴 VERMELHO = Não entras. Dado T1 contradiz directamente a tese do par.
+
+COMMODITIES (baseado no score semanal + contexto diário):
+🟢 VERDE = Score positivo e nenhum evento hoje reverte a tese.
+🟡 AMARELO = Score neutro ou score misto com desenvolvimento importante hoje.
+🔴 VERMELHO = Score negativo confirmado. Evitar longs; atenção a shorts (mas vigilância de divergência fundamental vs preço).
+
+HOJE: ${dayName}, ${todayStr}
+
+USA web_search para: feriados bancários hoje, dados T1/T2 recentes (forex e commodities), desenvolvimentos Iran-Hormuz hoje.
+
+Devolve APENAS JSON válido (sem markdown):
+{
+  "generated": "DD Mon YYYY HH:MM",
+  "market_note": "<nota geral de mercado + geopolitica hoje, 1 frase>",
+  "pairs": [
+    {
+      "pair": "AUD/CHF",
+      "signal": "GREEN|AMBER|RED",
+      "verdict": "<instrução clara>",
+      "factors": [{ "type": "positive|negative|warning|info", "text": "<factor>" }],
+      "today_events": [{ "time": "HH:MM TZ", "release": "<nome>", "tier": "T1|T2" }]
+    }
+  ],
+  "commodities": [
+    {
+      "asset": "GOLD",
+      "signal": "GREEN|AMBER|RED",
+      "verdict": "<instrução clara>",
+      "factors": [{ "type": "positive|negative|warning|info", "text": "<factor>" }],
+      "today_events": [{ "time": "HH:MM TZ", "release": "<nome>", "tier": "T1|T2" }]
+    }
+  ]
+}`;
+
+  const USER = `Hoje é ${dayName}, ${todayStr}. Gera o briefing diário para os 5 pares forex e as 2 commodities. Pesquisa feriados de hoje, dados recentes, desenvolvimentos Iran-Hormuz e eventos que afectem forex e commodities. Devolve o JSON.`;
+
+  try {
     renderLoading(1);
-    const resp=await fetch("https://api.anthropic.com/v1/messages",{
+    const resp = await fetch("https://api.anthropic.com/v1/messages",{
       method:"POST",
-      headers:{"Content-Type":"application/json","x-api-key":key,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},
-      body:JSON.stringify({model:"claude-sonnet-4-6",max_tokens:5000,tools:[{type:"web_search_20250305",name:"web_search"}],system:SYSTEM,messages:[{role:"user",content:`Hoje é ${dayName}, ${todayStr}. Gera o briefing. JSON.`}]})
+      headers:{
+        "Content-Type":"application/json",
+        "x-api-key":key,
+        "anthropic-version":"2023-06-01",
+        "anthropic-dangerous-direct-browser-access":"true"
+      },
+      body:JSON.stringify({
+        model:"claude-sonnet-4-6",
+        max_tokens:5000,
+        tools:[{type:"web_search_20250305",name:"web_search"}],
+        system:SYSTEM,
+        messages:[{role:"user",content:USER}]
+      })
     });
+
     renderLoading(3);
-    if(!resp.ok){const e=await resp.json().catch(()=>({}));throw new Error(e.error?.message||`Erro ${resp.status}`);}
-    const raw=await resp.json(); renderLoading(4);
+    if(!resp.ok){
+      const err = await resp.json().catch(()=>({}));
+      if(resp.status===401) throw new Error('API key inválida.');
+      if(resp.status===429) throw new Error('Rate limit. Tenta em 30s.');
+      throw new Error(err.error?.message||`Erro ${resp.status}`);
+    }
+
+    const raw = await resp.json();
+    renderLoading(4);
     let text='';
-    for(const b of(raw.content||[])) if(b.type==='text'&&b.text) text+=b.text;
+    for(const block of (raw.content||[])){
+      if(block.type==='text'&&block.text) text+=block.text;
+    }
     text=text.replace(/```json\s*/gi,'').replace(/```\s*/g,'').trim();
-    let s=-1,e=-1,d=0;
-    for(let i=0;i<text.length;i++){if(text[i]==='{'){if(!d)s=i;d++;}else if(text[i]==='}'){d--;if(!d){e=i;break;}}}
-    if(s<0||e<0) throw new Error('Resposta inválida.');
-    const data=JSON.parse(text.slice(s,e+1));
-    if(!data.pairs) throw new Error('Dados incompletos.');
+
+    let s=-1,e=-1,depth=0;
+    for(let i=0;i<text.length;i++){
+      if(text[i]==='{'){if(depth===0)s=i;depth++;}
+      else if(text[i]==='}'){depth--;if(depth===0){e=i;break;}}
+    }
+    if(s===-1||e===-1) throw new Error('Resposta inválida da API.');
+    const data = JSON.parse(text.slice(s,e+1));
+    if(!data.pairs||!Array.isArray(data.pairs)) throw new Error('Dados incompletos.');
+
     renderApp(data);
-  }catch(err){
+  } catch(err){
     setStatus('error','Erro');
-    document.getElementById('main-content').innerHTML=`<div class="error-wrap"><div class="error-msg">${err.message}</div><div class="error-sub">Verifica a API key ou ligação.</div><button class="retry-btn" onclick="runBriefing()">↺ Tentar novamente</button></div>`;
+    document.getElementById('main-content').innerHTML=`
+      <div class="error-wrap">
+        <div class="error-msg">${err.message}</div>
+        <div class="error-sub">Verifica a API key ou a ligação.</div>
+        <button class="retry-btn" onclick="runBriefing()">↺ Tentar novamente</button>
+      </div>`;
     document.getElementById('refresh-btn').disabled=false;
   }
 }
 
+// ─── RENDER ───────────────────────────────────────────────────────────────
 function renderApp(data){
-  const now=new Date();
-  setStatus('live','Live · '+now.toLocaleTimeString('pt-PT',{hour:'2-digit',minute:'2-digit'}));
+  const now = new Date();
+  const ts = now.toLocaleTimeString('pt-PT',{hour:'2-digit',minute:'2-digit'});
+  setStatus('live','Live · '+ts);
   document.getElementById('refresh-btn').disabled=false;
   document.getElementById('week-pill').textContent=`WEEK ${WEEK_CONFIG.week}`;
-  computeNextT1();
 
-  const SM={GREEN:'green',AMBER:'amber',RED:'red'};
-  const LM={GREEN:'VERDE',AMBER:'AMARELO',RED:'VERMELHO'};
+  const sigMap={GREEN:'green',AMBER:'amber',RED:'red'};
+  const lblMap={GREEN:'VERDE',AMBER:'AMARELO',RED:'VERMELHO'};
 
-  function facs(arr){ return (arr||[]).map(f=>`<div class="factor ${f.type||'info'}"><span class="factor-icon">${f.type==='positive'?'▲':f.type==='negative'?'▼':f.type==='warning'?'⚠':'›'}</span><span>${f.text||''}</span></div>`).join(''); }
-  function evts(arr){ return (arr||[]).map(ev=>`<div class="event-row"><span class="event-time">${ev.time||'—'}</span><span class="event-tier ${ev.tier==='T1'?'tier-1':'tier-2'}">${ev.tier||'T2'}</span><span>${ev.release||''}</span></div>`).join(''); }
+  const todayD=new Date();
+  const upcoming=WEEK_CONFIG.t1_events
+    .filter(e=>new Date(e.date+'T23:59:00')>=todayD)
+    .sort((a,b)=>new Date(a.date)-new Date(b.date));
+  if(upcoming[0]) document.getElementById('next-t1').textContent=`${upcoming[0].release} · ${upcoming[0].date} ${upcoming[0].time}`;
 
   let html='';
-  if(data.market_note) html+=`<div class="next-event-banner"><span class="neb-label">Nota de Mercado</span><span class="neb-event">${data.market_note}</span></div>`;
+  if(data.market_note){
+    html+=`<div class="next-event-banner">
+      <span class="neb-label">Nota de Mercado</span>
+      <span class="neb-event">${data.market_note}</span>
+    </div>`;
+  }
 
-  html+=`<div class="section-hdr" style="border-top:none;padding-top:0;margin-top:0;"><span style="font-size:14px">💱</span><span style="flex:1">FOREX MACRO MATRIX — W${WEEK_CONFIG.week} · ${WEEK_CONFIG.period}</span><span class="section-hdr-badge shb-forex">5 PARES</span></div>`;
+  // ── FOREX SECTION ──
+  html+=`<div class="section-hdr" style="margin-top:0;padding-top:0;border-top:none;">
+    <span class="section-hdr-icon">💱</span>
+    <span class="section-hdr-text">FOREX MACRO MATRIX — W${WEEK_CONFIG.week} · ${WEEK_CONFIG.period}</span>
+    <span class="section-hdr-badge shb-forex">5 PARES</span>
+  </div>`;
+
   (data.pairs||[]).forEach(p=>{
-    const sig=(p.signal||'AMBER').toUpperCase(); const col=SM[sig]||'amber'; const lbl=LM[sig]||'AMARELO';
+    const sig=(p.signal||'AMBER').toUpperCase();
+    const col=sigMap[sig]||'amber';
+    const lbl=lblMap[sig]||'AMARELO';
     const cfg=WEEK_CONFIG.pairs.find(c=>c.pair===p.pair)||{};
-    html+=`<div class="pair-card card-${col}"><div class="semaphore-wrap"><div class="semaphore sem-${col}"><div class="semaphore-inner"></div></div><span class="sem-label sem-${col}">${lbl}</span></div><div class="pair-info"><div class="pair-header"><div class="pair-name">${p.pair}</div><span class="pair-direction">${cfg.direction||'LONG'}</span><span class="pair-conviction">${cfg.conviction||''}</span></div><div class="verdict-box verdict-${col}">${p.verdict||'—'}</div>${facs(p.factors)?`<div class="factors">${facs(p.factors)}</div>`:''}${evts(p.today_events)?`<div class="today-events"><div class="today-label">Eventos hoje</div>${evts(p.today_events)}</div>`:''}</div></div>`;
+    const factors=(p.factors||[]).map(f=>
+      `<div class="factor ${f.type||'info'}">
+        <span class="factor-icon">${f.type==='positive'?'▲':f.type==='negative'?'▼':f.type==='warning'?'⚠':'›'}</span>
+        <span>${f.text||''}</span>
+       </div>`
+    ).join('');
+    const events=(p.today_events||[]).map(ev=>
+      `<div class="event-row">
+        <span class="event-time">${ev.time||'—'}</span>
+        <span class="event-tier ${ev.tier==='T1'?'tier-1':'tier-2'}">${ev.tier||'T2'}</span>
+        <span>${ev.release||''}</span>
+       </div>`
+    ).join('');
+    html+=`<div class="pair-card card-${col}">
+      <div class="semaphore-wrap">
+        <div class="semaphore sem-${col}"><div class="semaphore-inner"></div></div>
+        <span class="sem-label sem-${col}">${lbl}</span>
+      </div>
+      <div class="pair-info">
+        <div class="pair-header">
+          <div class="pair-name">${p.pair}</div>
+          <span class="pair-direction">${cfg.direction||'LONG'}</span>
+          <span class="pair-conviction">${cfg.conviction||''}</span>
+        </div>
+        <div class="verdict-box verdict-${col}">${p.verdict||'—'}</div>
+        ${factors?`<div class="factors">${factors}</div>`:''}
+        ${events?`<div class="today-events"><div class="today-label">Eventos hoje</div>${events}</div>`:''}
+      </div>
+    </div>`;
   });
 
-  html+=`<div class="section-divider"></div><div class="section-hdr"><span style="font-size:14px">📦</span><span style="flex:1">COMMODITY SUNDAY BRIEF — W${COMMODITY_CONFIG.week} · LVD Academy</span><span class="section-hdr-badge shb-commod">GOLD + CRUDE</span></div>`;
-  const aiC=data.commodities||[];
+  // ── COMMODITY SECTION ──
+  html+=`<div class="section-divider"></div>
+  <div class="section-hdr">
+    <span class="section-hdr-icon">📦</span>
+    <span class="section-hdr-text">COMMODITY SUNDAY BRIEF — W${COMMODITY_CONFIG.week} · LVD Academy</span>
+    <span class="section-hdr-badge shb-commod">GOLD + CRUDE</span>
+  </div>`;
+
+  const aiCommodities = data.commodities||[];
+
   COMMODITY_CONFIG.assets.forEach(asset=>{
-    const ai=aiC.find(c=>(c.asset||'').toUpperCase()===asset.asset)||{};
-    const sig=(ai.signal||scoreToSignal(asset.score)).toUpperCase();
-    const col=SM[sig]||'amber'; const lbl=LM[sig]||'AMARELO';
-    const scls=scoreClass(asset.score); const sp=asset.score>0?'+':'';
-    const gaps=asset.data_gaps||[];
-    const gapHtml=gaps.length?`<div class="gap-banner"><span class="gap-icon">⚠</span><div class="gap-content"><div class="gap-title">Dados em falta esta semana</div>${gaps.map(g=>`<div class="gap-item">· ${g}</div>`).join('')}</div></div>`:'';
-    html+=`<div class="commod-card card-${col}"><div class="semaphore-wrap"><div class="semaphore sem-${col}"><div class="semaphore-inner"></div></div><span class="sem-label sem-${col}">${lbl}</span></div><div class="pair-info"><div class="pair-header"><div class="commod-name ${asset.color_class}">${asset.icon} ${asset.asset}</div><span class="commod-score-badge ${scls}">W${COMMODITY_CONFIG.week}: ${sp}${asset.score} · ${asset.verdict_label}</span></div><div class="verdict-box verdict-${col}">${ai.verdict||asset.thesis.slice(0,120)+'...'}</div>${facs(ai.factors)?`<div class="factors">${facs(ai.factors)}</div>`:''} ${gapHtml}${asset.key_event?`<div class="today-events"><div class="today-label">Evento crítico</div><div class="factor warning"><span class="factor-icon">⚠</span><span>${asset.key_event}</span></div></div>`:''}${evts(ai.today_events)?`<div class="today-events"><div class="today-label">Eventos hoje</div>${evts(ai.today_events)}</div>`:''}</div></div>`;
+    const aiData = aiCommodities.find(c=>(c.asset||'').toUpperCase()===asset.asset.toUpperCase())||{};
+    const rawSig = aiData.signal||(scoreToSignal(asset.score));
+    const sig = rawSig.toUpperCase();
+    const col = sigMap[sig]||'red';
+    const lbl = lblMap[sig]||'VERMELHO';
+    const scoreCls = scoreClass(asset.score);
+    const scoreSign = asset.score > 0 ? '+' : '';
+
+    const factors = (aiData.factors||[]).map(f=>
+      `<div class="factor ${f.type||'info'}">
+        <span class="factor-icon">${f.type==='positive'?'▲':f.type==='negative'?'▼':f.type==='warning'?'⚠':'›'}</span>
+        <span>${f.text||''}</span>
+       </div>`
+    ).join('');
+
+    const events = (aiData.today_events||[]).map(ev=>
+      `<div class="event-row">
+        <span class="event-time">${ev.time||'—'}</span>
+        <span class="event-tier ${ev.tier==='T1'?'tier-1':'tier-2'}">${ev.tier||'T2'}</span>
+        <span>${ev.release||''}</span>
+       </div>`
+    ).join('');
+
+    html+=`<div class="commod-card card-${col}">
+      <div class="semaphore-wrap">
+        <div class="semaphore sem-${col}"><div class="semaphore-inner"></div></div>
+        <span class="sem-label sem-${col}">${lbl}</span>
+      </div>
+      <div class="pair-info">
+        <div class="pair-header">
+          <div class="commod-name ${asset.color_class}">${asset.icon} ${asset.asset}</div>
+          <span class="commod-score-badge ${scoreCls}">Score W${COMMODITY_CONFIG.week}: ${scoreSign}${asset.score} · ${asset.verdict_label}</span>
+        </div>
+        <div class="verdict-box verdict-${col}">${aiData.verdict||asset.thesis.substring(0,120)+'...'}</div>
+        ${factors?`<div class="factors">${factors}</div>`:''}
+        ${asset.key_event?`<div class="today-events"><div class="today-label">Evento crítico</div><div class="factor warning"><span class="factor-icon">⚠</span><span>${asset.key_event}</span></div></div>`:''}
+        ${events?`<div class="today-events"><div class="today-label">Eventos hoje</div>${events}</div>`:''}
+      </div>
+    </div>`;
   });
 
-  html+=`<div class="footer">Forex W${WEEK_CONFIG.week} · Commodity W${COMMODITY_CONFIG.week} · LVD Academy · Gerado: ${data.generated||'—'}<br>Powered by Claude + web search · Apenas para fins informativos.</div>`;
+  html+=`<div class="footer">
+    Forex Macro Matrix W${WEEK_CONFIG.week} · Commodity Sunday W${COMMODITY_CONFIG.week} · LVD Academy Framework · Gerado: ${data.generated||'—'}<br>
+    Powered by Claude + web search · Apenas para fins informativos. Não constitui aconselhamento financeiro.
+  </div>`;
+
   document.getElementById('main-content').innerHTML=html;
 }
 
-window.addEventListener('DOMContentLoaded',()=>{ getKey()?runBriefing():openModal(); });
+// ─── INIT ─────────────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded',()=>{
+  if(getKey()){ runBriefing(); } else { openModal(); }
+});
 </script>
 </body>
 </html>
