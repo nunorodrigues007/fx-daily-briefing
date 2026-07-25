@@ -1,25 +1,26 @@
 {
   "_comment": "Ficheiro de estado semanal — valores N desta semana tornam-se N-1 na semana seguinte. Commit sempre com index.html.",
-  "week": 25,
-  "report_date": "2026-07-18",
+  "week": 26,
+  "report_date": "2026-07-25",
 
   "forex": {
     "scores": {
       "AUD": 9.5,
-      "GBP": 8.4,
+      "GBP": 8.2,
       "USD": 8.7,
-      "NZD": 6.2,
-      "EUR": 4.8,
+      "NZD": 6.4,
+      "EUR": 5.0,
       "JPY": 4.2,
       "CAD": 1.8,
       "CHF": 1.5
     },
-    "note_eur": "EUR 4.8* pendente ECB 23 Jul (93% HOLD)",
-    "note_usd": "USD 8.7 (9.3→9.0→8.7 em 3 semanas — tendência descendente)"
+    "note_usd": "USD 8.7* pendente Fed 28-29 Jul + AUS CPI 29 Jul + BOE 30 Jul + BOJ 31 Jul",
+    "note_gbp": "GBP 8.2 (recuo de 8.4 — UK CPI Jun 22 Jul suavizou expectativas BOE)",
+    "note_oil": "Oil $100+ (Yemen Houthis 23 Jul, Bab al-Mandeb). CHF/JPY safe-haven. CAD petro suporte."
   },
 
   "gold_pillars": {
-    "real_yield_pct":         2.29,
+    "real_yield_pct":         2.42,
     "gld_tonnes":             null,
     "cot_gold_mm":            null,
     "gdx_short_interest_m":   44.03,
@@ -28,24 +29,24 @@
 
   "crude_pillars": {
     "ism_pmi_pct":            53.3,
-    "eia_stocks_change_m":   -1.7,
+    "eia_stocks_change_m":    2.0,
     "steo_shutins_mbd":       8.3,
+    "houthi_red_sea_note":    "Saudi loadings -36% (Houthi Red Sea blockade); 5 tankers reversed course",
     "cot_crude_k":            null,
-    "dxy":                    100.60
+    "dxy":                    101.47
   },
 
   "scores": {
     "gold":  -2,
-    "crude": +2
+    "crude": -1
   },
 
   "data_gaps": [
     "GLD ETF tonnage — MacroMicro lag (último confirmado: 1,017.64t em 23 Jun)",
-    "COT Gold Jul 14 — publicado 17 Jul; número não confirmado em fontes abertas",
-    "COT Crude Jul 14 — n/d (crude +14% na semana; crowding provável = -1 se confirmado)",
-    "DXY Jul 17 — estimado ~100.60 (GoldSeek: 'set for weekly drop'; confirmar na W26)",
-    "US/SA Prod — blockade reinstated; STEO não reflecte ainda (próx: 11 Ago)"
+    "COT Gold Jul 22 — released 24 Jul; número n/d (safe-haven bid → crowding → -1 se confirmado)",
+    "COT Crude Jul 22 — n/d (crude +7% semanal; crowding → -1 se confirmado, daria score -2)",
+    "US/SA Prod — Houthi Red Sea qualitative (+1 corte); STEO confirmará em 11 Ago"
   ],
 
-  "macro_context": "Trump reinstated naval blockade of Iran (Jul 13-14). WTI +14% ($71→$82.47). CPI Jun -0.4% MoM, +3.5% YoY (vs 3.8% consenso), Core 2.6% YoY. Gold biggest weekly loss in six (-$73, $4,111→$4,038). Real yields 2.29% (StreetStats Jul 17)."
+  "macro_context": "Yemen Houthis atacaram 2 Saudi tankers (23 Jul). Brent $100.69 peak, fecha $98.38. WTI peak $92.19, fecha $87.88. 2ª chokepoint (Bab al-Mandeb) agora em risco além de Hormuz. EIA primeira build (+2.0M) depois de semanas de draws. Real yields +13bp para 2.42% (TradingEconomics 23 Jul). DXY 101.47. 10Y yield 4.69% (highest since Jan 2025). Fed 28-29 Jul: 64% HOLD, 36% HIKE. Goldman Sachs: Brent pode ir a $120 Q4 se disruptions persistirem."
 }
