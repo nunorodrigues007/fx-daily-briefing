@@ -205,40 +205,40 @@ const WEEK_CONFIG = {
 
 // ─── COMMODITY WEEK CONFIG — actualizar cada domingo com PDF ───────────────
 const COMMODITY_CONFIG = {
-  week: 24,
+  week: 27,
   assets: [
     {
       asset: "GOLD",
-      score: -1,
-      verdict_label: "MILD BEARISH",
+      score: 0,
+      verdict_label: "NEUTRAL",
       icon: "🥇",
       color_class: "xau",
       pillars: [
-        { name:"Excess Liquidity",   n:"n/a",        n1:"n/a",        score:0  },
-        { name:"Real Int. Rate",     n:"2.28%",      n1:"2.25%",      score:-1 },
-        { name:"ETF Flows (GLD)",    n:"n/d",        n1:"~1,017.6t",  score:0  },
-        { name:"COT Gold (MM)",      n:"116,161",    n1:"120,091",    score:+1 },
-        { name:"GDX Short Int.",     n:"44.03M",     n1:"44.03M",     score:0  },
-        { name:"Sazonalidade",       n:"Julho",      n1:"Negativo",   score:-1 }
+        { name:"Excess Liquidity",   n:"n/a",       n1:"n/a",       score:0  },
+        { name:"Real Int. Rate",     n:"2.47%",     n1:"2.42%",     score:-1 },
+        { name:"ETF Flows (GLD)",    n:"n/d",       n1:"~1,017.6t", score:0  },
+        { name:"COT Gold",           n:"n/d",       n1:"n/d",       score:0  },
+        { name:"GDX Short Int.",     n:"44.03M",    n1:"44.03M",    score:0  },
+        { name:"Sazonalidade",       n:"Agosto",    n1:"Positivo",  score:+1 }
       ],
-      thesis: "Score melhora W23=-3 para W24=-1: COT Gold em descompressao (120,091->116,161 MM). Real yields sobem (2.25%->2.28%). Cessar-fogo colapsado 13-18 Jul — geopolitical risk premium regressa. Gold flat na semana ($4,111). Sazonalidade Julho negativa.",
-      key_event: "Iran-Hormuz: cessar-fogo colapsado — CHF/gold safe-haven bid activo. Real yields (FRED DFII10) a monitorar pos-CPI miss 3.5%."
+      thesis: "Score recupera W26=-2 para W27=0: flip sazonalidade Jul(-1)→Ago(+1) adiciona +2. Real yields subiram para 2.47% (máximos do ciclo) após Fed HOLD 9-3 com 3 dissenters. 10Y nominal 4.75% (máximos Jan 2025). Gold caught entre safe-haven bid (Middle East) e headwind de yields reais. COT e GLD tonnage n/d — score real poderia ser -1 a -2 se confirmados.",
+      key_event: "COT Gold Jul 28 n/d — se confirmado -1: Gold recua para -1 MILD BEARISH. Real yields 2.47% no máximo do ciclo. Monitorar EIA STEO Ago 11 (1º relatório pós Red Sea/Saudi)."
     },
     {
       asset: "CRUDE OIL",
-      score: -3,
-      verdict_label: "BEARISH",
+      score: 0,
+      verdict_label: "NEUTRAL",
       icon: "🛢️",
       color_class: "oil",
       pillars: [
-        { name:"Business Conf.(ISM)", n:"53.3%",         n1:"53.3%",        score:0  },
-        { name:"EIA Stocks",          n:"-0.399M bbl",   n1:"-3.775M bbl",  score:-1 },
-        { name:"US/SA Prod.(STEO)",   n:"8.3M b/d shut", n1:"11.3M b/d s/i",score:-1 },
-        { name:"COT Crude",           n:"n/d",           n1:"110.5K",       score:0  },
-        { name:"DXY",                 n:"~100.85 est",   n1:"100.55",       score:-1 }
+        { name:"Business Conf.(ISM)", n:"53.3%",       n1:"53.3%",    score:0  },
+        { name:"EIA Stocks",          n:"-7.167M bbl", n1:"+2.0M bbl",score:+1 },
+        { name:"US/SA Prod.(STEO)",   n:"Sem STEO",    n1:"8.3M b/d", score:0  },
+        { name:"COT Crude",           n:"n/d",         n1:"n/d",      score:0  },
+        { name:"DXY",                 n:"~102.0 est.", n1:"101.47",   score:-1 }
       ],
-      thesis: "Score -3 BEARISH segunda semana consecutiva. DIVERGENCIA CRITICA: score fundamental -3 mas preco +5% (WTI $68->$72) por cessar-fogo colapsado (Iran reescalada). STEO Jul 7: US shut-ins caíram 8.3M de 11.3M — producao a AUMENTAR. EIA draw mais fraco. DXY alto bearish crude.",
-      key_event: "Iran-Hormuz colapsado: EUA novos ataques; Iran retaliou Kuwait+Bahrein. WTI +5%. Divergencia score fundamental vs preco mercado — maxima do ciclo. EIA Inventarios 22 Jul (Qua)."
+      thesis: "EIA massive draw reversal: -7.167M bbl (sem. 24 Jul) vs +2.0M build anterior. Brent caiu de $98.38 (24 Jul) para $84 (28 Jul) — queda de 14% na semana. BOE document: 'Brent $84/bbl close of business 28 Jul.' DXY ~102.0 (subida → -1). EIA draw (+1) e DXY (-1) cancelam-se → 0 NEUTRAL. COT n/d: com Brent -14%, descompressão especulativa → se +1 confirmado, crude sobe para +1.",
+      key_event: "COT Crude Jul 28 n/d — se confirmado: crude sobe para +1 MILD BULLISH. EIA Inventários 5 Ago. EIA STEO 11 Ago (CRÍTICO — 1º pós Houthi Red Sea/Saudi 36%). Brent $84 (de $98.38)."
     }
   ]
 };
