@@ -373,9 +373,15 @@ COMMODITIES (baseado no score semanal + contexto diário):
 
 HOJE: ${dayName}, ${todayStr}
 
-USA web_search para: feriados bancários hoje, dados T1/T2 recentes (forex e commodities), desenvolvimentos Iran-Hormuz hoje.
+USA web_search (máximo 5 pesquisas) para verificar, para CADA moeda activa (AUD, USD, GBP, CAD, CHF) e CADA commodity (Gold, Crude):
+1. Há reunião de banco central, decisão de política monetária, ou dado macro T1 (CPI, NFP, GDP, emprego) agendado ou saído HOJE ou nos últimos 2 dias? Verifica isto mesmo que não conste na lista de eventos T1 acima — a lista pode estar incompleta.
+2. Há dado T2 relevante hoje que possa mover mercado?
+3. Feriados bancários hoje nos países relevantes.
+4. Desenvolvimentos Iran-Hormuz ou outra geopolítica activa hoje.
 
-Devolve APENAS JSON válido (sem markdown):
+Depois de reunires esta informação, PÁRA de pesquisar e escreve logo o JSON final — não continues a pesquisar indefinidamente.
+
+Devolve APENAS JSON válido (sem markdown, sem texto antes ou depois):
 {
   "generated": "DD Mon YYYY HH:MM",
   "market_note": "<nota geral de mercado + geopolitica hoje, 1 frase>",
@@ -413,8 +419,8 @@ Devolve APENAS JSON válido (sem markdown):
       },
       body:JSON.stringify({
         model:"claude-sonnet-4-6",
-        max_tokens:5000,
-        tools:[{type:"web_search_20250305",name:"web_search"}],
+        max_tokens:12000,
+        tools:[{type:"web_search_20250305",name:"web_search",max_uses:5}],
         system:SYSTEM,
         messages:[{role:"user",content:USER}]
       })
@@ -441,7 +447,13 @@ Devolve APENAS JSON válido (sem markdown):
       if(text[i]==='{'){if(depth===0)s=i;depth++;}
       else if(text[i]==='}'){depth--;if(depth===0){e=i;break;}}
     }
-    if(s===-1||e===-1) throw new Error('Resposta inválida da API.');
+    if(s===-1||e===-1){
+      const truncated = raw.stop_reason === 'max_tokens';
+      const hint = truncated
+        ? 'A resposta foi cortada por limite de tokens. Tenta novamente.'
+        : (text ? 'O modelo não devolveu um JSON válido nesta tentativa.' : 'A resposta da API veio vazia (só pesquisas, sem texto final).');
+      throw new Error('Resposta inválida da API. ' + hint);
+    }
     const data = JSON.parse(text.slice(s,e+1));
     if(!data.pairs||!Array.isArray(data.pairs)) throw new Error('Dados incompletos.');
 
