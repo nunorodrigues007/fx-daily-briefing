@@ -5,73 +5,78 @@
 // ═══════════════════════════════════════════════════════════════════════════
 
 const WEEK_CONFIG = {
-  week: 34,
-  period: "10 – 14 Ago 2026",
+  week: 35,
+  period: "17 – 21 Ago 2026",
   pairs: [
-    { pair:"AUD/CHF", direction:"LONG", conviction:"★★★★★", score_diff:"7.9 pts", carry:"+435bp",
-      thesis:"Diferencial 9.4 (AUD) − 1.5 (CHF) = 7.9pts. AUD: RBA manteve taxa em 4.35% a 11 Ago (HOLD unânime), com Bullock a reforçar que 'further monetary tightening is very likely' — tom mais hawkish que a reunião anterior. CHF: SNB mantém-se em 0.00%, sem sinais de mudança de política. Catalisador: AUS Employment Jul, 20 Ago 11:30 AEST. Key risk: dado de emprego australiano fraco pode reduzir score AUD; qualquer sinal hawkish inesperado do SNB comprimiria o diferencial.",
+    { pair:"AUD/CHF", direction:"LONG", conviction:"★★★★★", score_diff:"7.6 pts", carry:"+435bp",
+      thesis:"Diferencial 9.1 (AUD) − 1.5 (CHF) = 7.6pts. AUD com score revisto em baixa (9.4→9.1) após Employment Jul fraco a 20 Ago (desemprego 4.5% vs 4.4% esp., emprego -15.800 vs +15.000 esp.), o nível mais alto pós-COVID. CHF em 0.00%, sem catalisadores. Catalisador: Jackson Hole 27-29 Ago. Key risk: novos dados fracos do mercado laboral australiano podem comprimir ainda mais o diferencial.",
       base_ccy:"AUD", quote_ccy:"CHF" },
-    { pair:"USD/CHF", direction:"LONG", conviction:"★★★★", score_diff:"7.1 pts", carry:"+363bp",
-      thesis:"Diferencial 8.6 (USD) − 1.5 (CHF) = 7.1pts. USD: Fed em 3.625%, CPI Jul saiu em linha (3.4% headline, 2.5% core), mercado a precificar HOLD em Set (62-64% CME). CHF: SNB em 0.00%, sem catalisadores próximos. Catalisador: Jackson Hole 27-29 Ago (discurso de Warsh, sinal para Fed 15-16 Set). Key risk: gap de apenas 0.05pts face a GBP/CHF (7.47 vs 7.42) — UK CPI quente a 19 Ago pode inverter o ranking entre os dois pares.",
+    { pair:"USD/CHF", direction:"LONG", conviction:"★★★★★", score_diff:"7.1 pts", carry:"+363bp",
+      thesis:"Diferencial 8.6 (USD) − 1.5 (CHF) = 7.1pts. Probabilidade de hold da Fed em Set subiu para 68.4% no CME FedWatch (20 Ago), acima dos 62-64% da semana anterior — maior convicção sem alteração de score. CHF sem alterações. Catalisador: discurso de estreia de Kevin Warsh como Fed Chair em Jackson Hole (28 Ago). Key risk: tom hawkish/dovish inesperado de Warsh pode mover o score USD em qualquer direcção.",
       base_ccy:"USD", quote_ccy:"CHF" },
-    { pair:"GBP/CHF", direction:"LONG", conviction:"★★★★", score_diff:"6.9 pts", carry:"+375bp",
-      thesis:"Diferencial 8.4 (GBP) − 1.5 (CHF) = 6.9pts. GBP: BOE em 3.75%, score pendente de confirmação do UK CPI Jul. CHF: SNB em 0.00%, sem sinais de mudança. Catalisador: UK CPI Jul, 19 Ago 07:00 BST. Key risk: se CPI sair >3.0%, GBP sobe para 8.6 e GBP/CHF ultrapassa USD/CHF no ranking (troca de posição #2/#3); se <2.4%, GBP desce para 8.1 e o par perde força relativa.",
+    { pair:"GBP/CHF", direction:"LONG", conviction:"★★★★★", score_diff:"6.9 pts", carry:"+375bp",
+      thesis:"Diferencial 8.4 (GBP) − 1.5 (CHF) = 6.9pts. UK CPI Jul confirmado em linha (2.9% YoY, core 2.6%), dentro do intervalo neutro definido — não activou nem o gatilho de subida (>3.0%) nem o de descida (<2.4%) do score GBP. Catalisador: BOE 17 Set. Key risk: gap apertado face a USD/CHF (7.47 vs 7.42 em score) pode inverter com qualquer surpresa de dados UK.",
       base_ccy:"GBP", quote_ccy:"CHF" },
-    { pair:"AUD/CAD", direction:"LONG", conviction:"★★★★", score_diff:"7.6 pts", carry:"+210bp",
-      thesis:"Diferencial 9.4 (AUD) − 1.8 (CAD) = 7.6pts. AUD: RBA hawkish hold a 11 Ago. CAD: BOC em 2.25%, viés dovish mantido, próxima reunião 2 Set. Catalisador: AUS Employment Jul 20 Ago + BOC 2 Set. Key risk: carry mais baixo (+210bp) que AUD/CHF torna o par mais sensível a choques de risk-off, onde o CAD pode beneficiar de correlação com petróleo em caso de escalada geopolítica (Hormuz).",
+    { pair:"AUD/CAD", direction:"LONG", conviction:"★★★★★", score_diff:"7.3 pts", carry:"+210bp",
+      thesis:"Diferencial 9.1 (AUD) − 1.8 (CAD) = 7.3pts. AUD reduzido após miss de emprego (20 Ago); CAD em hold histórico, 6ª pausa consecutiva do BOC. Catalisador: BOC 2 Set. Key risk: carry mais baixo (+210bp) combinado com AUD mais fraco torna este o par mais vulnerável dos 5.",
       base_ccy:"AUD", quote_ccy:"CAD" },
-    { pair:"USD/CAD", direction:"LONG", conviction:"★★★", score_diff:"6.8 pts", carry:"+138bp",
-      thesis:"Diferencial 8.6 (USD) − 1.8 (CAD) = 6.8pts. USD: Fed hold esperado em Set, CPI Jul in-line. CAD: BOC dovish, 2.25%, reunião 2 Set. Catalisador: BOC 2 Set + Jackson Hole 27-29 Ago. Key risk: carry mais reduzido (138bp) da lista top-5 torna o par mais vulnerável a correcções técnicas e a qualquer surpresa dovish adicional do lado Fed.",
+    { pair:"USD/CAD", direction:"LONG", conviction:"★★★★★", score_diff:"6.8 pts", carry:"+138bp",
+      thesis:"Diferencial 8.6 (USD) − 1.8 (CAD) = 6.8pts. USD estável, CAD em pausa histórica (6ª consecutiva). Catalisador: Jackson Hole 27-29 Ago + BOC 2 Set. Key risk: menor carry da lista (+138bp) torna o par mais sensível a correcções técnicas e a swings de sentimento de risco (Hormuz).",
       base_ccy:"USD", quote_ccy:"CAD" }
   ],
   t1_events: [
-    { date:"2026-08-11", time:"04:30 AEST", release:"RBA Rate Decision", ccy:"AUD", pairs:["AUD/CHF","AUD/CAD"] },
-    { date:"2026-08-12", time:"13:30 EDT", release:"US CPI (Jul)", ccy:"USD", pairs:["USD/CHF","USD/CAD"] },
     { date:"2026-08-19", time:"07:00 BST", release:"UK CPI (Jul)", ccy:"GBP", pairs:["GBP/CHF"] },
     { date:"2026-08-20", time:"11:30 AEST", release:"Labour Force Australia (Jul)", ccy:"AUD", pairs:["AUD/CHF","AUD/CAD"] }
   ],
   t2_events: [
-    { date:"2026-08-27", time:"n/d", release:"Jackson Hole Symposium (dia 1)", ccy:"USD", pairs:["USD/CHF","USD/CAD"] },
-    { date:"2026-08-29", time:"n/d", release:"Jackson Hole Symposium (encerramento)", ccy:"USD", pairs:["USD/CHF","USD/CAD"] }
+    { date:"2026-08-27", time:"n/d", release:"Jackson Hole Symposium (início)", ccy:"USD", pairs:["USD/CHF","USD/CAD"] },
+    { date:"2026-08-28", time:"n/d", release:"Jackson Hole — discurso de estreia de Warsh (Fed Chair)", ccy:"USD", pairs:["USD/CHF","USD/CAD"] },
+    { date:"2026-08-29", time:"n/d", release:"Jackson Hole Symposium (encerramento)", ccy:"USD", pairs:["USD/CHF","USD/CAD"] },
+    { date:"2026-09-02", time:"09:45 ET", release:"Bank of Canada — Rate Decision", ccy:"CAD", pairs:["AUD/CAD","USD/CAD"] },
+    { date:"2026-09-02", time:"n/d", release:"RBNZ — Monetary Policy Statement", ccy:"NZD", pairs:[] },
+    { date:"2026-09-10", time:"n/d", release:"ECB — Rate Decision", ccy:"EUR", pairs:[] },
+    { date:"2026-09-15", time:"n/d", release:"FOMC Meeting (Dia 1)", ccy:"USD", pairs:["USD/CHF","USD/CAD"] },
+    { date:"2026-09-16", time:"n/d", release:"FOMC Meeting (Decisão)", ccy:"USD", pairs:["USD/CHF","USD/CAD"] },
+    { date:"2026-09-17", time:"n/d", release:"BOE — Rate Decision", ccy:"GBP", pairs:["GBP/CHF"] }
   ],
   holidays: []
 };
 
 const COMMODITY_CONFIG = {
-  week: 29,
+  week: 30,
   assets: [
     {
       asset: "GOLD",
-      score: 3,
-      verdict_label: "BULLISH",
+      score: 0,
+      verdict_label: "NEUTRAL",
       icon: "🥇",
       color_class: "xau",
       pillars: [
-        { name:"Excess Liquidity",   n:"n/a",         n1:"n/a",        score:0 },
-        { name:"Real Int. Rate",     n:"2.41%",       n1:"~2.42%",     score:1 },
-        { name:"ETF Flows (GLD)",    n:"1,014.72t",   n1:"1,017.6t",   score:-1 },
-        { name:"COT Gold (MM)",      n:"137,662",     n1:"130,766",    score:1 },
-        { name:"GDX Short Int.",     n:"38.03M",      n1:"42.43M",     score:1 },
-        { name:"Sazonalidade",       n:"Agosto",      n1:"Positivo",   score:1 }
+        { name:"Excess Liquidity",   n:"n/a",              n1:"n/a",       score:0 },
+        { name:"Real Int. Rate",     n:"~2.47% est.",      n1:"2.41%",     score:-1 },
+        { name:"ETF Flows (GLD)",    n:"n/d",              n1:"1,014.72t", score:0 },
+        { name:"COT Gold (MM)",      n:"n/d (18 Ago)",     n1:"137,662",   score:0 },
+        { name:"GDX Short Int.",     n:"38.03M",           n1:"38.03M",    score:0 },
+        { name:"Sazonalidade",       n:"Agosto",           n1:"Positivo",  score:1 }
       ],
-      thesis: "Score +3, máximo histórico da série. Real rate TIPS a 2.41% e short interest GDX em queda (38.03M vs 42.43M) sinalizam cobertura de posições curtas e ambiente real de yields mais favorável ao ouro. COT Gold Managed Money subiu para 137,662 contratos, primeira confirmação directa via fonte após 5 semanas sem dado fiável. Sazonalidade de Agosto historicamente positiva reforça o viés. Único contrapeso: outflow ligeiro do ETF GLD (-1).",
-      key_event: "Próxima leitura FRED real yields + revisão COT Gold MM (sem 18 Ago)"
+      thesis: "Score 0 (NEUTRAL) vs preço $4,624 (+5.56% semanal, máximo histórico da série) = maior divergência já registada. Gold subiu enquanto real yields estimados também subiram (2.41%→~2.47% est.) — a correlação inversa gold/yields de 40 anos está a quebrar, com analistas a confirmar 'regime change'. Drivers do rally: Trump 'Economic D-Day' contra o Irão, dólar em mínimo de 3 meses (DXY 98.8), e 30Y em máximo de 19 anos (5.34%) por pressão de dívida federal e AI debt issuance. COT Gold (18 Ago) ainda n/d — se crowding confirmado (gold +5.56%), score real desce para -1, total NEUTRAL ou BEARISH.",
+      key_event: "COT Gold (dados 18 Ago, pendente) + Jackson Hole 27-29 Ago (Warsh) como sinal para a trajectória de real yields"
     },
     {
       asset: "CRUDE OIL",
-      score: -4,
-      verdict_label: "BEARISH",
+      score: 1,
+      verdict_label: "MILD BULLISH",
       icon: "🛢️",
       color_class: "oil",
       pillars: [
-        { name:"Business Conf.(ISM)", n:"55.6%",           n1:"55.6%",   score:0 },
-        { name:"EIA Stocks",          n:"+17.4M bbl build", n1:"+2.5M bbl", score:-1 },
-        { name:"US/SA Prod.(STEO)",   n:"5.5M b/d real",   n1:"8.3M est", score:-1 },
-        { name:"COT Crude",           n:"266k",            n1:"291k",    score:-1 },
-        { name:"DXY",                 n:"99.80",           n1:"~98.7",   score:-1 }
+        { name:"Business Conf.(ISM)", n:"55.6%",              n1:"55.6%",             score:0 },
+        { name:"EIA Stocks",          n:"+4.4M bbl build",    n1:"+17.4M bbl",        score:-1 },
+        { name:"US/SA Prod.(STEO)",   n:"STEO Ago ↑ shut-ins",n1:"5.5M b/d (Jul)",    score:1 },
+        { name:"COT Crude",           n:"n/d (18 Ago)",       n1:"291k (W29)",        score:0 },
+        { name:"DXY",                 n:"98.80",              n1:"99.80",             score:1 }
       ],
-      thesis: "Score -4, novo mínimo da série. Build de stocks EIA muito acima do esperado (+17.4M vs +2.5M), shut-ins reais abaixo da estimativa STEO, COT combinado WTI+Brent em queda e DXY mais forte pressionam o framework para bearish. ATENÇÃO: divergência activa entre score fundamental e preço — Brent negoceia em $87-88 e WTI ~$82 devido ao bloqueio naval em Hormuz (ataques a navios ADNOC a 14 Ago), risco geopolítico não capturado directamente pelos 5 pilares.",
-      key_event: "Evolução do bloqueio naval em Hormuz + EIA Stocks (próxima semana) + STEO revisão de Agosto"
+      thesis: "Swing máximo da série: +5 numa semana (W29 -4 → W30 +1). Dois pilares inverteram: DXY caiu de 99.80 para 98.8 (Treasury buybacks + bloqueio Irão-Hormuz a enfraquecer o dólar) → +1; STEO de Agosto aumentou as estimativas de shut-ins face a Julho ('continued severe constraints on Hormuz') → reversão do -1 de W29 para +1. EIA Stocks: build de +4.4M (sem. 14 Ago), menor que o build de W29 (+17.4M) mas ainda build → -1. Brent $94 (+6% semanal). COT Crude ainda n/d (18 Ago) — se crowding confirmado (crude +6%), score desce para -1, total 0.",
+      key_event: "EIA Inventários 26 Ago (sem. 22 Ago) + COT Report 28 Ago (dados 26 Ago) + Jackson Hole 27-29 Ago"
     }
   ]
 };
