@@ -1,52 +1,170 @@
 {
-  "_comment": "Ficheiro de estado semanal — valores N desta semana tornam-se N-1 na semana seguinte. Commit sempre com index.html.",
-  "week": 26,
-  "report_date": "2026-07-25",
-
+  "_comment": "Ficheiro de estado semanal — valores N desta semana tornam-se N-1 na semana seguinte. Commit sempre com config.js. NUNCA tocar no index.html.",
+  "_rebuilt": "Actualizado no ciclo W36/W31 (29 Ago 2026). Valores N desta semana — tornam-se N-1 na proxima.",
+  "forex_week": 36,
+  "commodity_week": 31,
+  "report_date": "2026-08-29",
   "forex": {
     "scores": {
-      "AUD": 9.5,
-      "GBP": 8.2,
-      "USD": 8.7,
-      "NZD": 6.4,
+      "AUD": 9.3,
+      "USD": 9.2,
+      "GBP": 8.4,
+      "NZD": 6.2,
       "EUR": 5.0,
-      "JPY": 4.2,
-      "CAD": 1.8,
+      "JPY": 4.5,
+      "CAD": 2.0,
       "CHF": 1.5
     },
-    "note_usd": "USD 8.7* pendente Fed 28-29 Jul + AUS CPI 29 Jul + BOE 30 Jul + BOJ 31 Jul",
-    "note_gbp": "GBP 8.2 (recuo de 8.4 — UK CPI Jun 22 Jul suavizou expectativas BOE)",
-    "note_oil": "Oil $100+ (Yemen Houthis 23 Jul, Bab al-Mandeb). CHF/JPY safe-haven. CAD petro suporte."
+    "rates": {
+      "AUD": "4.35%",
+      "USD": "3.625%",
+      "GBP": "3.75%",
+      "NZD": "2.50%",
+      "EUR": "2.25%",
+      "JPY": "1.00%",
+      "CAD": "2.25%",
+      "CHF": "0.00%"
+    },
+    "top5": [
+      {
+        "pair": "AUD/CHF",
+        "dir": "LONG",
+        "diff": 7.8,
+        "carry_bp": 435,
+        "final_score": 8.46,
+        "stars": 5
+      },
+      {
+        "pair": "USD/CHF",
+        "dir": "LONG",
+        "diff": 7.7,
+        "carry_bp": 362,
+        "final_score": 7.89,
+        "stars": 5
+      },
+      {
+        "pair": "GBP/CHF",
+        "dir": "LONG",
+        "diff": 6.9,
+        "carry_bp": 375,
+        "final_score": 7.42,
+        "stars": 4
+      },
+      {
+        "pair": "AUD/CAD",
+        "dir": "LONG",
+        "diff": 7.3,
+        "carry_bp": 210,
+        "final_score": 6.56,
+        "stars": 4
+      },
+      {
+        "pair": "USD/CAD",
+        "dir": "LONG",
+        "diff": 7.2,
+        "carry_bp": 138,
+        "final_score": 5.99,
+        "stars": 3
+      }
+    ],
+    "note_aud": "AUD 9.1->9.3: CPI Jul 3.5% vs 3.2% esperado.",
+    "note_usd": "USD 8.6->9.2: Warsh hawkish em Jackson Hole (28 Ago) + PCE Jul acima do consenso. Hike em Set a 57.5-59%.",
+    "note_gbp": "GBP 8.4 inalterado — sem dados T1 UK esta semana.",
+    "note_cad": "CAD 1.8->2.0: GDP Q2 +3.3% anualizado vs 2.5% do BOC; Q1 revisto para +0.3%."
   },
-
   "gold_pillars": {
-    "real_yield_pct":         2.42,
-    "gld_tonnes":             null,
-    "cot_gold_mm":            null,
-    "gdx_short_interest_m":   44.03,
-    "seasonality":            "Julho"
+    "excess_liquidity": 193.083,
+    "real_yield_pct": 2.34,
+    "gld_tonnes": 1044.0,
+    "cot_gold_mm": 144747,
+    "gdx_short_interest_m": 36.94,
+    "seasonality": "Agosto"
   },
-
   "crude_pillars": {
-    "ism_pmi_pct":            53.3,
-    "eia_stocks_change_m":    2.0,
-    "steo_shutins_mbd":       8.3,
-    "houthi_red_sea_note":    "Saudi loadings -36% (Houthi Red Sea blockade); 5 tankers reversed course",
-    "cot_crude_k":            null,
-    "dxy":                    101.47
+    "ism_pmi_pct": 55.6,
+    "eia_stocks_change_m": 0.1,
+    "steo_shutins_mbd": null,
+    "cot_crude_k": null,
+    "dxy": 99.65
   },
-
+  "last_confirmed": {
+    "_comment": "REGRA 3: quando um pilar fica n/d, o N-1 da semana seguinte e o ultimo valor CONFIRMADO, nunca null.",
+    "excess_liquidity": {
+      "value": 193.083,
+      "asof": "2026-07-31",
+      "note": "M1SL 19886.4 / INDPRO 102.9939, dados de Julho"
+    },
+    "real_yield_pct": {
+      "value": 2.34,
+      "asof": "2026-08-26",
+      "note": "FRED DFII10 confirmado"
+    },
+    "gld_tonnes": {
+      "value": 1044.0,
+      "asof": "2026-08-27",
+      "note": "DERIVADO (Manual §8.4a) de AUM/preco LBMA em 2 fontes; nao comparavel em nivel com a serie MacroMicro"
+    },
+    "cot_gold_mm": {
+      "value": 144747,
+      "asof": "2026-08-25",
+      "note": "Managed Money, metalcharts"
+    },
+    "gdx_short_interest_m": {
+      "value": 36.94,
+      "asof": "2026-08-14",
+      "note": "biweekly; proximo settlement ~31 Ago"
+    },
+    "ism_pmi_pct": {
+      "value": 55.6,
+      "asof": "2026-08-03",
+      "note": "dados de Julho; Agosto sai 1 Set"
+    },
+    "eia_stocks_change_m": {
+      "value": 0.1,
+      "asof": "2026-08-21",
+      "note": "total 428.9M bbl"
+    },
+    "steo_shutins_mbd": {
+      "value": 5.5,
+      "asof": "2026-07-14",
+      "note": "STEO Jul; proximo STEO 8 Set"
+    },
+    "cot_crude_k": {
+      "value": 266,
+      "asof": "2026-08-04",
+      "note": "proxy Saxo WTI+Brent; sem figura combinada desde entao"
+    },
+    "dxy": {
+      "value": 99.65,
+      "asof": "2026-08-28",
+      "note": "fecho de sexta, Yahoo DX-Y.NYB"
+    }
+  },
   "scores": {
-    "gold":  -2,
-    "crude": -1
+    "gold": 4,
+    "crude": -2
   },
-
+  "prices": {
+    "gold_usd": 4454.08,
+    "brent_usd": 88.29,
+    "dxy": 99.65
+  },
   "data_gaps": [
-    "GLD ETF tonnage — MacroMicro lag (último confirmado: 1,017.64t em 23 Jun)",
-    "COT Gold Jul 22 — released 24 Jul; número n/d (safe-haven bid → crowding → -1 se confirmado)",
-    "COT Crude Jul 22 — n/d (crude +7% semanal; crowding → -1 se confirmado, daria score -2)",
-    "US/SA Prod — Houthi Red Sea qualitative (+1 corte); STEO confirmará em 11 Ago"
+    "ETF GLD — resolvido por derivacao ⚠️ (MacroMicro 403, SPDR bloqueado). Repor a serie primaria assim que voltar",
+    "COT Crude — n/d. DECISIVO: com crude a -2, o intervalo real e -3 a -1; um crowding confirmado muda o semaforo para BEARISH",
+    "COT Crude combinado — proxy Saxo sem figura desde a semana de 4 Ago; serie WTI-only da CFTC recusada para nao misturar series",
+    "STEO shut-ins — sem publicacao nova desde 11 Ago; proxima a 8 Set",
+    "Corte nao uniforme: DFII10 de 26 Ago (pre-Warsh) vs DXY de 28 Ago (pos-Warsh)"
   ],
-
-  "macro_context": "Yemen Houthis atacaram 2 Saudi tankers (23 Jul). Brent $100.69 peak, fecha $98.38. WTI peak $92.19, fecha $87.88. 2ª chokepoint (Bab al-Mandeb) agora em risco além de Hormuz. EIA primeira build (+2.0M) depois de semanas de draws. Real yields +13bp para 2.42% (TradingEconomics 23 Jul). DXY 101.47. 10Y yield 4.69% (highest since Jan 2025). Fed 28-29 Jul: 64% HOLD, 36% HIKE. Goldman Sachs: Brent pode ir a $120 Q4 se disruptions persistirem."
+  "macro_context": "Jackson Hole dominou a semana. Warsh, na estreia como Fed Chair (28 Ago), foi explicitamente hawkish; com o PCE de Julho acima do consenso (3.7%/3.3%), a probabilidade de hike em Setembro passou de 35.5% para 57.5-59%. DXY reverteu de 98.80 para 99.65. Gold corrigiu para 4,454 (-3.7%) e Brent caiu para 88.29 (-5%) com o alivio da percepcao de risco geopolitico. AUS CPI Jul 3.5% acima do consenso de 3.2%. Canada GDP Q2 +3.3% anualizado, muito acima dos 2.5% do BOC.",
+  "divergence_note": "Gold: framework +3 (BULLISH) com o preco a cair 3.7% na semana. Divergencia inversa da de W30, onde o framework estava neutro com o preco em maximo historico. Score nao alterado (Manual §5).",
+  "next_week_watch": [
+    "1 Set — ISM Manufacturing (Ago): primeira leitura nova do pilar desde Julho",
+    "2 Set — RBNZ e BOC (confirmado no calendario oficial do RBNZ)",
+    "3 Set — CPI e GDP suicos: unico catalisador do CHF, afecta 3 dos 5 pares",
+    "4 Set — NFP e desemprego canadiano na mesma hora",
+    "4 Set — COT Report: pode resolver o n/d do crude",
+    "8 Set — EIA STEO Setembro",
+    "15-16 Set — FOMC com hike a 57.5-59%"
+  ]
 }
