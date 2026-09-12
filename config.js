@@ -6,16 +6,16 @@
 // ═══════════════════════════════════════════════════════════════════════════
 
 const WEEK_CONFIG = {
-  week: 37,
-  period: "7 – 11 Set 2026",
+  week: 38,
+  period: "14 – 18 Set 2026",
   pairs: [
     {
       pair: "AUD/CHF",
       direction: "LONG",
       conviction: "★★★★★",
-      score_diff: "7.6 pts",
+      score_diff: "7.8 pts",
       carry: "+435bp",
-      thesis: "Diferencial 9.4 (AUD) − 1.8 (CHF) = 7.6 pontos. AUD revisto de 9.3 para 9.4 depois do GDP do Q2 a +0.4% trimestral (ABS, 2 Set) contra consenso de 0.3%, com o contributo positivo do comercio externo pela primeira vez desde Dezembro de 2023; a taxa mantem-se em 4.35%, a mais alta do G8, e a proxima reuniao so e a 28-29 Set. CHF revisto em alta de 1.5 para 1.8 mas continua ancorado em 0.00%: o CPI de Agosto saiu a 0.8% anual contra 0.5% esperado e o GDP do Q2 a +1.5% trimestral, o mais forte desde o Q3 de 2021, e ainda assim a curva de swaps so preve a primeira subida para 0.25% em Junho de 2027. Catalisador: CPI da China, quarta 9 Set, 01:30 GMT — sem dados australianos na semana, e a procura chinesa que move o AUD. Key risk: uma escalada em Hormuz atinge as duas pernas ao mesmo tempo — bid de refugio no CHF e venda do AUD como proxy de risco — e e o unico cenario que inverte o par sem que nenhum banco central se pronuncie.",
+      thesis: "Diferencial 9.6 (AUD) - 1.8 (CHF) = 7.8 pontos, o mais largo do quadro. AUD revisto de 9.4 para 9.6 pelo eixo do tom: a 8 Set o vice-governador Hauser disse a televisao publica australiana que a inflacao e 'the central bank's one big problem' e nao excluiu subida na reuniao de 29 Set, e a Hunter afirmou no mesmo dia que o banco pode ter de subir; os quatro grandes bancos australianos apontam +25pb para 4.60% e a Westpac poe Novembro como cenario base. A taxa continua nos 4.35%, a mais alta do G8, o que da ao par o carry maximo do quadro e o Carry Rank de 10.0. CHF inalterado em 1.8 e ancorado em 0.00%: Schlegel falou a 11 Set, disse que a inflacao subiu mas continua dentro do intervalo de estabilidade de precos, e nao deu sinal sobre a avaliacao de 24 Set. Catalisador: nao ha dado australiano de Tier 1 antes de 24 Set, pelo que a semana do par corre sem catalisador proprio e fica exposta ao CHF. Key risk: os dados T2 australianos da semana foram materialmente maus — as condicoes de negocio do NAB cairam para -1, a primeira leitura negativa em seis anos, e o sentimento do consumidor recuou 5.2% para 84.4. O framework nao pontua T2 e por isso o score nao desceu, mas se o Labour Force de 24 Set confirmar o abrandamento a revisao inverte-se e este par e o primeiro a sentir.",
       base_ccy: "AUD",
       quote_ccy: "CHF"
     },
@@ -23,9 +23,9 @@ const WEEK_CONFIG = {
       pair: "USD/CHF",
       direction: "LONG",
       conviction: "★★★★★",
-      score_diff: "7.5 pts",
+      score_diff: "7.7 pts",
       carry: "+362bp",
-      thesis: "Diferencial 9.3 (USD) − 1.8 (CHF) = 7.5 pontos. USD revisto de 9.2 para 9.3: o NFP de Agosto saiu a +162 mil contra um consenso de 53 a 56 mil (BLS, 4 Set), mais de cinco vezes a media dos ultimos doze meses de 31 mil, com o desemprego estavel em 4.1%; os yields a 2 anos tocaram 4.4246%, o valor mais alto desde Janeiro de 2025. A revisao e contida em +0.1 porque o reprice liquido da semana foi pequeno: os comentarios dovish de Waller a 3 Set tinham derrubado a probabilidade de hike para 48.4% e o NFP limitou-se a devolve-la aos ~57-63% onde ja estava, e o ISM abrandou de 55.6% para 54.6%. CHF sem catalisador proprio ate a SNB de 24 Set, apesar dos dois beats de 3 Set. Catalisador: CPI dos EUA de Agosto, sexta 11 Set, 12:30 GMT, o ultimo dado de inflacao antes do FOMC de 15-16 Set. Key risk: o par depende de um unico numero a uma unica hora — um CPI abaixo do consenso valida a leitura de Waller de que ha desinflacao e desfaz o premio hawkish acumulado desde Jackson Hole.",
+      thesis: "Diferencial 9.5 (USD) - 1.8 (CHF) = 7.7 pontos. USD revisto de 9.3 para 9.5 pelo eixo da direccao do ciclo: o CPI de Agosto, publicado a 11 Set, deu core mensal de +0.3% contra 0.2% de consenso e levou a probabilidade de subida no FOMC de 16 Set de 50-57% para acima de 65%, e o PPI do dia anterior reacelerou para +0.4% mensal e 5.4% anual. A revisao e contida em +0.2 porque a leitura nao e unidireccional: o core anual desceu para 2.4%, o mais baixo desde Marco de 2021, e a gasolina — mais 3.9% no mes e mais 27.4% no ano — explicou sozinha mais de um terco da subida mensal do indice, o que sustenta a leitura de que o pico e sobretudo energia. O Fed esta em blackout desde 5 Set, pelo que o eixo do tom nao teve informacao nova. CHF em 1.8, sem catalisador proprio ate 24 Set. Catalisador: FOMC de quarta 16 Set, com Summary of Economic Projections — e o dot plot, nao a decisao, que carrega a informacao. Key risk: um hold acompanhado de projeccoes que nao validem mais aperto desfaz o premio construido desde Jackson Hole, e o par perde as duas pernas ao mesmo tempo se a SNB de 24 Set vier menos dovish do que a curva preca.",
       base_ccy: "USD",
       quote_ccy: "CHF"
     },
@@ -35,7 +35,7 @@ const WEEK_CONFIG = {
       conviction: "★★★★",
       score_diff: "6.6 pts",
       carry: "+375bp",
-      thesis: "Diferencial 8.4 (GBP) − 1.8 (CHF) = 6.6 pontos. GBP inalterado em 8.4 pela segunda semana: nao houve nenhum dado T1 do Reino Unido entre 31 Ago e 4 Set — a segunda-feira foi feriado bancario — e o CPI de Julho confirmado a 19 Ago em 2.9% anual continua dentro do intervalo neutro, sem activar nem o gatilho de subida acima de 3.0% nem o de descida abaixo de 2.4%. CHF em 1.8 pelos dois beats de 3 Set, ainda em 0.00%. Catalisador: GDP mensal do Reino Unido de Julho, sexta 11 Set, 07:00 BST (06:00 GMT) — e T2 e nao move o score, o que significa que o par entra na semana sem catalisador proprio de T1, tal como na semana passada. Key risk: e o par mais exposto ao CHF isolado, e o diferencial ja encolheu de 6.9 para 6.6 so por causa da revisao suica; outra subida do CHF da mesma ordem leva-o abaixo dos 5.5 pontos que separam as quatro estrelas das tres.",
+      thesis: "Diferencial 8.4 (GBP) - 1.8 (CHF) = 6.6 pontos, inalterado pela segunda semana. GBP mantem-se em 8.4 pela terceira semana consecutiva: nao houve comunicacao do MPC nem dado de Tier 1 britanico entre 7 e 11 Set. O GDP mensal de Julho, publicado a 11 Set, bateu com forca — mais 0.4% no mes contra 0.0% de consenso, servicos a mais 0.4%, e o oitavo periodo consecutivo de crescimento no 3m/3m — mas o GDP mensal foi classificado como T2 no ciclo anterior e mantem-se assim por consistencia de serie, pelo que nao move o score. Fica como questao em aberto. CHF em 1.8. Catalisador: e a moeda com mais Tier 1 na semana — Labour Market Overview na terca 15 Set as 07:00 BST, CPI de Agosto na quarta 16 Set as 07:00 BST e decisao do BOE na quinta 17 Set, tres dias seguidos. Key risk: o par entra numa semana em que o score da moeda base pode mudar duas vezes antes da decisao do banco central, e o diferencial esta a 0.4 pontos do limiar de 7.0 que separa as 4 das 5 estrelas — um CPI acima de 3.0% activa o gatilho de subida do score e o par muda de escalao de convicao dentro da propria semana.",
       base_ccy: "GBP",
       quote_ccy: "CHF"
     },
@@ -43,9 +43,9 @@ const WEEK_CONFIG = {
       pair: "AUD/CAD",
       direction: "LONG",
       conviction: "★★★★",
-      score_diff: "7.5 pts",
+      score_diff: "7.7 pts",
       carry: "+210bp",
-      thesis: "Diferencial 9.4 (AUD) − 1.9 (CAD) = 7.5 pontos, o unico do Top 5 que alargou esta semana. AUD reforcado pelo GDP do Q2 acima do consenso. CAD revisto em baixa de 2.0 para 1.9: o BOC manteve a taxa em 2.25% a 2 Set com linguagem de viés hawkish — 'upside risks to inflation have increased' — mas o emprego de Agosto saiu a -41.700 postos contra um consenso de +15.000 (StatCan, 4 Set), com o desemprego a manter-se em 6.4% e o crescimento salarial a arrefecer de 2.8% para 2.0%; o mercado passou a dar apenas 25% a um hike em 28 Out. Catalisador: CPI da China, quarta 9 Set, 01:30 GMT, que move o AUD; do lado canadiano o proximo T1 e o CPI de Agosto a 14 Set, tres dias depois de fechar esta semana. Key risk: o Brent subiu cerca de 9% na semana para 96.28 dolares com a escalada em Hormuz, e os termos de troca canadianos sao um vento a favor do CAD que este framework nao pontua — o diferencial de politica diz LONG enquanto o canal do petroleo empurra em sentido contrario, e esta divergencia e a maior desde W25.",
+      thesis: "Diferencial 9.6 (AUD) - 1.9 (CAD) = 7.7 pontos, com carry de 210bp. As 4 estrelas sao limitadas pelo carry e nao pelo diferencial: 7.7 pontos permitiriam 5 estrelas, mas 210bp fica abaixo dos 300bp que a tabela do Passo 3 exige para o escalao maximo. AUD em 9.6 pelo tom do RBA descrito acima. CAD inalterado em 1.9: nao houve um unico dado canadiano no calendario de 7 a 11 Set nem comunicacao do BOC, pelo que o quadro continua a ser o de 2 Set — hold em 2.25% com tom hawkish anulado pelo emprego a -41.700 e pelos salarios a descer de 2.8% para 2.0%. Catalisador: CPI canadiano de Agosto na segunda 14 Set as 12:30 GMT (08:30 ET), o primeiro Tier 1 da semana em todo o quadro. Key risk: a divergencia assinalada no ciclo anterior agravou-se. O Brent subiu 9% na semana para 104,61 dolares e os termos de troca canadianos melhoram com isso — um vento a favor do CAD que um framework de politica monetaria nao pontua, e que actua contra as duas pernas deste par ao mesmo tempo, porque a Australia e importadora liquida de energia.",
       base_ccy: "AUD",
       quote_ccy: "CAD"
     },
@@ -53,97 +53,28 @@ const WEEK_CONFIG = {
       pair: "USD/CAD",
       direction: "LONG",
       conviction: "★★★",
-      score_diff: "7.4 pts",
+      score_diff: "7.6 pts",
       carry: "+138bp",
-      thesis: "Diferencial 9.3 (USD) − 1.9 (CAD) = 7.4 pontos. USD reforcado pelo NFP muito acima do consenso; CAD enfraquecido pelo emprego de Agosto e pelo arrefecimento salarial para 2.0%, apesar do hold com tom hawkish do BOC. Conviction mantem-se em 3 estrelas: com 138bp o carry fica abaixo do piso de 150bp das quatro estrelas, e a checklist do SOP fixa explicitamente 'USD/CAD com carry 138bp < 150bp -> maximo 3 estrelas'. O diferencial de 7.4 permitiria 5 estrelas, mas o carry e um tecto e nao um bonus. Catalisador: CPI dos EUA de Agosto, sexta 11 Set, 12:30 GMT. Key risk: o par tem dois lados a mexer ao mesmo tempo e ambos contra — um CPI abaixo do consenso comprime o USD enquanto o Brent perto dos 96 dolares sustenta o CAD pelos termos de troca; foi esta combinacao que produziu as maiores reversoes do par na serie.",
+      thesis: "Diferencial 9.5 (USD) - 1.9 (CAD) = 7.6 pontos, carry de 138bp. As 3 estrelas sao o tecto imposto pelo carry: 138bp fica abaixo dos 150bp que a tabela do Passo 3 exige para 4 estrelas, e este e o caso que o SOP cita explicitamente na sua propria checklist. Um diferencial de 7.6 pontos nao compra estrelas que o carry nao sustenta. USD em 9.5 pelo reprice do FOMC, CAD em 1.9 sem dado novo. Catalisador: dois eventos em tres dias — CPI canadiano na segunda 14 Set e FOMC na quarta 16 Set — e sao os dois do mesmo lado do par, o que faz deste o par com mais informacao a chegar no Top 5. Key risk: a mesma exposicao ao petroleo do par anterior, agravada por o dolar americano ser tambem uma moeda de bloco exportador de energia; se o CPI canadiano surpreender em alta a 14 Set, o CAD ganha o primeiro catalisador proprio em duas semanas e o diferencial encolhe antes de o FOMC se pronunciar.",
       base_ccy: "USD",
       quote_ccy: "CAD"
     }
   ],
   t1_events: [
     {
-      date: "2026-09-01",
-      time: "10:00 ET",
-      release: "ISM Manufacturing PMI (Ago)",
-      ccy: "USD",
-      pairs: [
-        "USD/CHF",
-        "USD/CAD"
-      ]
-    },
-    {
-      date: "2026-09-01",
-      time: "09:00 GMT",
-      release: "HICP flash Zona Euro (Ago)",
+      date: "2026-09-10",
+      time: "12:15 GMT",
+      release: "BCE — decisao de taxa (Berlim)",
       ccy: "EUR",
       pairs: []
     },
     {
-      date: "2026-09-02",
-      time: "01:30 GMT",
-      release: "GDP Q2 — ABS",
-      ccy: "AUD",
-      pairs: [
-        "AUD/CHF",
-        "AUD/CAD"
-      ]
-    },
-    {
-      date: "2026-09-02",
-      time: "02:00 GMT",
-      release: "RBNZ — decisao de taxa",
-      ccy: "NZD",
-      pairs: []
-    },
-    {
-      date: "2026-09-02",
-      time: "13:45 GMT",
-      release: "Bank of Canada — decisao de taxa",
-      ccy: "CAD",
-      pairs: [
-        "AUD/CAD",
-        "USD/CAD"
-      ]
-    },
-    {
-      date: "2026-09-03",
-      time: "06:30 GMT",
-      release: "CPI (Ago) — BFS",
-      ccy: "CHF",
-      pairs: [
-        "AUD/CHF",
-        "USD/CHF",
-        "GBP/CHF"
-      ]
-    },
-    {
-      date: "2026-09-03",
-      time: "07:00 GMT",
-      release: "GDP Q2 — SECO",
-      ccy: "CHF",
-      pairs: [
-        "AUD/CHF",
-        "USD/CHF",
-        "GBP/CHF"
-      ]
-    },
-    {
-      date: "2026-09-04",
+      date: "2026-09-11",
       time: "12:30 GMT",
-      release: "Nonfarm Payrolls (Ago)",
+      release: "CPI e core CPI (Ago)",
       ccy: "USD",
       pairs: [
         "USD/CHF",
-        "USD/CAD"
-      ]
-    },
-    {
-      date: "2026-09-04",
-      time: "12:30 GMT",
-      release: "Emprego (Ago) — StatCan",
-      ccy: "CAD",
-      pairs: [
-        "AUD/CAD",
         "USD/CAD"
       ]
     }
@@ -151,40 +82,36 @@ const WEEK_CONFIG = {
   t2_events: [
     {
       date: "2026-09-07",
-      time: "—",
-      release: "Labor Day — mercados EUA fechados",
-      ccy: "USD",
-      pairs: [
-        "USD/CHF",
-        "USD/CAD"
-      ]
-    },
-    {
-      date: "2026-09-07",
       time: "23:50 GMT",
-      release: "GDP Q2 final",
+      release: "GDP Q2 final (revisao, T2)",
       ccy: "JPY",
       pairs: []
     },
     {
       date: "2026-09-08",
       time: "—",
-      release: "EIA STEO Setembro",
-      ccy: "—",
-      pairs: []
+      release: "NAB Business Survey e Westpac-MI Sentiment",
+      ccy: "AUD",
+      pairs: [
+        "AUD/CHF",
+        "AUD/CAD"
+      ]
+    },
+    {
+      date: "2026-09-08",
+      time: "—",
+      release: "Hauser e Hunter (RBA) — declaracoes",
+      ccy: "AUD",
+      pairs: [
+        "AUD/CHF",
+        "AUD/CAD"
+      ]
     },
     {
       date: "2026-09-09",
-      time: "01:30 GMT",
-      release: "CPI China (Ago)",
-      ccy: "CNY",
-      pairs: []
-    },
-    {
-      date: "2026-09-10",
-      time: "12:15 GMT",
-      release: "ECB — decisao de taxa (Berlim)",
-      ccy: "EUR",
+      time: "—",
+      release: "EIA STEO Setembro",
+      ccy: "—",
       pairs: []
     },
     {
@@ -199,27 +126,28 @@ const WEEK_CONFIG = {
     },
     {
       date: "2026-09-11",
-      time: "12:30 GMT",
-      release: "CPI e core CPI (Ago)",
-      ccy: "USD",
-      pairs: [
-        "USD/CHF",
-        "USD/CAD"
-      ]
-    },
-    {
-      date: "2026-09-11",
       time: "07:00 BST",
-      release: "GDP mensal (Jul) — ONS",
+      release: "GDP mensal (Jul) — ONS (T2)",
       ccy: "GBP",
       pairs: [
         "GBP/CHF"
       ]
     },
     {
+      date: "2026-09-11",
+      time: "10:33 GMT",
+      release: "Schlegel (SNB) — declaracoes",
+      ccy: "CHF",
+      pairs: [
+        "AUD/CHF",
+        "USD/CHF",
+        "GBP/CHF"
+      ]
+    },
+    {
       date: "2026-09-14",
-      time: "13:30 GMT",
-      release: "CPI (Ago) — StatCan",
+      time: "12:30 GMT",
+      release: "T1 · CPI (Ago) — StatCan",
       ccy: "CAD",
       pairs: [
         "AUD/CAD",
@@ -228,8 +156,17 @@ const WEEK_CONFIG = {
     },
     {
       date: "2026-09-15",
-      time: "—",
-      release: "FOMC",
+      time: "07:00 BST",
+      release: "T1 · Labour Market Overview — ONS",
+      ccy: "GBP",
+      pairs: [
+        "GBP/CHF"
+      ]
+    },
+    {
+      date: "2026-09-16",
+      time: "18:00 GMT",
+      release: "T1 · FOMC + Summary of Economic Projections",
       ccy: "USD",
       pairs: [
         "USD/CHF",
@@ -239,7 +176,23 @@ const WEEK_CONFIG = {
     {
       date: "2026-09-16",
       time: "07:00 BST",
-      release: "CPI (Ago) — ONS",
+      release: "T1 · CPI (Ago) — ONS",
+      ccy: "GBP",
+      pairs: [
+        "GBP/CHF"
+      ]
+    },
+    {
+      date: "2026-09-16",
+      time: "—",
+      release: "Taxas do BCE tornam-se eficazes (deposito 2.50%)",
+      ccy: "EUR",
+      pairs: []
+    },
+    {
+      date: "2026-09-17",
+      time: "12:00 BST",
+      release: "T1 · BOE — decisao do MPC",
       ccy: "GBP",
       pairs: [
         "GBP/CHF"
@@ -247,41 +200,29 @@ const WEEK_CONFIG = {
     },
     {
       date: "2026-09-17",
-      time: "—",
-      release: "BOE — decisao de taxa",
-      ccy: "GBP",
-      pairs: [
-        "GBP/CHF"
-      ]
+      time: "TBC",
+      release: "T1 · GDP Q2 — Stats NZ (data nao confirmada)",
+      ccy: "NZD",
+      pairs: []
     },
     {
-      date: "2026-09-17",
+      date: "2026-09-18",
       time: "—",
-      release: "BOJ — decisao de taxa",
+      release: "T1 · BOJ — decisao (sem Outlook Report)",
       ccy: "JPY",
       pairs: []
     },
     {
       date: "2026-09-18",
       time: "TBC",
-      release: "CPI nacional (Ago) — Statistics Japan",
+      release: "T1 · CPI nacional (Ago) (data nao confirmada)",
       ccy: "JPY",
       pairs: []
     },
     {
       date: "2026-09-24",
-      time: "01:30 GMT",
-      release: "Labour Force (Ago) — ABS",
-      ccy: "AUD",
-      pairs: [
-        "AUD/CHF",
-        "AUD/CAD"
-      ]
-    },
-    {
-      date: "2026-09-24",
       time: "07:30 GMT",
-      release: "SNB — avaliacao de politica monetaria",
+      release: "T1 · SNB — avaliacao de politica monetaria",
       ccy: "CHF",
       pairs: [
         "AUD/CHF",
@@ -290,36 +231,43 @@ const WEEK_CONFIG = {
       ]
     },
     {
-      date: "2026-09-28",
-      time: "—",
-      release: "RBA — reuniao do Conselho",
+      date: "2026-09-24",
+      time: "01:30 GMT",
+      release: "T1 · Labour Force (Ago) — ABS",
       ccy: "AUD",
       pairs: [
         "AUD/CHF",
         "AUD/CAD"
       ]
+    },
+    {
+      date: "2026-09-29",
+      time: "—",
+      release: "RBA Monetary Policy Board — decisao",
+      ccy: "AUD",
+      pairs: [
+        "AUD/CHF",
+        "AUD/CAD"
+      ]
+    },
+    {
+      date: "2026-10-29",
+      time: "—",
+      release: "BCE — proxima reuniao (Frankfurt)",
+      ccy: "EUR",
+      pairs: []
     }
   ],
-  holidays: [
-    {
-      date: "2026-09-07",
-      country: "USA",
-      label: "Labor Day — mercados fechados",
-      pairs: [
-        "USD/CHF",
-        "USD/CAD"
-      ]
-    }
-  ]
+  holidays: []
 };
 
 const COMMODITY_CONFIG = {
-  week: 32,
+  week: 33,
   assets: [
     {
       asset: "GOLD",
-      score: 1,
-      verdict_label: "MILD BULLISH",
+      score: 0,
+      verdict_label: "NEUTRAL",
       icon: "🥇",
       color_class: "xau",
       pillars: [
@@ -331,8 +279,8 @@ const COMMODITY_CONFIG = {
         },
         {
           name: "Real Int. Rate (TIPS)",
-          n: "2.42% (3 Set)",
-          n1: "2.34% (26 Ago)",
+          n: "2.55% (10 Set)",
+          n1: "2.42% (3 Set)",
           score: -1
         },
         {
@@ -343,54 +291,54 @@ const COMMODITY_CONFIG = {
         },
         {
           name: "COT Gold (MM)",
-          n: "136,771 (1 Set)",
-          n1: "144,747 (25 Ago)",
+          n: "134,972 (8 Set)",
+          n1: "136,771 (1 Set)",
           score: 1
         },
         {
           name: "GDX Short Int.",
-          n: "36.94M s/ report",
+          n: "37.19M (31 Ago)",
           n1: "36.94M (14 Ago)",
-          score: 0
+          score: -1
         },
         {
           name: "Sazonalidade",
           n: "Setembro",
-          n1: "Agosto",
+          n1: "Setembro",
           score: 1
         }
       ],
-      thesis: "Score cai de +4 (W31) para +1: dos seis pilares, tres ficam a zero por ausencia de dado novo ou de corroboracao — Excess Liquidity (FRED sem publicacao de Agosto), GDX (sem novo report biweekly desde 14 Ago) e ETF GLD (uma so fonte de derivacao valida, quando o Manual §8.4a exige duas). Dos dois pilares com sinal activo, o COT desce de 144.747 para 136.771 e descomprime o posicionamento (+1), enquanto os yields reais sobem de 2,34% para 2,42% (-1). A sazonalidade de Setembro mantem o +1. A descida e sobretudo perda de sinal, nao inversao de fundamentais. Sensibilidade: o intervalo real e 0 a +2 e o ETF GLD e decisivo — a leitura contraria levaria o gold a NEUTRAL.",
-      key_event: "11 Set — CPI dos EUA de Agosto, 12:30 GMT: o dado que fixa a leitura do FOMC de 15-16 Set e, por essa via, o custo de oportunidade do metal. Antes disso, 18 Set traz a leitura do INDPRO que reactiva o pilar Excess Liquidity.",
+      thesis: "Score cai de +1 (W32) para 0: um unico pilar mudou de score e e ele que explica o delta inteiro. O GDX estava parado no settlement de 14 Ago por duas semanas sem report novo, recebeu o de 31 Ago e mostrou short interest a subir de 36,94M para 37,19M acoes — mais shorts nas mineiras, nao cobertura, e o pilar passa de 0 para -1. Os outros cinco repetem: yields reais -1 pela segunda semana (2.42% para 2.55%, com o salto no dia do CPI americano, o que agrava a margem sem mudar o sinal), COT +1 pela segunda semana (Managed Money a largar 1.799 contratos para 134.972, descompressao e nao inversao), Sazonalidade +1 pelo sinal absoluto de Setembro, Excess Liquidity 0 por N igual a N-1 com dado publicado, e ETF GLD 0 por protocolo n/d. Os dois zeros nao sao a mesma coisa: o do Excess Liquidity tem dado publicado e nao revisto, o do ETF GLD e ausencia de segunda fonte. O preco convergiu — 4.432,56 a 4 Set para 4.350,36 a 11 Set, terceira semana consecutiva de queda.",
+      key_event: "18 Set — INDPRO de Agosto no FRED, a primeira metade do pilar Excess Liquidity, parado em Julho; o M1SL segue a 22 Set. Antes disso, o FOMC de 16 Set com dot plot fixa a trajectoria dos yields reais, que e o pilar que mais mexeu esta semana.",
       data_gaps: [
-        "ETF GLD — n/d. Uma so fonte de derivacao valida esta semana (SSGA: AUM 151.250,23M / LBMA PM 4.467,15 a 3 Set, que daria ~1.053t). Barchart desactualizado, SPDR AWAITING, MacroMicro 403, Goldhub 404. DECISIVO: intervalo real 0 a +2",
-        "Excess Liquidity — sem dado novo: M1SL e INDPRO ambos ainda em Julho; INDPRO so a 18 Set",
-        "GDX Short Interest — sem novo report biweekly; settlement de ~31 Ago ainda nao publicado"
+        "ETF GLD — n/d pela segunda semana. Uma so fonte de derivacao valida (SSGA: AUM 147.692,38M / LBMA PM 4.365,45 a 11 Set, que daria ~1.052t). Barchart congelado nos valores da semana passada, stockanalysis com AUM incompativel com o numero de acoes, MacroMicro 403, SPDR AWAITING. O Manual 8.4a exige 2+ fontes. DECISIVO: intervalo real -1 a +1",
+        "Excess Liquidity — NAO e n/d: M1SL e INDPRO de Julho estao publicados e sem revisao, pelo que N iguala N-1 e o pilar pontua 0 pela regra normal. INDPRO de Agosto a 18 Set, M1SL a 22 Set",
+        "Corte de observacao nao uniforme: precos de 11 Set, TIPS de 10 Set, COT de 8 Set, GDX de 31 Ago, Excess Liquidity de Julho"
       ]
     },
     {
       asset: "CRUDE OIL",
-      score: 2,
-      verdict_label: "MILD BULLISH",
+      score: 3,
+      verdict_label: "BULLISH",
       icon: "🛢️",
       color_class: "oil",
       pillars: [
         {
           name: "Business Conf. (ISM)",
-          n: "54.6% (Ago)",
-          n1: "55.6% (Jul)",
-          score: -1
+          n: "54.6% s/ report",
+          n1: "54.6% (Ago)",
+          score: 0
         },
         {
           name: "EIA Stocks",
-          n: "-4.5M bbl (28 Ago)",
-          n1: "+0.1M bbl (21 Ago)",
+          n: "-0.4M bbl (4 Set)",
+          n1: "-4.5M bbl (28 Ago)",
           score: 1
         },
         {
           name: "US/SA Prod. (STEO)",
-          n: "qualit. (!) Hormuz",
-          n1: "5.5M b/d (Jul)",
+          n: "6.7M b/d (Ago)",
+          n1: "5.0M b/d (Jul rev.)",
           score: 1
         },
         {
@@ -401,17 +349,18 @@ const COMMODITY_CONFIG = {
         },
         {
           name: "US Dollar (DXY)",
-          n: "99.16 (4 Set)",
-          n1: "99.65 (28 Ago)",
+          n: "99.12 (11 Set)",
+          n1: "99.16 (4 Set)",
           score: 1
         }
       ],
-      thesis: "Score sobe de -2 (W31) para +2, inversao de 4 pontos e a maior desde W30. O EIA registou um draw de 4,5M bbl na semana de 28 Ago depois de cinco semanas sem reducao (+1), o DXY cedeu de 99,65 para 99,16 (+1) e o pilar US/SA Production recebe +1 qualitativo pela escalada em Hormuz — transitos em 107 na semana de 24-30 Ago contra 121 na anterior, sem numero de shut-ins publicado. Trava o ISM, que desacelerou de 55,6% para 54,6% (-1). O COT continua n/d pela quinta semana. Sensibilidade: o intervalo real e +1 a +3 e uma descompressao do posicionamento levaria o crude a BULLISH.",
-      key_event: "8 Set — EIA STEO de Setembro: primeira actualizacao de shut-ins desde 11 Ago, e substitui por um numero o +1 qualitativo que hoje sustenta um terco do score. A 14 Set, o COT Report adiado pelo feriado.",
+      thesis: "Score sobe de +2 (W32) para +3, o valor mais alto das ultimas sete semanas (W27-W33, em que o anterior maximo eram os +2 de W32). Tres pilares positivos — EIA, STEO e DXY —, dois a zero e nenhum negativo. O delta de um ponto vem do ISM: pontuava -1 em W32 porque o indice tinha desacelerado de 55,6% para 54,6%, e esta semana nao ha publicacao mensal nova, pelo que N iguala N-1 e a regra devolve 0. O crude ganha um ponto por deixar de ter um pilar negativo, nao por haver informacao nova — e o ISM nao e um dos tres pontos, esta a zero. O pilar STEO deixou de ser qualitativo: a edicao de Setembro, publicada a 9 Set, da shut-ins de 6,7M b/d realizados em Agosto contra 5,0M b/d em Julho, valor que a propria edicao reviu, e o N-1 usado e esse e nao os 5,5M da edicao anterior, porque N e N-1 tem de vir da mesma serie. O EIA deu draw de 0,4M bbl na semana de 4 Set: +1 pelo sinal absoluto, com a magnitude a cair de 4,5M para 0,4M sem alterar o score. O DXY cedeu de 99,16 para 99,12 — quatro centesimas, direccao corroborada na TradingEconomics mas magnitude indistinguivel de ruido, e sem este ponto o crude seria +2. O Brent fechou a 104,61, mais 9% na semana.",
+      key_event: "14 Set — boletim do Saxo com a semana de 8 Set, setima oportunidade de recuperar a figura combinada WTI+Brent que falta desde 4 Ago. O COT da CFTC seguinte e a 18 Set, com posicoes de 15 Set. E a 16 Set o FOMC, que e o que move o DXY.",
       data_gaps: [
-        "COT Crude — n/d pela 5.ª semana. O proxy Saxo nao volta a publicar figura combinada WTI+Brent desde a semana de 4 Ago (266k). DECISIVO: intervalo real +1 a +3",
-        "US/SA Production — +1 QUALITATIVO, sem numero de shut-ins. Assenta na escalada em Hormuz; o STEO de 8 Set substitui-o por um valor",
-        "STEO — sem publicacao nova desde 11 Ago"
+        "COT Crude — n/d pela sexta semana consecutiva. O boletim do Saxo da semana de 1 Set (pub. 7 Set) volta a nao dar figura combinada e limita-se a dizer que os fundos acrescentaram longos em WTI e Brent — leitura qualitativa que aponta para crowding, ou seja para o lado -1. DECISIVO: intervalo real +2 a +4, com o lado mais provavel a ser o +2",
+        "A figura da CFTC para o ICE Light Sweet (net short de 9.687 a 8 Set) existe e nao foi usada: e serie diferente do proxy composto do Saxo, e o Manual 4 proibe misturar series",
+        "Business Confidence (ISM) — NAO e n/d: o dado de Agosto esta publicado e sem revisao, N iguala N-1 e o pilar pontua 0 pela regra normal. Setembro sai a 1 Out",
+        "DXY — o pilar pontua sobre quatro centesimas. Direccao corroborada em duas fontes, magnitude no limite do ruido de fecho"
       ]
     }
   ]
