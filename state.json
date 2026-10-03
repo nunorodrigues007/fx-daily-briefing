@@ -1,183 +1,185 @@
 {
-  "_comment": "Ficheiro de estado semanal — valores N desta semana tornam-se N-1 na semana seguinte. Commit sempre com config.js. NUNCA tocar no index.html.",
-  "_rebuilt": "Actualizado no ciclo W40/W35 (26 Set 2026). Valores N desta semana — tornam-se N-1 na proxima. O ciclo W39/W34 ESTA PUBLICADO (LEIA-ME §6, PDFs arquivados, linhas W38 e W39 no Excel, config.js e state.json commitados a 19 Set); o campo _rebuilt anterior ficou com o texto 'AINDA NAO PUBLICADO' de antes da publicacao e era apenas texto obsoleto, apanhado pela supervisao deste ciclo. ESTE ciclo (W40/W35) ESTA PUBLICADO a 26 Set 2026: os quatro passos da Fase 6 correram juntos — PDFs arquivados, linha W40 no Excel (com o titulo A1 e a legenda das bandas corrigidos), registo na §6 e na §7 (entradas 40 a 49), e config.js + state.json commitados para main. Este campo e actualizado NA PUBLICACAO e nao antes: no ciclo W39 ficou a dizer 'AINDA NAO PUBLICADO' durante uma semana depois de o ciclo ter sido publicado, e foi a supervisao deste ciclo que o apanhou. Ciclo gerado na shell do portatil, com 26/26 testes e o codeload a responder sem fallback.",
-  "forex_week": 40,
-  "commodity_week": 35,
-  "report_date": "2026-09-26",
-  "forex": {
-    "scores": {
-      "AUD": 9.8,
-      "USD": 9.9,
-      "GBP": 8.7,
-      "EUR": 7.2,
-      "NZD": 7.4,
-      "JPY": 5.7,
-      "CAD": 1.9,
-      "CHF": 1.9
-    },
-    "rates": {
-      "AUD": "4.35%",
-      "USD": "3.875%",
-      "GBP": "3.75%",
-      "EUR": "2.50%",
-      "NZD": "2.75%",
-      "JPY": "1.25%",
-      "CAD": "2.25%",
-      "CHF": "0.00%"
-    },
-    "top5": [
-      {
-        "pair": "AUD/CHF",
-        "dir": "LONG",
-        "diff": 7.9,
-        "carry_bp": 435,
-        "final_score": 8.53,
-        "stars": 5
-      },
-      {
-        "pair": "USD/CHF",
-        "dir": "LONG",
-        "diff": 8.0,
-        "carry_bp": 388,
-        "final_score": 8.28,
-        "stars": 5
-      },
-      {
-        "pair": "GBP/CHF",
-        "dir": "LONG",
-        "diff": 6.8,
-        "carry_bp": 375,
-        "final_score": 7.35,
-        "stars": 4
-      },
-      {
-        "pair": "AUD/CAD",
-        "dir": "LONG",
-        "diff": 7.9,
-        "carry_bp": 210,
-        "final_score": 6.98,
-        "stars": 4
-      },
-      {
-        "pair": "USD/CAD",
-        "dir": "LONG",
-        "diff": 8.0,
-        "carry_bp": 162,
-        "final_score": 6.72,
-        "stars": 4
-      }
-    ],
-    "note_aud": "AUD 9.7->9.8: eixo 2. A precificacao da subida de 29 Set passou de 70-75% para cerca de 90% (BBH via tradingpedia, 25 Set) e os QUATRO grandes bancos australianos passaram todos a preve-la para 4,60%. O T1 da semana foi MISTO e e o que contem a revisao em 0.1: emprego de Agosto +39,5 mil contra +20 mil esperados, mas desemprego a subir para 4,6% contra 4,5%, o mais alto desde o final de 2021, com tempo inteiro -6,3 mil e parcial +45,8 mil, e participacao recorde de 67,1%. Discrepancia registada: a ING escreveu que o emprego a tempo inteiro reforcou em Julho e Agosto, o que o comunicado do ABS contradiz; usou-se o ABS.",
-    "note_usd": "USD 9.9 inalterado, e a justificacao foi reescrita na supervisao. O eixo 2 firmou mais do que em qualquer outra moeda — Outubro de 49% para 70%+, Treasury a 10 anos a 5,175%, maximo de 19 anos, e a 30 anos a 5,472%, maximo desde 2004 — e o score nao mexe. O eixo 1 esta inalterado a ~68pb acima do longo prazo de 3,2% dos dots. MAS: esse argumento nao distingue o USD do AUD, que tambem tem o eixo 1 parado, e o tecto de 10.0 nao vincula em +0.1. A razao real e discricionaria e NAO esta escrita no SOP: reservar o ultimo decimo para a subida ser entregue a 28 Out. QUESTAO EM ABERTO com tres opcoes: escrever a regra e aplica-la simetricamente (conteria o AUD); dar +0.1 e aceitar 10.0; ou rever 9.9 em baixa.",
-    "note_gbp": "GBP 8.6->8.7: eixo 3 com fonte primaria. Lombardelli, vice-governadora para a politica monetaria e UMA DAS SEIS que votaram manter a 17 Set, disse a 24 Set que 'policy is increasingly likely to need to tighten if elevated energy prices persist', e projectou CPI a ~3,7% no fim de 2026 e 4,2% no Q1 de 2027. Contido a 0.1 porque essa trajectoria ja estava no comunicado do MPC de 17 Set e ja foi pontuada no W39 — pontua-la outra vez seria contar o mesmo facto duas vezes. Corroboracao fraca: 86% de subida precada para 5 Nov, de uma pagina que declara 'cached data' e sem leitura comparavel no W39, pelo que a variacao nao e afirmavel. Contrapeso: flash PMI de servicos 51,7 contra 52,0. QUESTAO: o item que sustenta a revisao e Tier 3 pela tabela do SOP §6.",
-    "note_eur": "EUR 7.2 inalterado. Nao foi encontrada comunicacao do BCE na semana; ressalva de metodo aceite na supervisao: o calendario semanal do BCE e uma pagina ROTATIVA e, quando foi lida, ja servia a semana corrente, pelo que a ausencia nao e verificavel a posteriori nessa pagina. O que houve foi crescimento a bater, ambos T2: flash composto da Zona Euro 53,1 contra 51,5 e Ifo alemao 89,9 contra 89,0, de 88,8. Lagarde fala a 28 Set no Parlamento Europeu, ja no periodo rotulado.",
-    "note_nzd": "NZD 7.4 inalterado: a semana mais vazia das oito. A unica linha do calendario neozelandes e o indicador Westpac-MM de confianca no emprego, inquerito privado que nao entra em nenhum Tier. Sem dado, sem comunicacao do RBNZ, sem reprecificacao registada. Score herdado, como o SOP manda.",
-    "note_jpy": "JPY 5.7 inalterado: sem dado T1 e sem comunicacao do BOJ. O USD/JPY subiu cinco sessoes ate 159,00 na quinta 24 Set e recuou para 157,65 na sexta, e o que o suportou foi jawboning do MINISTERIO DAS FINANCAS — Katayama a dizer que os principios da intervencao conjunta de 31 Jul 'are still alive' — e nao politica monetaria. O MOF fez rate checks a 18 Set. Limiar historico de intervencao em 160,00 (163,00 a 31 Jul, conjunta com os EUA; 160,50 a 30 Abr). A leitura de que nova subida e improvavel no curto prazo vem do 7-2 e da cautela de Ueda, ja pontuados no W38 e no W39.",
-    "note_cad": "CAD 1.9 inalterado: sem T1. Retail Sales de Julho -0,7% contra -0,8% (T2, com avanco de +1,3% para Agosto) e Macklem em Halifax a 21 Set explicitamente a nao sinalizar. TENSAO QUE SE AGRAVA, terceira semana: Macklem nomeou a condicao — 'if oil prices stay near 100 dollars per barrel, we would expect inflation to edge up in the coming months' — e o Brent fechou a 104,37, ou seja a condicao ESTA CUMPRIDA, com inflacao headline perto de 3% e ~50% de subida precada para 28 Out (leitura de 18 Set). Um banco central nestas condicoes com score 1.9 esta na banda que o SOP §3 chama maximo expansionista. CORRECCAO: o proximo T1 do CAD e o Labour Force Survey de 9 Out e nao o CPI de 19 Out — o W39 saltou o emprego, que a tabela do SOP nomeia como T1.",
-    "note_chf": "CHF 1.8->1.9: eixos 2 e 3, com fonte primaria. A SNB manteve 0,00% a 24 Set mas reviu em ALTA a previsao de inflacao em todo o horizonte (2026 0,6->0,7; 2027 0,6->0,8; 2028 0,7->0,8) e o crescimento de 2026 de ~1% para 1,5-2%, e abandonou a linguagem de 'increased willingness' a intervir, passando a 'willing to be active as necessary'. Contido a 0.1 porque o eixo 1 continua em 0,00% e porque a previsao da propria SNB mantem a inflacao em 0,8% ate 2028, abaixo do 1% que o banco associa a discutir subidas. Contra-evidencia: o mercado leu sell the fact, o franco enfraqueceu e o EUR/CHF subiu de 0,9380 para 0,9420. CONSEQUENCIA: o CHF empata com o CAD a 1,9 (primeira vez desde o W23, quando ambos estavam em 1,5) e o par imediatamente abaixo do Top 5 troca de NZD/CHF para GBP/CAD, por quatro centesimas."
-  },
-  "gold_pillars": {
-    "excess_liquidity": 193.96,
-    "real_yield_pct": 2.85,
-    "gld_tonnes": null,
-    "cot_gold_mm": 127389,
-    "gdx_short_interest_m": 35.51,
-    "seasonality": "Setembro"
-  },
-  "crude_pillars": {
-    "ism_pmi_pct": 54.6,
-    "eia_stocks_change_m": 3.0,
-    "steo_shutins_mbd": 6.7,
-    "cot_crude_k": null,
-    "dxy": 101.04
-  },
-  "last_confirmed": {
-    "_comment": "REGRA 3: quando um pilar fica n/d, o N-1 da semana seguinte e o ultimo valor CONFIRMADO, nunca null. A nota nomeia a EDICAO da fonte, nao so a data de observacao (log §7 #28).",
-    "excess_liquidity": {
-      "value": 193.96,
-      "asof": "2026-08-31",
-      "note": "M1SL 19.991,1 (Ago, publicado 22 Set 12:01 CDT) / INDPRO 103,0682 (Ago, serie act. 18 Set 08:20 CDT), lidos do CSV primario do FRED. REVISAO DE VINTAGE: a edicao corrente reviu Julho, o M1 de 19.886,4 para 19.886,5 e o INDPRO de 102,9939 para 103,0454, pelo que o N-1 usado neste ciclo foi 192,988 e nao os 193,083 que estavam gravados. Proxima publicacao do M1SL a 27 Out; do INDPRO a 16 Out"
-    },
-    "real_yield_pct": {
-      "value": 2.85,
-      "asof": "2026-09-24",
-      "note": "FRED DFII10 confirmado no CSV, serie actualizada 25 Set 15:16 CDT. Serie: 18 Set 2,68; 21 Set 2,62; 22 Set 2,63; 23 Set 2,76; 24 Set 2,85. O valor de 25 Set so sai a 28 Set (lag de um dia util)"
-    },
-    "gld_tonnes": {
-      "value": 1044.0,
-      "asof": "2026-08-27",
-      "note": "DERIVADO (Manual §8.4a) de AUM/preco LBMA em 2 fontes; nao comparavel em nivel com a serie MacroMicro. QUARTA semana consecutiva sem segunda fonte valida, pelo que o ultimo confirmado continua a ser este. Em W35 a SSGA de 24 Set (AUM 147.613,48M? nao: 144.613,48M / NAV 391,16 / 369,70M accoes) e internamente coerente mas e fonte unica; stockanalysis incoerente, MacroMicro 403, spdrgoldshares 404. Nao se derivou tonelagem por faltar o preco LBMA do dia, e nao se inclinou o intervalo de sensibilidade: as accoes mexeram 0,16% em sete dias"
-    },
-    "cot_gold_mm": {
-      "value": 127389,
-      "asof": "2026-09-22",
-      "note": "Managed Money, metalcharts.org/cot/gold, posicoes de 22 Set publicadas sexta 25 Set 15:30 ET pelo calendario da CFTC; -5.727 na semana, open interest 412.800. A aritmetica fecha com o N-1: 133.116 - 5.727 = 127.389. Terceira semana consecutiva de descompressao e a maior das tres (W33 -1.799, W34 -1.856, W35 -5.727)"
-    },
-    "gdx_short_interest_m": {
-      "value": 35.51,
-      "asof": "2026-09-15",
-      "note": "biweekly; SETTLEMENT DE 15 SET PUBLICADO: marketbeat.com NYSEARCA/GDX da 35.514.478 accoes, 11,9% do float, pagina actualizada 24 Set 2026, e a Benzinga da a mesma linha ('falling from 37.19M to 35.51M'). Queda de 1,68M ou 4,5% face ao settlement de 31 Ago (37.194.640) — cobertura de shorts, pilar +1. ATENCAO AO HISTORICO: a primeira versao do W35 declarou 'sem report novo' por ter aceitado uma sumarizacao da pagina em vez da pagina; o agente supervisor apanhou. O settlement seguinte e o de 30 Set, com publicacao esperada ~7 Out pela regra dos ±5 dias uteis, ou ~9-10 Out pelo lag observado nesta serie. Anterior 37,19M (31 Ago), antes 36,94M (14 Ago), antes 38,03M (31 Jul)"
-    },
-    "ism_pmi_pct": {
-      "value": 54.6,
-      "asof": "2026-09-01",
-      "note": "dados de Agosto, publicados 1 Set e sem revisao. NAO e n/d: N iguala N-1 pela regra normal, TERCEIRA semana consecutiva. Setembro sai a 1 Out, 10:00 ET = 14:00 GMT. O flash PMI da S&P Global (industria 57,0 a 23 Set) e outra serie e nao entra neste pilar"
-    },
-    "eia_stocks_change_m": {
-      "value": 3.0,
-      "asof": "2026-09-18",
-      "note": "BUILD; confirmado na Table 1 do balanco oficial da EIA (ir.eia.gov/wpsr/overview.pdf, com curl -L): 'Week Ending 9/18/2026 · Commercial (Excluding SPR) 426,4 contra 423,4 · Difference 3,0', 2% acima da media de 5 anos, contra consenso de -641 mil. Publicado quarta 23 Set. A aritmetica fecha com o N-1: 423,4 + 2,969 = 426,4. NOTA: o wpsrsummary.pdf dos Highlights foi DESCONTINUADO a 23 Set 2026; usar o overview.pdf"
-    },
-    "steo_shutins_mbd": {
-      "value": 6.7,
-      "asof": "2026-08-31",
-      "note": "EDICAO de Setembro do STEO, publicada 9 Set: shut-ins de 6,7M b/d em Agosto, 'up from 5.0 million b/d in July'. SEM EDICAO NOVA em W35 — segunda semana; a de Outubro sai a 6 Out, e e a primeira que pode reflectir a reabertura do oleoduto Este-Oeste saudita (4M b/d a 25 Set). N iguala N-1 e o pilar pontua 0. NAO e n/d"
-    },
-    "cot_crude_k": {
-      "value": 266,
-      "asof": "2026-08-04",
-      "note": "proxy Saxo WTI+Brent; sem figura combinada desde entao (8 semanas). O boletim da semana de 15 Set, publicado 21 Set, volta a nao dar numero: 'hedge funds responded relatively cautiously to the additional price strength, with some fresh buying of Brent crude while the NYMEX-based RBOB gasoline and ULSD contracts both saw net selling'. A leitura qualitativa ENFRAQUECEU face ao W34, que citava o net long do WTI perto do maximo de um ano — continua a apontar para o lado -1 mas com menos forca. O boletim da semana de 22 Set sai ~28 Set"
-    },
-    "dxy": {
-      "value": 101.04,
-      "asof": "2026-09-25",
-      "note": "fecho de sexta. TRES fontes concordantes: Yahoo DX-Y.NYB 101,04 (16:59:59 EDT), TradingEconomics 101,031, TradingView TVC:DXY 100,994 com '+0,73% nos ultimos sete dias', que reconcilia com o N-1 desta serie. A Reuters/Investing da 100,96, leitura intradiaria antes do fecho. Subida de 0,8% na semana, segunda consecutiva, maximo de dois meses"
-    }
-  },
+ "_comment": "Ficheiro de estado semanal — valores N desta semana tornam-se N-1 na semana seguinte. Commit sempre com config.js. NUNCA tocar no index.html.",
+ "_rebuilt": "Actualizado no ciclo W41/W36 (3 Out 2026). Valores N desta semana — tornam-se N-1 na proxima. ESTE ciclo (W41/W36) **ESTA PUBLICADO** a 3 Out 2026: os quatro passos da Fase 6 correram juntos — PDFs arquivados em 'Weekly scorecards reports since inception/', linha W41 acrescentada ao Excel com o titulo A1 conferido, registo na §6 e na §7 do 00_LEIA-ME_PROJECTO.md, e config.js + state.json commitados para main. O ciclo anterior (W40/W35) tambem esta publicado, desde 26 Set. Este campo e actualizado NA PUBLICACAO e nao antes: no W39 ficou a dizer 'AINDA NAO PUBLICADO' durante uma semana depois de o ciclo ter sido publicado, e e por isso que a actualizacao deste texto e um dos passos da Fase 6 e nao um acto separado. NOTA DE METODO PARA O W42: por decisao do Nuno a 3 Out 2026, a quantificacao das magnitudes de score passa a ser vinculativa e escrita em _scripts/REGRAS_SCORE.md, e a regra da antecipacao passa a ser 'so o facto realizado pontua' — precificacao e probabilidades deixam de mover scores e passam a ser so contexto. Vale a partir do ciclo W42; o W41 foi publicado com as magnitudes como foram auditadas.",
+ "forex_week": 41,
+ "commodity_week": 36,
+ "report_date": "2026-10-03",
+ "forex": {
   "scores": {
-    "gold": 3,
-    "crude": -2
+   "AUD": 9.9,
+   "USD": 9.4,
+   "GBP": 8.7,
+   "EUR": 7.5,
+   "NZD": 7.4,
+   "JPY": 5.9,
+   "CAD": 1.9,
+   "CHF": 1.9
   },
-  "prices": {
-    "gold_usd": 4285.0,
-    "brent_usd": 104.37,
-    "dxy": 101.04
+  "rates": {
+   "AUD": "4.60%",
+   "USD": "3.875%",
+   "GBP": "3.75%",
+   "EUR": "2.50%",
+   "NZD": "2.75%",
+   "JPY": "1.25%",
+   "CAD": "2.25%",
+   "CHF": "0.00%"
   },
-  "data_gaps": [
-    "ETF GLD — n/d pela 4.a semana. Uma so fonte coerente (SSGA a 24 Set: AUM 144.613,48M, NAV 391,16, 369,70M accoes, que fecham entre si em 144.611,85M). stockanalysis internamente incoerente outra vez (146,70 mil M com 352,40M accoes e NAV 393,41, e as 352,40M accoes sao incompativeis com as 369,70M da SSGA), MacroMicro 403, spdrgoldshares.com/usa/ 404. Manual §8.4a exige 2+ fontes. DECISIVO: intervalo real do gold +2 a +4, e a +2 o semaforo passa a MILD BULLISH. NAO se inclinou o intervalo: as accoes mexeram 0,16% em sete dias, dentro do ruido, e falta o preco LBMA do dia para fechar a derivacao em tonelagem",
-    "COT Crude — n/d pela 8.a semana. Saxo sem figura combinada; leitura qualitativa de 21 Set MAIS FRACA do que a da semana anterior (cautela dos fundos, alguma compra de Brent contra venda liquida em RBOB e ULSD). DECISIVO: intervalo real do crude -3 a -1, com o -1 (crowding) ainda como lado mais provavel mas com menos forca",
-    "ISM e STEO a zero por ausencia de publicacao nova, com dado publicado e sem revisao — terceira e segunda semana respectivamente. NAO sao n/d e nao entram no calculo de sensibilidade. Dois dos onze pilares nesta condicao, contra quatro no W34: o M1 e o GDX sairam desta categoria esta semana",
-    "GDX — FALHA DE RECOLHA CORRIGIDA NA SUPERVISAO, a registar na §7. A primeira versao do W35 declarou 'sem report novo' e pontuou o pilar a 0, dando o gold a +2 MILD BULLISH. O settlement de 15 Set estava publicado (35.514.478 accoes) em DUAS fontes. A causa: a pagina foi lida por sumarizacao e nao directamente, e a verificacao em fonte alternativa que o Manual §8 obriga foi feita pelo mesmo meio, pelo que confirmou o erro em vez de o apanhar",
-    "Preco do Brent — dispersao entre fontes a 25 Set: TradingEconomics 104,37 no texto datado, The National 104,30, OilPrice 105,65 intradiario. Usa-se o valor datado. Os rotulos de variacao semanal de terceiros nao reconciliam com o N-1 desta serie (The National da +0,43%, a TradingEconomics 'more than 1%'); usam-se as variacoes calculadas contra 103,21, ou seja +1,1%. Nao afecta pilar nenhum",
-    "Preco do gold — o rotulo da TradingEconomics ('down more than 1% for the week') NAO reconcilia com o N-1 desta serie e nao e usado; o valor datado da mesma pagina (4.285,00 a 25 Set) e usado, e a USAGOLD confirma a magnitude com 4.280,19 spot no mesmo dia e 'a weekly loss of more than 2%'. Variacao desta serie: -2,2%",
-    "Corte de observacao nao uniforme: precos e DXY de 25 Set, TIPS de 24 Set, SSGA de 24 Set, COT Gold de 22 Set, GDX de 15 Set, EIA da semana de 18 Set, ISM e STEO de Agosto, M1 e INDPRO de Agosto",
-    "Calendario: DUAS datas T1 faltavam ao calendario do W39 e foram acrescentadas — o CPI MENSAL da Australia de Agosto a 30 Set (o CPI australiano e mensal desde Nov 2025 e e a medida principal) e a correccao do proximo T1 do CAD, que e o Labour Force Survey de 9 Out e nao o CPI de 19 Out. Ficam TBC duas datas T2: CPI flash alemao (29-30 Set) e Tankan do BOJ (30 Set ou 1 Out). Corrigida na supervisao a data do CPI de Toquio de Setembro, que e 2 Out e nao 1 Out, e a de Agosto, que foi 28 Ago e nao 27 — a tabela do stat.go.jp tem duas colunas de par mes/data e foi mal lida"
+  "top5": [
+   {
+    "pair": "AUD/CHF",
+    "dir": "LONG",
+    "diff": 8.0,
+    "carry_bp": 460,
+    "final_score": 8.6,
+    "stars": 5
+   },
+   {
+    "pair": "USD/CHF",
+    "dir": "LONG",
+    "diff": 7.5,
+    "carry_bp": 388,
+    "final_score": 7.78,
+    "stars": 5
+   },
+   {
+    "pair": "GBP/CHF",
+    "dir": "LONG",
+    "diff": 6.8,
+    "carry_bp": 375,
+    "final_score": 7.21,
+    "stars": 4
+   },
+   {
+    "pair": "AUD/CAD",
+    "dir": "LONG",
+    "diff": 8.0,
+    "carry_bp": 235,
+    "final_score": 7.13,
+    "stars": 4
+   },
+   {
+    "pair": "USD/CAD",
+    "dir": "LONG",
+    "diff": 7.5,
+    "carry_bp": 162,
+    "final_score": 6.31,
+    "stars": 4
+   }
   ],
-  "macro_context": "Semana com apenas DOIS eventos Tier 1, em duas moedas — a avaliacao da SNB e o emprego australiano, ambos na quinta 24 Set —, contra oito T1 em cinco moedas no W39. O que mexeu foi precificacao e comunicacao, nao publicacao, e as tres revisoes de score sao todas de 0.1 e todas pelo eixo 2 ou pelo eixo 3. A semana foi do mercado obrigacionista: o Treasury a 10 anos fechou a 5,175%, maximo de 19 anos e o mais alto desde Julho de 2007, o de 30 anos a 5,472%, maximo desde 2004, e a probabilidade de subida do Fed em Outubro passou de 49% para mais de 70%, com a ING a atribuir 80-85% do movimento a reprecificacao de taxa REAL e nao de expectativas de inflacao. O flash PMI americano de 23 Set deu composto 58,4, maximo de 62 meses, com custos de input ao ritmo mais rapido desde Outubro de 2022 — uma leitura de inflacao e nao de crescimento. O dolar subiu 0,8% para 101,04, segunda semana de ganho e maximo de dois meses, e o gold caiu 2,2% para 4.285,00. A SNB manteve em 0,00% mas reviu a inflacao em alta em todo o horizonte e deixou cair a linguagem de 'increased willingness' a intervir, e mesmo assim o franco enfraqueceu. O emprego australiano bateu o dobro do consenso com o desemprego no maximo desde 2021, e a subida do RBA a 29 Set esta precada a cerca de 90% com os quatro grandes bancos alinhados. O iene foi o unico G10 a divergir, sustentado por jawboning do Ministerio das Financas depois de o USD/JPY tocar 159,00, a 100 pips do limiar historico de intervencao. No petroleo, o Brent subiu 1,1% para 104,37 depois de tocar perto de 108, com ataques Houthi ao porto de Yanbu contra conversacoes EUA-Irao sobre reabrir Ormuz, e o spread Brent-WTI abriu para 12,68 dolares, o maior desde Maio, por uma possivel proibicao de exportacao de diesel pelos EUA.",
-  "divergence_note": "Os DOIS activos em divergencia com o preco, e em sentidos opostos. Gold: o framework sobe dois pontos para +3 BULLISH e o metal CAI 2,2% — os dois pontos vem de liquidez (M1 de Agosto) e de posicionamento nas mineiras (GDX a cobrir), e o preco foi levado pelo lado que o framework ja pontuava contra, os yields reais a subir 24 pontos base. Crude: o framework desce dois pontos para -2 MILD BEARISH e o Brent SOBE 1,1% — o build do EIA e informacao de inventarios americanos e o preco e feito pelo premio de risco no Mar Vermelho, que o framework nao mede. Nota de posicionamento que nao pontua e nao explica o delta: shorts a cobrir no GDX e managed money a reduzir longos no COT do gold, na mesma semana em que o metal caiu — descompressao contra o preco dentro do proprio complexo; mas o COT nao contribui com nenhum dos dois pontos, porque ja estava a +1. A divergencia estrutural do CAD INVERTEU DE SINAL outra vez: o petroleo a subir melhora os termos de troca canadianos e cumpre a condicao de inflacao que Macklem nomeou, ou seja sopra contra as duas teses que o tem como moeda cotada, e o framework nao pontua nenhum dos dois canais. E a diferenca face ao W34: ali os dois deltas vinham de pilares a deixar de pontuar por ausencia de publicacao; aqui os tres pilares que mudaram de score mudaram por publicacao nova.",
-  "next_week_watch": [
-    "28 Set — Lagarde no Parlamento Europeu (ECON), primeira comunicacao do BCE desde 18 Set; e boletim do Saxo com a semana de 22 Set, nona oportunidade de recuperar a figura combinada WTI+Brent",
-    "29 Set 04:30 GMT — RBA, decisao. Subida de 25pb para 4,60% precada a cerca de 90%, os quatro grandes bancos alinhados. Toca o #1 e o #4, e cai no SEGUNDO DIA do periodo rotulado — ver a questao aberta das 5 estrelas",
-    "29 Set — GDP mensal do Canada (Jul) com avanco de Agosto (T2)",
-    "30 Set 01:30 GMT — CPI MENSAL da Australia (Ago), T1, um dia DEPOIS da decisao do RBA. Julho deu headline 3,5% e trimmed mean 3,6%. Faltava ao calendario do W39",
-    "30 Set 12:30 GMT — PCE de Agosto (BEA), classificacao por decidir, e terceira estimativa do GDP do Q2 (T2). Se o PCE contar como T1, e este o proximo T1 do USD e nao o NFP",
-    "30 Set ou 1 Out (TBC) — Tankan do Q3; e 1 Out 08:50 JST, Summary of Opinions da reuniao de 17-18 Set do BOJ",
-    "1 Out 14:00 GMT — ISM Manufacturing de Setembro, que devolve informacao ao pilar Business Confidence; 1 Out — CPI da Suica (Set), confirmado na agenda GNP do FSO, e proximo T1 do CHF; 1 Out — Dia Nacional na China, inicio da Golden Week (1-7 Out)",
-    "2 Out 12:30 GMT — NFP de Setembro e HICP flash da Zona Euro, dois T1 na mesma manha; e CPI de Toquio de Setembro as 08:30 JST",
-    "6 Out — EIA STEO de Outubro, primeira edicao que pode reflectir a reabertura do oleoduto Este-Oeste saudita",
-    "~7 Out — settlement do GDX de 30 Set (regra dos ±5 dias uteis; o lag observado nesta serie tem sido de 9-10 dias corridos, o que empurraria para ~9-10 Out)",
-    "9 Out — Labour Force Survey do Canada (Set): e o PROXIMO T1 DO CAD, corrigido neste ciclo",
-    "16 Out — FRED INDPRO (Set); 19 Out — CPI do Canada (Set); 20 Out — UK Labour Market; 21 Out — UK CPI; 22 Out — NZ CPI Q3; 23 Out — CPI nacional do Japao; 27 Out — FRED M1SL (Set)",
-    "28 Out — FOMC (sem SEP), BOC com MPR e RBNZ MPR no mesmo dia; 29 Out — BCE; 30 Out — BOJ com Outlook Report; 3 Nov — RBA; 5 Nov — BOE com MPR; 10 Dez — SNB"
-  ]
+  "note_aud": "Eixo 1 pela primeira vez nesta serie: RBA a subir 25pb para 4,60% por voto unanime, e o CPI a acelerar para 4,0% no dia seguinte. Contido a 0.1 porque o eixo 2 enfraqueceu — a subida de 3 Nov caiu de 35-40% para ~20% — e porque o mercado vendeu o AUD, com o AUD/USD a cair 70 pips no fecho da semana da subida, apos ter estado 121 pips abaixo no minimo. E o decimo que o W40 reservou para a entrega, agora gasto.",
+  "note_usd": "NFP de Setembro a falhar com 29 mil contra 84-95 mil, desemprego a 4,2% e revisoes de 60 mil que puseram Julho em negativo; e a subida de Outubro precificada para fora, de 54-70% para 17-23%. Topo da banda que o SOP da a dados T1, aplicado por haver duas pecas no mesmo dado e por ser reprecificacao de eixo 2. Contido em -0.5 e nao mais porque a inflacao nao arrefeceu: PCE a 3,4%/3,0% e Precos do ISM a 77,9.",
+  "note_gbp": "Sem T1 e sem reuniao. Dois votantes do MPC falaram em sentidos opostos — Taylor dovish a 29 Set, Mann hawkish a 1 Out — e cancelam-se; ambos Tier 3. As contas nacionais do Q2 foram revistas em alta, T2. Score herdado, e e tambem a leitura de metodo correcta depois de o item 13 ter registado tres semanas a mover scores por Tier 3.",
+  "note_eur": "HICP flash de Setembro a bater, 3,8% contra 3,6%, com quatro vozes hawkish do Conselho a corroborar: Lagarde ('too large to look through'), Schnabel ('cannot wait'), DeMarco ('would not exclude a rate hike in October') e Rehn ('closer to the adverse scenario'). Contido a 0.3 e nao 0.5 porque dos 0,6pp de aceleracao no headline apenas cerca de 0,2pp aparecem no subjacente — servicos 3,2% contra 3,0% e ex-energia 2,3% contra 2,1% —, com a energia a explicar o resto a +18,8% contra +14,3%.",
+  "note_nzd": "Segunda semana consecutiva sem T1 e sem comunicacao do RBNZ encontrada — com a ressalva de que as paginas de indice nao renderizaram listagens datadas, pelo que e 'nao encontrado' e nao 'silencio confirmado'. O ANZ Business Outlook deteriorou-se mas e inquerito privado e nao entra em Tier. Score herdado.",
+  "note_jpy": "Eixo 2, e por documento do proprio banco: o Summary of Opinions de 1 Out — uma lista de 34 opinioes individuais, nao um comunicado — diz, CONDICIONALMENTE a precos consistentes com os 2% e a condicoes financeiras acomodativas, que 'sera necessario continuar a ajustar o grau de acomodacao subindo a taxa', e acrescenta que o Banco tera de acelerar o ritmo se houver sinais de desvio em alta; e as minutas de Julho mostram o Board a debater subidas mais rapidas. Corroborado pelo core de Toquio a 2,7%, o mais rapido em dez meses. O documento DISCUTE o cambio, que nomeia como uma das tres referencias do momento da subida, e carrega pelo menos tres opinioes cautelosas. Contido a 0.2 porque o eixo 1 nao mexeu, a frase e condicional e a reuniao e so a 30 Out.",
+  "note_cad": "Sem T1 e sem sinal de taxa; Macklem nao falou nesta semana, ao contrario do que o ciclo anterior deixaria supor. Score herdado — e e a quarta semana consecutiva em que a heranca preserva uma tensao que se agrava: 2,25% com inflacao perto de 3%, Brent acima de 100 e 40% de uma subida precada nao e a banda que o SOP chama maximo expansionista, e o JPY a 1,25% pontua quatro pontos acima.",
+  "note_chf": "O T1 da semana, o CPI de Setembro, saiu IN-LINE a +1,0% contra 1,0% esperado, embora com aceleracao de 0,8% em Agosto, e com core em 0,5% — um resultado em linha nao move o score. Sem comunicacao de politica do SNB, e com duas lacunas declaradas (texto alemao de Tschudin nao lido, remarks de Schlegel nao obtidos). Score herdado.",
+  "carry_max_bp": 460,
+  "_carry_max_nota": "Carry maximo do G8 nesta matriz, que e o denominador do Carry Rank do SOP Passo 2. Passou de 435bp para 460bp a 29 Set 2026, quando o RBA subiu para 4,60%. Gravado aqui de proposito: era uma constante escrita a mao em tres sitios do SOP e um default no codigo, e um default e uma constante que deixa de acompanhar a sua fonte. Consequencia: os Score Finais deste ciclo NAO sao comparaveis em nivel com os das semanas anteriores."
+ },
+ "gold_pillars": {
+  "excess_liquidity": 193.96,
+  "real_yield_pct": 2.88,
+  "gld_tonnes": 1056.55,
+  "cot_gold_mm": 120318,
+  "gdx_short_interest_m": 35.51,
+  "seasonality": "Outubro"
+ },
+ "crude_pillars": {
+  "ism_pmi_pct": 54.5,
+  "eia_stocks_change_m": 0.9,
+  "steo_shutins_mbd": 6.7,
+  "cot_crude_k": null,
+  "dxy": 101.93
+ },
+ "last_confirmed": {
+  "_comment": "REGRA 3: quando um pilar fica n/d, o N-1 da semana seguinte e o ultimo valor CONFIRMADO, nunca null. A nota nomeia a EDICAO da fonte, nao so a data de observacao (log §7 #28).",
+  "excess_liquidity": {
+   "value": 193.96,
+   "asof": "2026-08-31",
+   "note": "M1SL 19.991,1 (Ago) / INDPRO 103.0682 (Ago), lidos do CSV primario do FRED. SEM revisao de vintage neste ciclo: Agosto esta identico ao gravado e Julho recalcula em 192,988 (M1 19.886,5 / INDPRO 103.0454), exactamente o N-1 que o W35 usou. Agosto continua a ser o ultimo mes publicado, pelo que N iguala N-1 e o pilar pontua 0 — NAO e n/d. Proxima publicacao do M1SL a 27 Out; do INDPRO a 16 Out"
+  },
+  "real_yield_pct": {
+   "value": 2.88,
+   "asof": "2026-10-01",
+   "note": "FRED DFII10, CSV primario. Serie: 24 Set 2,85 (confirmado sem revisao); 25 Set 2,83; 28 Set 2,90; 29 Set 2,91; 30 Set 2,93; 1 Out 2,88. O valor de 2 Out so sai com um dia util de lag, pelo que o corte de observacao e 1 Out"
+  },
+  "gld_tonnes": {
+   "value": 1056.55,
+   "asof": "2026-10-01",
+   "note": "SERIE PRIMARIA REPOSTA neste ciclo, o que fecha quatro semanas de n/d. Fonte: arquivo historico do PROPRIO emitente, api.spdrgoldshares.com/api/v1/historical-archive?product=gld&exchange=NYSE&lang=en, folha 'US GLD Historical Archive', 5.706 linhas, coluna 'Tonnes of Gold'. NAO e derivacao nem estimativa, pelo que a regra das 2 fontes do Manual §8.4a nao se aplica. N-1 usado: 1.054,55t a 25 Set, da MESMA serie e da mesma edicao do ficheiro. RESSALVA DE HOMOGENEIDADE: nivel NAO comparavel com os valores derivados de W31-W32 nem com a serie MacroMicro — o arquivo da 1.046,64t a 27 Ago contra os 1.044,0t que estavam gravados por derivacao, ou seja o proxy estava 2,6t ao lado. CORTE DE OBSERVACAO: o N e de QUINTA 1 Out e nao de sexta, porque o ficheiro ainda nao tem linha de 2 Out — numa serie que por convencao se le as sextas-feiras, N e N-1 nao sao dias da semana homologos, e isso esta declarado no pilar. Por fixar no Manual: qual e o N-1 quando uma serie n/d e reposta, o da propria serie ou o last_confirmed"
+  },
+  "cot_gold_mm": {
+   "value": 120318,
+   "asof": "2026-09-29",
+   "note": "Managed Money, metalcharts.org/cot/gold lido com curl -L e texto da propria pagina: 'As of the CFTC report dated September 29, 2026, managed money is net long 120,318 contracts ... a week-over-week decrease of 7,071 contracts. Open interest stands at 406,456 contracts'. Posicoes de terca 29 Set publicadas sexta 2 Out 15:30 ET. A aritmetica fecha com o N-1: 133.116 -> 127.389 -> 120.318. QUARTA semana consecutiva de descompressao e a maior das quatro: W33 -1.799, W34 -1.856, W35 -5.727, W36 -7.071"
+  },
+  "gdx_short_interest_m": {
+   "value": 35.51,
+   "asof": "2026-09-15",
+   "note": "biweekly. SEM SETTLEMENT NOVO neste ciclo: a tabela da marketbeat.com NYSEARCA/GDX foi lida por parse do HTML linha a linha e a linha mais recente continua a ser 15/9/2026 com 35.514.478 accoes e 11,9% do float. As seis mais recentes: 15/9 35.514.478, 31/8 37.194.640, 14/8 36.935.560, 31/7 38.032.349, 15/7 42.431.913, 30/6 45.855.086. Isto e leitura directa da tabela e NAO um 'o valor nao mudou' — a distincao e a licao do bloqueante do W35. N iguala N-1, pilar 0 (Manual §6 Regra 4), NAO e n/d. O settlement de 30 Set e esperado ~7 Out pela regra dos +-5 dias uteis, ~9-10 Out pelo lag observado nesta serie"
+  },
+  "ism_pmi_pct": {
+   "value": 54.5,
+   "asof": "2026-09-30",
+   "note": "dados de SETEMBRO, publicados 1 Out 14:00 GMT. Lidos do comunicado do PROPRIO ISM (canal oficial de distribuicao, porque o ismworld.org responde 302 e, seguido com -L, devolve reCAPTCHA — falha de LEITURA e nao 'o valor nao mudou'). Texto literal: 'The Manufacturing PMI registered 54.5 percent in September, 0.1 percentage point below the August figure of 54.6 percent', o que confirma o N-1 na propria fonte. Nona expansao mensal consecutiva. N<N-1 com N>50 da -1 pelo Manual §1. Subindices: New Orders 55,3 (53,7), Production 56,7 (58,3), PRECOS 77,9 (71,1) com 'a notable increase', Backlog 56,4 (51,8), Employment 52,7 (51,2). ISM de Outubro sai a 2 Nov"
+  },
+  "eia_stocks_change_m": {
+   "value": 0.9,
+   "asof": "2026-09-25",
+   "note": "BUILD; Table 1 do balanco oficial (ir.eia.gov/wpsr/overview.pdf com curl -L + pdftotext): 'Week Ending 9/25/2026 - Commercial (Excluding SPR) 427,3 contra 426,4 - Difference 0,9 - Percent Change 0,2'. Publicado quarta 30 Set. A aritmetica fecha com o N-1: 426,4 + 0,9 = 427,3. SEGUNDO build consecutivo; a regra do Manual §2 e o sinal absoluto e nao a magnitude, pelo que a passagem de +3,0M para +0,9M nao muda o score. O WPSR da semana de 2 Out sai quarta 7 Out. NOTA: o wpsrsummary.pdf dos Highlights foi descontinuado a 23 Set 2026; usar o overview.pdf"
+  },
+  "steo_shutins_mbd": {
+   "value": 6.7,
+   "asof": "2026-08-31",
+   "note": "EDICAO de Setembro do STEO, publicada 9 Set: shut-ins de 6,7M b/d em Agosto, 'up from 5.0 million b/d in July'. SEM EDICAO NOVA neste ciclo — TERCEIRA semana. Confirmado na pagina da EIA, texto literal: 'Release Date: September 9, 2026 | Forecast Completed: September 3, 2026 | Next Release Date: October 6, 2026'. N iguala N-1 e o pilar pontua 0. NAO e n/d. A edicao de 6 Out e a primeira que pode reflectir a reabertura do oleoduto Este-Oeste saudita (ramp-up confirmada a 28 Set) e a libertacao coordenada de ate 100 milhoes de barris anunciada pelo G7 a 2 Out"
+  },
+  "cot_crude_k": {
+   "value": 266,
+   "asof": "2026-08-04",
+   "note": "proxy Saxo WTI+Brent; sem figura combinada desde entao — NONA semana. O boletim da semana de 22 Set, publicado 28 Set, foi lido na integra e volta a nao dar numero combinado. MAS A INCLINACAO QUALITATIVA INVERTEU DE LADO: diz que a venda 'was concentrated in Brent crude (-64.5k contracts)' e que 'Hedge funds reduced commodity exposure across most sectors ... as improving Hormuz flows and the restart of Saudi Arabia's East-West pipeline reduced some of the geopolitical risk premium'. Uma reducao de 64,5 mil contratos e DESCOMPRESSAO, ou seja o lado +1 do pilar; nas semanas anteriores a leitura apontava para -1, crowding. Credibilidade da fonte conferida: o mesmo boletim da gold -5,7k, que reconcilia com os -5.727 do COT Gold de 22 Set. DESFASAMENTO: este boletim e da semana de 22 Set e o COT Gold desta edicao e de 29 Set. O boletim da semana de 29 Set sai ~5 Out"
+  },
+  "dxy": {
+   "value": 101.93,
+   "asof": "2026-10-02",
+   "note": "fecho de sexta. TRES fontes concordantes, dispersao de 0,05: Yahoo DX-Y.NYB 101,93; TradingEconomics 101,9281 em texto datado ('fell to 101.9281 on October 2, 2026, down 0.17%'); TradingView TVC:DXY 101,88 (close do blob da pagina, timestamp 1790899200 = 2 Out 2026 UTC, high 102,132 low 101,714). Subida de 0,88% na semana, TERCEIRA consecutiva. Maximo intra-semana 102,10 a 1 Out. A Yahoo da 100,97 para 25 Set contra os 101,04 gravados — diferenca de leitura intradiaria vs fecho; mantem-se o N-1 gravado, que foi validado por tres fontes no ciclo anterior. DXY nunca e estimado (Manual §4)"
+  }
+ },
+ "scores": {
+  "gold": 2,
+  "crude": -3
+ },
+ "prices": {
+  "gold_usd": 4140.19,
+  "brent_usd": 102.7,
+  "dxy": 101.93
+ },
+ "data_gaps": [
+  "GOLD SEM NENHUM PILAR n/d, pela primeira vez em cinco semanas. A serie primaria de tonelagem do GLD foi reposta a partir do arquivo historico do proprio emitente (coluna 'Tonnes of Gold' publicada), o que fecha o ultimo n/d deste activo e o item 3 do 'Por resolver' no essencial. Intervalo de sensibilidade do gold: exactamente +2, sem semaforo alternativo.",
+  "COT Crude — n/d pela 9.a semana, e e o UNICO n/d dos onze pilares. DECISIVO: intervalo real do crude -4 a -2, e a -2 o semaforo passa de BEARISH a MILD BEARISH. A INCLINACAO INVERTEU DE LADO esta semana: o boletim do Saxo da semana de 22 Set reporta uma reducao de 64,5 mil contratos no net long de Brent, que e descompressao, ou seja o lado +1 — nas semanas anteriores a leitura apontava para -1. Em texto claro: o lado mais provavel deste pilar e o que poria o crude em -2, e o -3 declarado e o que resulta de o dado nao existir.",
+  "Tres pilares a 0 por AUSENCIA DE PUBLICACAO NOVA e nao por n/d, todos com a nao-publicacao verificada activamente na fonte: Excess Liquidity (Agosto continua a ser o ultimo mes do M1SL e do INDPRO), GDX Short Interest (settlement de 15 Set continua a ser o mais recente na tabela, lida linha a linha) e STEO (a propria pagina da EIA da 'Next Release Date: October 6, 2026'). Nenhum entra no calculo de sensibilidade.",
+  "RESSALVA DE HOMOGENEIDADE no pilar ETF GLD: o nivel desta semana nao e comparavel com os valores DERIVADOS de W31-W32 nem com a serie MacroMicro. O arquivo oficial da 1.046,64t a 27 Ago contra os 1.044,0t gravados por derivacao. E a mesma natureza do item 11 e da descontinuidade do EIA no item 7. Corte de observacao do pilar: quinta 1 Out e nao sexta, porque o ficheiro ainda nao tem linha de 2 Out.",
+  "DENOMINADOR DO CARRY RANK: passou de 435bp para 460bp com a subida do RBA. Os Score Finais deste ciclo NAO sao comparaveis em nivel com os das semanas anteriores. Com 435 os cinco pares dariam 8.77, 7.93, 7.35, 7.22 e 6.37; a ordem e as estrelas nao mudam. Corrigido no SOP (tres sitios, valor antigo riscado e datado) e no codigo (score_final() passou a exigir o carry maximo, pares_elegiveis() deriva-o das taxas, e o coerencia() do forex_report passou a conferir os cinco finais declarados, que nunca eram verificados).",
+  "ISM: a fonte primaria ficou inacessivel por reCAPTCHA (o ismworld.org responde 302 e, seguido com -L, devolve a pagina de captcha). E falha de LEITURA e esta tratada como tal: o valor saiu do comunicado do proprio ISM por outro canal, nao de uma sumarizacao, e o comunicado confirma o N-1 na propria fonte.",
+  "Armadilha de serie descontinuada apanhada no CPI australiano: a pagina 'monthly-consumer-price-index-indicator' devolve 'Reference period September 2025, Released 29/10/2025, Next release Ceased'. A serie corrente e 'consumer-price-index-australia'. Aceitar a primeira teria posto um valor de 2025 com aparencia de 2026.",
+  "Dispersao de precos declarada: o futuro Brent da Yahoo (BZ=F) fecha a 102,25 contra os 102,70 do valor datado da TradingEconomics; o futuro do gold (GC=F) a 4.162,3 contra os 4.140,19 do spot. Usam-se os valores datados e spot da serie. O gold e corroborado por via primaria independente: o arquivo da SPDR da, para 1 Out, NAV/accao 380,611193 e 0,09167709 oz por accao, o que implica 4.151,0 — e o arquivo nao tem linha de 2 Out, o que esta declarado.",
+  "Corte de observacao nao uniforme: precos e DXY de 2 Out; tonelagem do GLD e TIPS de 1 Out; COT Gold de 29 Set; GDX de 15 Set; EIA da semana de 25 Set; ISM de Setembro; STEO, M1 e INDPRO de Agosto; COT Crude sem data (n/d).",
+  "Calendario: o periodo rotulado 5-9 Out tem UM UNICO Tier 1 — o Labour Force Survey canadiano de 9 Out, confirmado nas palavras da propria fonte — e NENHUMA reuniao de banco central do G8. Todas as datas T1 foram reconfirmadas em fonte oficial nesta sessao, incluindo as que vinham carregadas (NZ CPI 22 Out e UK CPI 21 Out), porque uma data carregada de um ciclo anterior nao e uma data verificada."
+ ],
+ "macro_context": "A semana de 28 Set a 2 Out foi o oposto da anterior: CINCO eventos Tier 1 em quatro moedas, contra dois em duas no W40, e tres deles surpreenderam. (O PCE de 30 Set seria o sexto, e nao entra na contagem porque a sua classificacao como T1 continua por decidir — conta-lo em silencio seria preencher a contagem com uma suposicao.) O RBA subiu 25pb para 4,60% por voto unanime na terca e o CPI australiano acelerou de 3,5% para 4,0% na quarta. A inflacao da Zona Euro bateu, 3,8% contra 3,6% esperados, com a energia a +18,8%. E na sexta o emprego americano falhou de forma grave: 29 mil postos contra um consenso de 84-95 mil, desemprego a subir para 4,2% e revisoes que tiraram 60 mil aos dois meses anteriores, com Julho a passar de +21 mil para MENOS 10 mil. O mercado reagiu a tirar a subida do Fed de Outubro: a probabilidade caiu de 54-70% na janela de 23-26 Set para 17-23% depois do NFP, mas a FXStreet da cerca de 100% para Dezembro — a subida mudou de mes, nao foi cancelada, que e literalmente o que Williams disse a 29 Set. Enquanto isso a inflacao americana nao arrefeceu: PCE de Agosto a 3,4% headline e 3,0% core, e o indice de Precos do ISM a saltar 6,8 pontos para 77,9. E uma semana estagflacionaria.",
+ "divergence_note": "Os dois activos deixaram de estar em divergencia no mesmo sentido. GOLD: continua divergente e mais do que na semana passada — o framework fica MILD BULLISH em +2 e o metal CAIU 3,38%, de 4.285,00 para 4.140,19, com a queda concentrada na segunda 28 Set. Os dois pontos positivos que sobrevivem vem de posicionamento (COT, quarta semana de descompressao e a maior das quatro) e de fluxo (ETF, entrada de 2,00t), ou seja de quem detem; e o preco foi feito pelo lado que o framework pontua contra, com os yields reais a subir mais tres pontos base e o dolar a subir 0,88%. CRUDE: passou de divergente a ALINHADO com o preco — o framework desce para -3 BEARISH e o Brent caiu 1,60%, de 104,37 para 102,70. Mas o alinhamento e por coincidencia de sinal e nao porque o framework meca o que moveu o preco: o que moveu o Brent foi a libertacao coordenada de ate 100 milhoes de barris anunciada pelo G7 a 2 Out e a recuperacao dos fluxos de crude por Ormuz para niveis pre-guerra, com o oleoduto Este-Oeste saudita a voltar — e nenhum desses canais entra em pilar algum. Nota de mecanismo que atravessa as duas semanas: em W35 os deltas vinham de pilares a receber publicacao nova; em W36 o delta do gold vem de dois pilares a DEIXAREM de ter publicacao e um a passar a ter, e o do crude de um unico pilar a receber publicacao. O mecanismo dominante nas duas semanas e a presenca ou ausencia de publicacao, nao a direccao dos dados. A divergencia estrutural do CAD mantem o sinal da semana passada e agrava-se: o Brent a 102,70 continua acima dos 100 dolares que Macklem nomeou como condicao, cerca de 40% de uma subida do BOC esta precada para 28 Out, e o framework pontua o CAD a 1.9, que e a banda que o SOP chama maximo expansionista. E a quarta semana.",
+ "next_week_watch": [
+  "~5 Out — boletim COT do Saxo com a semana de 29 Set: DECIMA oportunidade de recuperar a figura combinada WTI+Brent, que decide o semaforo do crude",
+  "6 Out — EIA STEO de Outubro: devolve informacao ao pilar shut-ins, a 0 ha tres semanas, e e a primeira edicao que pode reflectir o oleoduto Este-Oeste saudita e a libertacao do G7",
+  "7 Out 18:00 GMT — minutas do FOMC de 15-16 Set (tres semanas apos a decisao, padrao confirmado nas sete reunioes de 2026). Tier 3, mas foram discursos e nao dados que fizeram a maior parte da reprecificacao de Outubro",
+  "7 Out — EIA WPSR com a semana de 2 Out, depois de dois builds consecutivos",
+  "~7 a 10 Out — settlement do GDX de 30 Set: a regra dos cinco dias uteis da ~7 Out, o lag observado nesta serie da ~9-10 Out",
+  "9 Out 12:30 GMT — Labour Force Survey do Canada (Set): UNICO Tier 1 do periodo rotulado, confirmado nas palavras da propria fonte ('The next release of the LFS will be on October 9, 2026'). Toca o #4 e o #5",
+  "14 Out 12:30 GMT — CPI dos EUA (Set): proximo T1 do USD, e decide se a subida de Dezembro firma",
+  "15 Out 00:30 GMT / 11:30 AEDT — Labour Force da Australia (Set): proximo T1 do AUD, e NAO o CPI, que e a 28 Out",
+  "16 Out — FRED INDPRO de Setembro, metade do pilar Excess Liquidity",
+  "20 Out 06:00 GMT — UK Labour market overview (proximo T1 do GBP); 21 Out — UK CPI; 22 Out 21:45 GMT — NZ CPI do Q3; 23 Out 08:30 JST (= 22 Out 23:30 GMT) — CPI nacional do Japao; 27 Out — FRED M1SL de Setembro; 28 Out — CPI da Australia (Set)",
+  "27-28 Out — FOMC (sem SEP), e no dia 28 tambem BOC e RBNZ; 29 Out — BCE; 30 Out — BOJ com Outlook Report, e GDP flash do Q3 da Zona Euro (confirmado no calendario QNA do Eurostat); 3 Nov — RBA e CPI da Suica (07:30 GMT); 5 Nov — BOE com MPR; 10 Dez — SNB"
+ ]
 }
