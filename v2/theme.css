@@ -1,0 +1,132 @@
+/* FMM v2 — theme.css · fonte unica de cor da aplicacao.
+   Gerado a partir de _framework_v2/spec/03_IDENTIDADE_VISUAL.md. Nenhum outro ficheiro do sistema contem um valor hexadecimal.
+   Modo claro em :root; modo escuro redefinido nos dois blocos seguintes.
+   Os nomes sao identicos aos de engine/fmm/report/theme.py. */
+
+:root {
+  /* --- superficie, linha, texto, acento --- */
+  --fundo-base: #F6F8FA;
+  --fundo-elevado: #FFFFFF;
+  --fundo-subtil: #EAEEF3;
+  --fundo-inverso: #151E26;
+  --linha: #D2D8DE;
+  --linha-forte: #89929A;
+  --texto-primario: #1E2830;
+  --texto-secundario: #505960;
+  --texto-terciario: #6D747B;
+  --texto-inverso: #F5F7F9;
+  --acento: #236A8A;
+  --acento-subtil: #E6F2F9;
+
+  /* --- escala de estado: 7 degraus + ausencia de rotulo ---
+     A LUMINOSIDADE codifica a magnitude, a MATIZ codifica o sinal,
+     a POSICAO na barra de sete celulas codifica os dois sem cor nenhuma. */
+  --estado-positivo-forte-tinta: #003064;
+  --estado-positivo-forte-fundo: #D3E5F9;
+  --estado-positivo-tinta: #1B4979;
+  --estado-positivo-fundo: #D8EAFF;
+  --estado-positivo-leve-tinta: #3D5F86;
+  --estado-positivo-leve-fundo: #DDEFFF;
+  --estado-neutro-tinta: #6D7275;
+  --estado-neutro-fundo: #F6FAFD;
+  --estado-negativo-leve-tinta: #775738;
+  --estado-negativo-leve-fundo: #FEE9D6;
+  --estado-negativo-tinta: #663F14;
+  --estado-negativo-fundo: #F9E4D1;
+  --estado-negativo-forte-tinta: #502600;
+  --estado-negativo-forte-fundo: #F3DECC;
+  --estado-sem-rotulo-tinta: #89929A;
+  --estado-sem-rotulo-fundo: #EAEEF3;
+
+  /* --- tipografia: uma familia, hierarquia por peso e corpo --- */
+  --familia: "Source Sans 3", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --t-titulo-documento: 30px;  --t-titulo-documento-peso: 700;  --t-titulo-documento-esp: -0.015em;
+  --t-titulo-pagina: 23px;  --t-titulo-pagina-peso: 700;  --t-titulo-pagina-esp: -0.010em;
+  --t-titulo-seccao: 16px;  --t-titulo-seccao-peso: 600;  --t-titulo-seccao-esp: 0;
+  --t-etiqueta: 10.5px;  --t-etiqueta-peso: 600;  --t-etiqueta-esp: 0.09em;
+  --t-numero-destaque: 22px;  --t-numero-destaque-peso: 600;  --t-numero-destaque-esp: -0.01em;
+  --t-corpo: 14.5px;  --t-corpo-peso: 400;  --t-corpo-esp: 0;
+  --t-corpo-pequeno: 12.5px;  --t-corpo-pequeno-peso: 400;  --t-corpo-pequeno-esp: 0;
+  --t-micro: 11px;  --t-micro-peso: 400;  --t-micro-esp: 0.01em;
+  --altura-corpo: 1.55;
+  --altura-titulo: 1.2;
+
+  /* --- espacamento (base 4) e raio --- */
+  --e1: 4px;
+  --e2: 8px;
+  --e3: 12px;
+  --e4: 16px;
+  --e5: 24px;
+  --e6: 32px;
+  --e7: 48px;
+  --raio: 3px;
+  --raio-ficha: 2px;
+  --largura-conteudo: 1120px;
+  --largura-texto: 68ch;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fundo-base: #13181C;
+    --fundo-elevado: #1C2227;
+    --fundo-subtil: #272D33;
+    --fundo-inverso: #E5E8EC;
+    --linha: #353D44;
+    --linha-forte: #66727C;
+    --texto-primario: #E5ECF3;
+    --texto-secundario: #A5AEB7;
+    --texto-terciario: #828D96;
+    --texto-inverso: #151A1F;
+    --acento: #6CA6C4;
+    --acento-subtil: #25323A;
+    --estado-positivo-forte-tinta: #98D5FF;
+    --estado-positivo-forte-fundo: #2F3B49;
+    --estado-positivo-tinta: #85BBF8;
+    --estado-positivo-fundo: #2B3745;
+    --estado-positivo-leve-tinta: #7CA6D4;
+    --estado-positivo-leve-fundo: #273341;
+    --estado-neutro-tinta: #989EA2;
+    --estado-neutro-fundo: #2B2E31;
+    --estado-negativo-leve-tinta: #CCA580;
+    --estado-negativo-leve-fundo: #3D2F22;
+    --estado-negativo-tinta: #ECB889;
+    --estado-negativo-fundo: #413326;
+    --estado-negativo-forte-tinta: #FFD19B;
+    --estado-negativo-forte-fundo: #45372A;
+    --estado-sem-rotulo-tinta: #66727C;
+    --estado-sem-rotulo-fundo: #272D33;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --fundo-base: #13181C;
+  --fundo-elevado: #1C2227;
+  --fundo-subtil: #272D33;
+  --fundo-inverso: #E5E8EC;
+  --linha: #353D44;
+  --linha-forte: #66727C;
+  --texto-primario: #E5ECF3;
+  --texto-secundario: #A5AEB7;
+  --texto-terciario: #828D96;
+  --texto-inverso: #151A1F;
+  --acento: #6CA6C4;
+  --acento-subtil: #25323A;
+  --estado-positivo-forte-tinta: #98D5FF;
+  --estado-positivo-forte-fundo: #2F3B49;
+  --estado-positivo-tinta: #85BBF8;
+  --estado-positivo-fundo: #2B3745;
+  --estado-positivo-leve-tinta: #7CA6D4;
+  --estado-positivo-leve-fundo: #273341;
+  --estado-neutro-tinta: #989EA2;
+  --estado-neutro-fundo: #2B2E31;
+  --estado-negativo-leve-tinta: #CCA580;
+  --estado-negativo-leve-fundo: #3D2F22;
+  --estado-negativo-tinta: #ECB889;
+  --estado-negativo-fundo: #413326;
+  --estado-negativo-forte-tinta: #FFD19B;
+  --estado-negativo-forte-fundo: #45372A;
+  --estado-sem-rotulo-tinta: #66727C;
+  --estado-sem-rotulo-fundo: #272D33;
+  color-scheme: dark;
+}
