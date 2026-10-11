@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FMM — Relatório semanal</title>
+<meta name="description" content="Forex Macro Matrix e Commodity Sunday Brief — aplicação estática alimentada só pelo config.js que o ciclo escreve.">
+<!--
+  FMM v2 · index.html
+  ESTE FICHEIRO NUNCA E ESCRITO PELO CICLO (regra 8 da §2 de
+  02_ARQUITECTURA_DO_CODIGO.md). A recusa esta no codigo do adaptador e do
+  guiao de geracao, em `ESCRIVEIS`/`PROIBIDOS`, e nao tem opcao que a desligue.
+
+  A app e ESTATICA. Nao chama API nenhuma, nao tem chave nenhuma, nao guarda
+  segredo nenhum e nao faz `fetch` para fora. Le `config.js`, que o ciclo
+  escreve ao lado, e `theme.css`, que e a fonte unica de cor. O v1 fazia
+  `fetch` directo a API da Anthropic a partir do browser, com a chave em
+  `localStorage` e `anthropic-dangerous-direct-browser-access`, num repositorio
+  publico. Isso sai aqui.
+
+  O unico `localStorage` que existe guarda a preferencia de tema deste
+  visitante, esta envolto em try/catch e a pagina desenha-se na mesma sem ele.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="theme.css">
+<style>
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--fundo-base);color:var(--texto-primario);
+ font-family:var(--familia);font-size:var(--t-corpo);line-height:var(--altura-corpo);
+ font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased;
+ overflow-x:hidden}
+.env{max-width:var(--largura-conteudo);margin:0 auto;
+ padding-inline:var(--e4);padding-block:var(--e5)}
+a{color:var(--acento)}
+header{display:flex;justify-content:space-between;align-items:flex-end;
+ gap:var(--e4);flex-wrap:wrap;padding-bottom:var(--e3);
+ border-bottom:2px solid var(--acento)}
+h1{font-size:var(--t-titulo-documento);font-weight:700;
+ letter-spacing:var(--t-titulo-documento-esp);line-height:var(--altura-titulo)}
+.sub{font-size:var(--t-corpo-pequeno);color:var(--texto-terciario)}
+.cab-dir{text-align:right;display:flex;align-items:flex-end;gap:var(--e3)}
+.sem{font-size:var(--t-titulo-seccao);font-weight:600}
+h2{font-size:var(--t-titulo-seccao);font-weight:600;line-height:var(--altura-titulo)}
+.sec{display:flex;align-items:baseline;gap:var(--e3);margin-top:var(--e6);
+ padding-bottom:var(--e1);border-bottom:1px solid var(--linha)}
+.eyebrow{font-size:var(--t-etiqueta);font-weight:600;
+ letter-spacing:var(--t-etiqueta-esp);text-transform:uppercase;color:var(--acento)}
+.lbl{font-size:var(--t-etiqueta);font-weight:600;letter-spacing:var(--t-etiqueta-esp);
+ text-transform:uppercase;color:var(--texto-terciario)}
+.micro{font-size:var(--t-micro);color:var(--texto-terciario)}
+.nota{font-size:var(--t-micro);color:var(--texto-terciario);margin-top:var(--e2);
+ max-width:var(--largura-texto)}
+button.tema{font:inherit;font-size:var(--t-etiqueta);font-weight:600;
+ letter-spacing:var(--t-etiqueta-esp);text-transform:uppercase;
+ color:var(--texto-secundario);background:var(--fundo-elevado);
+ border:1px solid var(--linha);border-radius:var(--raio);
+ padding:var(--e1) var(--e2);cursor:pointer}
+button.tema:hover{border-color:var(--linha-forte)}
+
+table{width:100%;border-collapse:collapse;margin-top:var(--e3)}
+thead th{background:var(--fundo-subtil);text-align:left;padding:var(--e2);
+ font-size:var(--t-etiqueta);font-weight:600;letter-spacing:var(--t-etiqueta-esp);
+ text-transform:uppercase;color:var(--texto-terciario);white-space:nowrap}
+tbody td{padding:var(--e2);border-bottom:1px solid var(--linha);
+ font-size:var(--t-corpo-pequeno);color:var(--texto-secundario);
+ vertical-align:middle}
+tbody tr:nth-child(even){background:var(--fundo-elevado)}
+td.ccy{font-size:var(--t-corpo);font-weight:600;color:var(--texto-primario)}
+td.num,th.num{text-align:right}
+td.num{font-weight:600;font-size:var(--t-corpo);color:var(--texto-primario)}
+td.t1{color:var(--texto-terciario);font-size:var(--t-micro)}
+
+.barra{position:relative;display:inline-flex;gap:2px;vertical-align:-2px}
+.barra i{display:block;width:11px;height:15px;border-radius:var(--raio-ficha);
+ border:1px solid var(--linha);background:var(--fundo-elevado)}
+.barra i.ch{background:var(--tinta);border-color:var(--tinta)}
+.barra i.sr{background:repeating-linear-gradient(45deg,var(--linha-forte) 0 2px,
+ transparent 2px 4px);border-color:var(--linha-forte)}
+.barra b{position:absolute;top:-3px;bottom:-3px;width:1px;
+ background:var(--texto-primario);opacity:.55;transform:translateX(-50%)}
+.barra.pequena i{width:9px;height:12px}
+
+.cartao{background:var(--fundo-elevado);border:1px solid var(--linha);
+ border-left:3px solid var(--tinta);border-radius:var(--raio);
+ padding:var(--e3) var(--e4);display:grid;
+ grid-template-columns:auto 1fr auto;gap:var(--e2) var(--e4);
+ align-items:center;margin-top:var(--e2)}
+.cartao .tese{grid-column:1/-1;font-size:var(--t-micro);
+ color:var(--texto-secundario)}
+.par{font-size:var(--t-titulo-seccao);font-weight:600;color:var(--texto-primario);
+ display:flex;align-items:baseline;gap:var(--e2);flex-wrap:wrap}
+.par .rk{font-size:var(--t-etiqueta);color:var(--texto-terciario);
+ letter-spacing:var(--t-etiqueta-esp)}
+.dir{font-size:var(--t-etiqueta);font-weight:600;
+ letter-spacing:var(--t-etiqueta-esp);color:var(--tinta)}
+.conv{display:inline-flex;gap:3px;vertical-align:-1px}
+.conv i{width:10px;height:13px;border-radius:var(--raio-ficha);
+ border:1px solid var(--linha-forte);background:transparent;display:block}
+.conv i.on{background:var(--tinta);border-color:var(--tinta)}
+.metr{display:flex;gap:var(--e5);text-align:right;flex-wrap:wrap}
+.metr span{display:block}
+.metr .v{font-size:var(--t-corpo);font-weight:600;color:var(--texto-primario)}
+
+.motor{background:var(--fundo-elevado);border:1px solid var(--linha);
+ border-left:3px solid var(--tinta);border-radius:var(--raio);
+ padding:var(--e3) var(--e4);display:flex;align-items:center;gap:var(--e4);
+ flex-wrap:wrap;margin-top:var(--e3)}
+.motor .n{font-size:var(--t-numero-destaque);font-weight:600;color:var(--tinta);
+ letter-spacing:var(--t-numero-destaque-esp)}
+.motor .r{font-size:var(--t-etiqueta);font-weight:600;
+ letter-spacing:var(--t-etiqueta-esp);text-transform:uppercase}
+.motor .k{font-size:var(--t-micro);color:var(--texto-terciario)}
+.motor .preco{margin-left:auto;text-align:right;white-space:nowrap}
+
+.aviso{background:var(--fundo-subtil);border:1px solid var(--linha);
+ border-left:3px solid var(--texto-primario);border-radius:var(--raio);
+ padding:var(--e3) var(--e4);margin-top:var(--e2)}
+.aviso p{font-size:var(--t-micro);color:var(--texto-secundario);margin-top:3px;
+ max-width:var(--largura-texto)}
+.dois{display:grid;grid-template-columns:1fr 1fr;gap:var(--e5)}
+ul.estados{list-style:none;margin-top:var(--e3)}
+ul.estados li{font-size:var(--t-micro);color:var(--texto-secundario);
+ padding:3px 0;border-bottom:1px solid var(--linha);max-width:none}
+ul.estados li b{color:var(--texto-primario);font-weight:600}
+.porler{color:var(--estado-sem-rotulo-tinta);font-style:italic}
+footer{margin-top:var(--e7);padding-top:var(--e3);border-top:1px solid var(--linha);
+ font-size:var(--t-micro);color:var(--texto-terciario)}
+
+@media (max-width:860px){
+ .dois{grid-template-columns:1fr}
+ .cartao{grid-template-columns:1fr}
+ .metr{gap:var(--e4)}
+ table.reflui thead{position:absolute;width:1px;height:1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap}
+ table.reflui tbody tr{display:block;border:1px solid var(--linha);
+  border-radius:var(--raio);margin-top:var(--e2);background:var(--fundo-elevado);
+  padding:var(--e2)}
+ table.reflui tbody td{display:flex;justify-content:space-between;
+  align-items:baseline;gap:var(--e3);border:0;padding:3px 0;text-align:left}
+ table.reflui tbody td::before{content:attr(data-rot);
+  font-size:var(--t-etiqueta);font-weight:600;
+  letter-spacing:var(--t-etiqueta-esp);text-transform:uppercase;
+  color:var(--texto-terciario);flex:0 0 auto}
+ table.reflui tbody td.num{font-size:var(--t-corpo)}
+}
+</style>
+</head>
+<body>
+<div class="env" id="app">
+  <noscript><p>Esta página monta-se a partir do <code>config.js</code> com
+  JavaScript local. Sem JavaScript não há conteúdo — e preferimos dizê-lo a
+  mostrar uma página vazia.</p></noscript>
+</div>
+
+<script src="config.js"></script>
+<script>
+"use strict";
+/* A app NAO deriva nada: le o que o adaptador emitiu e desenha. Qualquer
+   calculo aqui seria uma segunda implementacao da regra, e duas implementacoes
+   divergem. O unico "calculo" sao indices de celula de uma barra, que sao
+   geometria. */
+
+var POR_LER = '<span class="porler">por ler</span>';
+
+function esc(s){
+  if (s === null || s === undefined || s === "") return null;
+  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;")
+                  .replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+/* Um valor ausente NUNCA sai em branco: sai a dizer que esta por ler. */
+function v(x, sufixo){
+  var e = esc(x);
+  return e === null ? POR_LER : e + (sufixo || "");
+}
+function barra(indice, minimo, maximo, token, classe){
+  var cel = "", n = maximo - minimo + 1, ic = -minimo, i, dentro;
+  for (i = 0; i < n; i++){
+    if (indice === null || indice === undefined){ cel += '<i class="sr"></i>'; continue; }
+    var iv = indice - minimo;
+    dentro = (ic < i && i <= iv) || (iv <= i && i < ic) || (i === ic && indice === 0);
+    cel += '<i class="' + (dentro ? "ch" : "") + '"></i>';
+  }
+  return '<span class="barra ' + (classe||"") + '" style="--tinta:var(--estado-'
+       + (token || "sem-rotulo") + '-tinta)">' + cel
+       + '<b style="left:calc((100% / ' + n + ') * ' + (ic + 0.5) + ')"></b></span>';
+}
+function conv(stars, token){
+  var s = "", i;
+  for (i = 0; i < 5; i++) s += '<i class="' + (i < stars ? "on" : "") + '"></i>';
+  return '<span class="conv" style="--tinta:var(--estado-' + (token||"neutro")
+       + '-tinta)">' + s + '</span>';
+}
+function sec(n, titulo){
+  return '<div class="sec"><span class="eyebrow">' + n + '</span><h2>'
+       + titulo + '</h2></div>';
+}
+function aviso(titulo, corpo){
+  return '<div class="aviso"><span class="lbl">' + titulo + '</span><p>'
+       + corpo + '</p></div>';
+}
+
+function monta(){
+  var W = (typeof WEEK_CONFIG !== "undefined") ? WEEK_CONFIG : null;
+  var CM = (typeof COMMODITY_CONFIG !== "undefined") ? COMMODITY_CONFIG : null;
+  var QB = (typeof QUEBRAS !== "undefined") ? QUEBRAS : {lista:[]};
+  var NE = (typeof CAMPOS_NAO_EMITIDOS !== "undefined") ? CAMPOS_NAO_EMITIDOS : {lista:[]};
+  var LC = (typeof LACUNAS !== "undefined") ? LACUNAS : {lista:[]};
+  var P = [];
+
+  if (!W){
+    document.getElementById("app").innerHTML =
+      '<header><div><h1>FMM</h1><div class="sub">Relatório semanal</div></div></header>'
+      + aviso("config.js por ler",
+              "O ficheiro <code>config.js</code> não foi carregado ou não "
+            + "define <code>WEEK_CONFIG</code>. A app não inventa uma semana: "
+            + "diz que está por ler.");
+    return;
+  }
+
+  P.push('<header><div><h1>Forex Macro Matrix</h1>'
+    + '<div class="sub">LVD Academy Framework · Relatório sistemático semanal</div></div>'
+    + '<div class="cab-dir"><button class="tema" id="tema" type="button">Tema</button>'
+    + '<div><div class="sem">Semana ' + v(W.week) + '</div>'
+    + '<div class="sub">' + v(W.period) + '</div></div></div></header>');
+
+  /* ── 01 · matriz de politica ────────────────────────────────────────── */
+  P.push(sec("01", "Matriz de política — scores G8"));
+  P.push('<table class="reflui"><thead><tr><th>Moeda</th><th class="num">Score</th>'
+    + '<th class="num">Δ</th><th>Banda de política</th><th>Banco</th>'
+    + '<th class="num">Taxa</th><th>Próximo Tier 1</th></tr></thead><tbody>');
+  var notaDelta = null;
+  (W.matriz || []).forEach(function(m){
+    notaDelta = notaDelta || m.delta_nota;
+    var banda = m.abortou
+      ? '<span class="porler">ABORTA · ' + v(m.motivo) + '</span>'
+      : barra(m.banda_indice, -2, 2, m.token)
+        + ' <span class="micro" style="margin-left:8px">' + v(m.rotulo_banda)
+        + ' (' + v(m.banda) + ')</span>';
+    var t1 = v(m.next_t1);
+    if (m.avisos && m.avisos.length){
+      /* T5.4 · o aviso curto na celula; a frase inteira, com a prova, vai na
+         seccao 05. Nunca sai "nao existe outro T1 antes deste". */
+      t1 += '<br><span class="porler" title="'
+          + m.avisos.map(function(a){ return esc(a.texto); }).join(" · ")
+          + '">slot por ler · '
+          + m.avisos.map(function(a){ return esc(a.curto); }).join(" · ")
+          + '</span>';
+    }
+    P.push('<tr><td class="ccy" data-rot="Moeda">' + v(m.ccy) + '</td>'
+      + '<td class="num" data-rot="Score"' + (m.token
+          ? ' style="color:var(--estado-' + m.token + '-tinta)"' : '') + '>'
+      + v(m.score) + '</td>'
+      + '<td class="num" data-rot="Δ" style="font-weight:400;color:var(--texto-terciario)">'
+      + v(m.delta) + '</td>'
+      + '<td data-rot="Banda">' + banda + '</td>'
+      + '<td data-rot="Banco">' + v(m.cb) + '</td>'
+      + '<td class="num" data-rot="Taxa" style="font-weight:400">' + v(m.rate, " %") + '</td>'
+      + '<td class="t1" data-rot="Próximo T1">' + t1 + '</td></tr>');
+  });
+  P.push('</tbody></table>');
+  if (notaDelta) P.push('<p class="nota">Δ · ' + esc(notaDelta) + '</p>');
+
+  /* ── 02 · Top 5 ─────────────────────────────────────────────────────── */
+  P.push(sec("02", "Top 5 — pares e conviction"));
+  (W.pairs || []).forEach(function(p, i){
+    var cat = p.catalisador
+      ? "Catalisador: " + v(p.catalisador_evento)
+      : '<span class="porler">sem catalisador na janela</span>';
+    P.push('<div class="cartao" style="--tinta:var(--estado-'
+      + (p.token || "neutro") + '-tinta)">'
+      + '<div class="par"><span class="rk">#' + (i + 1) + '</span>' + v(p.pair)
+      + '<span class="dir">' + v(p.direction) + '</span></div>'
+      + '<div>' + conv(p.stars, p.token)
+      + ' <span class="lbl" style="margin-left:6px">' + v(p.stars)
+      + '/5 conviction</span> <span class="micro">· ' + cat + '</span></div>'
+      + '<div class="metr">'
+      + '<div><span class="lbl">Diferencial</span><span class="v">' + v(p.score_diff) + '</span></div>'
+      + '<div><span class="lbl">Carry</span><span class="v">' + v(p.carry) + '</span></div>'
+      + '<div><span class="lbl">Δg1</span><span class="v">' + v(p.dif_g1_bp) + '</span></div>'
+      + '<div><span class="lbl">Score final</span><span class="v" style="color:var(--tinta)">'
+      + v(p.score_final) + '</span></div></div>'
+      + '<p class="tese">' + v(p.thesis) + '</p></div>');
+  });
+  if (W.obs) P.push('<p class="nota">Par em observação: <b>' + esc(W.obs)
+    + '</b> · carry máximo do G8 derivado da matriz da semana: '
+    + v(W.carry_max_g8) + '</p>');
+
+  /* ── 03 · activos reais ─────────────────────────────────────────────── */
+  if (CM){
+    P.push(sec("03", "Activos reais — semana " + v(CM.week)));
+    (CM.assets || []).forEach(function(a){
+      if (a.divergencia && a.divergencia.banner)
+        P.push(aviso("Divergência de preço — " + v(a.asset),
+                     esc(a.divergencia.banner)));
+    });
+    P.push('<div class="dois">');
+    (CM.assets || []).forEach(function(a){
+      var n = a.n || 5;
+      var h = '<div><div class="lbl">' + v(a.asset) + '</div>'
+        + '<div class="motor" style="--tinta:var(--estado-'
+        + (a.token || "sem-rotulo") + '-tinta)">'
+        + barra(a.total === null || a.total === undefined ? null : a.total, -n, n,
+                a.token, "pequena")
+        + '<div><div class="n">' + (a.score === null || a.score === undefined
+            ? '—' : esc(a.score)) + '</div></div>'
+        + '<div><div class="r" style="color:var(--texto-primario)">'
+        + (a.verdict_label ? esc(a.verdict_label)
+            : '<span class="porler">' + v(a.sem_rotulo || a.motivo_sem_score) + '</span>')
+        + '</div><div class="k">total ' + v(a.score) + ' em ' + v(a.n)
+        + ' pilares · k = ' + v(a.k) + ' de ' + v(a.n) + '</div></div>'
+        + '<div class="preco"><span class="lbl">Preço</span><span>'
+        + v(a.prices && a.prices.preco_N) + ' ' + v(a.prices && a.prices.unidade)
+        + '</span></div></div>';
+      h += '<table class="reflui"><thead><tr><th>Pilar</th><th>Actual (N)</th>'
+        + '<th>Anterior (N−1)</th><th class="num">Contributo</th></tr></thead><tbody>';
+      (a.pillars || []).forEach(function(p){
+        h += '<tr><td data-rot="Pilar" style="color:var(--texto-primario)">'
+          + v(p.id) + ' · ' + v(p.name)
+          + ' <span class="micro">' + v(p.unidade) + '</span></td>'
+          + '<td data-rot="Actual (N)">' + (p.n === null || p.n === undefined
+              ? '<span class="porler">sem N · ' + v(p.estado) + '</span>'
+              : v(p.n) + ' <span class="micro">(' + v(p.n_data) + ')</span>') + '</td>'
+          + '<td data-rot="Anterior (N−1)" style="color:var(--texto-terciario)">'
+          + (p.n1 === null || p.n1 === undefined
+              ? '<span class="porler">sem N−1 · ' + v(p.estado) + '</span>'
+              : v(p.n1) + ' <span class="micro">(' + v(p.n1_data) + ')</span>') + '</td>'
+          + '<td class="num" data-rot="Contributo">'
+          + barra(p.score === null || p.score === undefined ? null : p.score, -1, 1,
+                  p.token, "pequena")
+          + ' <span style="color:var(--estado-' + (p.token||"neutro") + '-tinta)">'
+          + (p.score === null || p.score === undefined ? '—'
+              : (p.score > 0 ? "+" : "") + p.score) + '</span></td></tr>';
+      });
+      h += '</tbody></table>';
+      if (a.divergencia && a.divergencia.narrativa)
+        h += '<p class="nota">' + esc(a.divergencia.narrativa) + '</p>';
+      if (a.divergencia && a.divergencia.sintese)
+        h += '<p class="nota">' + esc(a.divergencia.sintese) + '</p>';
+      h += '</div>';
+      P.push(h);
+    });
+    P.push('</div>');
+  } else {
+    P.push(sec("03", "Activos reais"));
+    P.push(aviso("COMMODITY_CONFIG por ler",
+      "O <code>config.js</code> não define <code>COMMODITY_CONFIG</code>."));
+  }
+
+  /* ── 04 · calendario e feriados ─────────────────────────────────────── */
+  P.push(sec("04", "Calendário Tier 1 e fechos de mercado"));
+  P.push('<table class="reflui"><thead><tr><th>Data</th><th>Hora</th><th>Moeda</th>'
+    + '<th>Publicação</th><th>Pares</th></tr></thead><tbody>');
+  if (!(W.t1_events || []).length){
+    P.push('<tr><td colspan="5" class="porler">nenhum evento Tier 1 na janela '
+      + 'rotulada — e isto é uma leitura, não uma ausência '
+      + 'por omissão</td></tr>');
+  }
+  (W.t1_events || []).forEach(function(e){
+    P.push('<tr><td data-rot="Data">' + v(e.date) + '</td>'
+      + '<td data-rot="Hora">' + (e.time ? esc(e.time)
+        : '<span class="porler">hora não publicada pela fonte (nível '
+          + v(e.nivel_hora) + ')</span>') + '</td>'
+      + '<td data-rot="Moeda">' + v(e.ccy) + '</td>'
+      + '<td data-rot="Publicação">' + v(e.release) + '</td>'
+      + '<td data-rot="Pares">' + ((e.pairs && e.pairs.length)
+        ? e.pairs.map(esc).join(", ") : '—') + '</td></tr>');
+  });
+  P.push('</tbody></table>');
+
+  P.push('<table class="reflui"><thead><tr><th>Mercado</th><th>Estado</th>'
+    + '<th>Nota de feriados</th><th>Janela da fonte</th></tr></thead><tbody>');
+  var hest = W.holidays_estado || [];
+  if (!hest.length){
+    P.push('<tr><td colspan="4" class="porler">nota de feriados por ler — '
+      + 'sem ela o gerador do PDF recusa produzir (T7.1)</td></tr>');
+  }
+  hest.forEach(function(f, i){
+    P.push('<tr><td data-rot="Mercado" style="color:var(--texto-primario)">'
+      + v(f.mercado) + '</td><td data-rot="Estado">' + v(f.estado) + '</td>'
+      + '<td data-rot="Nota">' + v((W.holidays || [])[i]) + '</td>'
+      + '<td data-rot="Janela" class="micro">' + v(f.janela) + '</td></tr>');
+  });
+  P.push('</tbody></table>');
+  if (!(W.t2_events || []).length)
+    P.push('<p class="nota">T2: a lista sai vazia e isso <b>não</b> significa '
+      + 'que não há eventos Tier 2 — significa que o Passo 4 não '
+      + 'os classificou.</p>');
+
+  /* ── 05 · estados, lacunas, campos nao emitidos ─────────────────────── */
+  P.push(sec("05", "Estados, ausências e campos não emitidos"));
+  P.push('<ul class="estados">');
+  (W.matriz || []).forEach(function(m){
+    P.push('<li><b>' + v(m.ccy) + '</b> · leitura ' + v(m.estado_leitura)
+      + ' · verificação ' + v(m.estado_verificacao)
+      + ((m.divergencias && m.divergencias.length)
+          ? ' · ' + m.divergencias.map(esc).join(" · ") : '')
+      + ' · voto ' + v(m.voto) + ' · spread 3m ' + v(m.spread_3m_bp)
+      + '</li>');
+  });
+  (W.slots_nao_lidos || []).forEach(function(s){
+    P.push('<li class="porler">' + esc(s) + '</li>');
+  });
+  P.push('<li>Nenhuma destas c\u00e9lulas afirma \u201cn\u00e3o existe outro '
+    + 'T1 antes deste\u201d: essa afirma\u00e7\u00e3o exigiria ter lido o '
+    + 'calend\u00e1rio que n\u00e3o se leu (T5.4).</li>');
+  (NE.lista || []).forEach(function(c){
+    P.push('<li><b>' + v(c.campo) + '</b> — não emitido · '
+      + v(c.razao) + '</li>');
+  });
+  (LC.lista || []).forEach(function(l){ P.push('<li>' + esc(l) + '</li>'); });
+  P.push('</ul>');
+
+  /* ── 06 · quebras de comparabilidade ────────────────────────────────── */
+  P.push(sec("06", "Quebras de comparabilidade declaradas"));
+  P.push('<ul class="estados">');
+  (QB.lista || []).forEach(function(q){
+    P.push('<li><b>' + v(q.id) + '</b> · a partir de ' + v(q.a_partir_de)
+      + ' · ' + v(q.motor) + ' · ' + v(q.classe) + ' · ' + v(q.objecto)
+      + '<br>antes: ' + v(q.antes) + '<br>agora: ' + v(q.agora)
+      + '<br>campos afectados: ' + ((q.campos_afectados||[]).map(esc).join(", ") || '—')
+      + '<br>efeito medido: ' + v(q.efeito_medido)
+      + ' (configuração ' + v(q.id_configuracao) + ')</li>');
+  });
+  P.push('</ul>');
+
+  P.push('<footer>Corte ' + v(W.corte) + ' · gerado em ' + v(W.gerado_em)
+    + ' · configuração ' + v(W.configuracao)
+    + ' · página estática: não chama nenhuma API e não '
+    + 'guarda nenhuma chave.</footer>');
+
+  document.getElementById("app").innerHTML = P.join("");
+
+  var b = document.getElementById("tema");
+  if (b) b.addEventListener("click", function(){
+    var r = document.documentElement;
+    var actual = r.getAttribute("data-theme");
+    var claro = window.matchMedia
+      && window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "dark";
+    var novo = actual ? (actual === "dark" ? "light" : "dark") : claro;
+    r.setAttribute("data-theme", novo);
+    try { localStorage.setItem("fmm-tema", novo); } catch (e) { /* sem store */ }
+  });
+}
+
+try { var t = localStorage.getItem("fmm-tema");
+      if (t) document.documentElement.setAttribute("data-theme", t); }
+catch (e) { /* janela privada, armazenamento bloqueado: a pagina desenha-se na mesma */ }
+
+monta();
+</script>
+</body>
+</html>
