@@ -174,12 +174,38 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospac
 <script>
 
 // ─── HELPERS ──────────────────────────────────────────────────────────────
+// SOP §8 / Manual §1 — tabela de semaforo, unica fonte de verdade das cores:
+//   >= +3 BULLISH VERDE · +1/+2 MILD BULLISH VERDE · 0 NEUTRAL AMARELO
+//   · -1/-2 MILD BEARISH AMARELO · <= -3 BEARISH VERMELHO
+// Total por construcao: devolve sempre uma chave de sigMap/lblMap, pelo que a
+// jusante nao ha (nem deve haver) default silencioso. Corrigido a 17 Out 2026:
+// a versao anterior mandava +1/+2 para AMARELO e contrariava a tabela.
 function scoreToSignal(score) {
-  if (score >= 3) return "GREEN";
-  if (score >= 1) return "AMBER";
-  if (score === 0) return "AMBER";
-  if (score >= -2) return "AMBER";
+  // Number() e nao Number.isFinite(score) directamente: Number.isFinite nao coage
+  // strings, e um score que chegue como "-4" cairia no ramo do score ausente e
+  // acenderia AMARELO em vez de VERMELHO, em silencio.
+  // E o ramo do score ausente devolve UNKNOWN e nao AMBER: Number("") , Number(null),
+  // Number(false) e Number([]) valem todos 0, pelo que um score em falta ficaria
+  // indistinguivel de um NEUTRAL legitimo. Um "SEM LEITURA" falha de forma visivel,
+  // que e a regra que o item 6 da secao 5 do LEIA-ME fixa para o WEEK_CONFIG.
+  const v = (typeof score === "number" || (typeof score === "string" && score.trim() !== ""))
+            ? Number(score) : NaN;
+  if (!Number.isFinite(v)) return "UNKNOWN";
+  if (v >= 1)  return "GREEN";
+  if (v >= -2) return "AMBER";
   return "RED";
+}
+// SOP §10 item 3 — a UNICA discricionariedade autorizada a IA sobre o semaforo:
+// pode emitir AMARELO em vez de VERMELHO quando ha catalisador geopolitico
+// activo que justifique nao entrar em short. So nesse sentido e so nesse caso;
+// em tudo o resto manda o score do framework.
+function applySignalOverride(frameworkSig, aiSig) {
+  // O SOP escreve a permissao em portugues ("AMARELO em vez de VERMELHO") e as
+  // chaves do sigMap estao em ingles. Reconhecer os dois, mais YELLOW, para que a
+  // unica discricionariedade autorizada nao falhe por vocabulario.
+  const ai = String(aiSig || "").trim().toUpperCase();
+  const amarelo = (ai === "AMBER" || ai === "AMARELO" || ai === "YELLOW");
+  return (frameworkSig === "RED" && amarelo) ? "AMBER" : frameworkSig;
 }
 function scoreClass(score) {
   if (score > 0) return "score-green";
@@ -408,8 +434,8 @@ function renderApp(data){
   document.getElementById('refresh-btn').disabled=false;
   document.getElementById('week-pill').textContent=`WEEK ${WEEK_CONFIG.week}`;
 
-  const sigMap={GREEN:'green',AMBER:'amber',RED:'red'};
-  const lblMap={GREEN:'VERDE',AMBER:'AMARELO',RED:'VERMELHO'};
+  const sigMap={GREEN:'green',AMBER:'amber',RED:'red',UNKNOWN:'amber'};
+  const lblMap={GREEN:'VERDE',AMBER:'AMARELO',RED:'VERMELHO',UNKNOWN:'SEM LEITURA'};
 
   const todayD=new Date();
   const upcoming=WEEK_CONFIG.t1_events
@@ -480,10 +506,9 @@ function renderApp(data){
 
   COMMODITY_CONFIG.assets.forEach(asset=>{
     const aiData = aiCommodities.find(c=>(c.asset||'').toUpperCase()===asset.asset.toUpperCase())||{};
-    const rawSig = aiData.signal||(scoreToSignal(asset.score));
-    const sig = rawSig.toUpperCase();
-    const col = sigMap[sig]||'red';
-    const lbl = lblMap[sig]||'VERMELHO';
+    const sig = applySignalOverride(scoreToSignal(asset.score), aiData.signal);
+    const col = sigMap[sig];
+    const lbl = lblMap[sig];
     const scoreCls = scoreClass(asset.score);
     const scoreSign = asset.score > 0 ? '+' : '';
 
@@ -512,7 +537,7 @@ function renderApp(data){
           <div class="commod-name ${asset.color_class}">${asset.icon} ${asset.asset}</div>
           <span class="commod-score-badge ${scoreCls}">Score W${COMMODITY_CONFIG.week}: ${scoreSign}${asset.score} · ${asset.verdict_label}</span>
         </div>
-        <div class="verdict-box verdict-${col}">${aiData.verdict||asset.thesis.substring(0,120)+'...'}</div>
+        <div class="verdict-box verdict-${col}">${aiData.verdict||asset.thesis||'—'}</div>
         ${factors?`<div class="factors">${factors}</div>`:''}
         ${asset.key_event?`<div class="today-events"><div class="today-label">Evento crítico</div><div class="factor warning"><span class="factor-icon">⚠</span><span>${asset.key_event}</span></div></div>`:''}
         ${events?`<div class="today-events"><div class="today-label">Eventos hoje</div>${events}</div>`:''}
